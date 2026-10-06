@@ -4,3 +4,4 @@
 3. Nada de placeholder silencioso: o que faltar vira linha em TODO.md e é avisado ao usuário.
 4. Código mínimo: sem abstração antecipada, sem comentário que repete o código, sem dependência que não pague o custo.
 Stack: HTML/CSS/JS estático + GSAP (ScrollTrigger). Deploy Vercel. Sem build.
+5. Site evolui em fases. Cada técnica nova entra junto com um item `estudo` no TODO.md; o site só a anuncia como domínio depois que o item sair do TODO.
