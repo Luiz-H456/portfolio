@@ -22,9 +22,9 @@
 [ ] falta | content/*.json sec.barbearia | o que o site da barbearia faz (agendamento? catálogo?) — texto está curto | você
 [ ] divida | style.css header | nome fixo no topo fica por cima do mangá em algumas paradas | eu
 [ ] divida | main.js | navegação por teclado (↑↓) e pular direto para um quadro | eu
-[ ] falta | assets/ | enviar arquivos das demais imagens (erp, botezini, lojas, barbearia) | você
-[ ] falta | assets/stack.webp | refazer: saiu pilha de roupas, o prompt pede painel de nave (prompt 7) | você
-[ ] falta | assets/contato.webp, assets/floor.webp | não gerados | você
+[ ] falta | assets/botezini.webp | única arte que falta | você
 [ ] falta | assets/cover.webp | em uso a versão 765px; refazer (prompt novo, sem canhão frontal) e fazer upscale 2× | você
 [ ] decidir | vídeos | os 2 gerados (nave/moto e carro na estrada, 8 s 1080p) não são os loops pedidos; o carro tem o Pão de Açúcar (RJ), não MG | você
 [ ] falta | docs/assets.md | qual gerador você usa (Midjourney, Flux, Nano Banana...)? Ajusto os prompts ao modelo | você
+[ ] falta | assets/*.webp | todas vieram 1024px (metade do pedido): upscale 2× antes de publicar, senão ficam moles no zoom | você
+[ ] falta | assets/contato.webp | opcional: refazer quadrado e sem moldura (recortei para 4:3) | você

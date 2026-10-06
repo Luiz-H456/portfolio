@@ -19,6 +19,8 @@ a{color:var(--mustard)}
 /* mangá aberto em px reais (2400×1600); a câmera (JS) escala e move */
 .scene{transition:opacity .15s}.scene.dip{opacity:0}
 .book{position:absolute;left:50%;top:50%;width:2400px;height:1600px;margin:-800px 0 0 -1200px;transform-style:preserve-3d}
+/* chão: plano dentro da cena 3D, abaixo do livro; move junto com a câmera */
+.book::before{content:"";position:absolute;inset:-1200px -1800px;background:url(assets/floor.webp) center/cover;transform:translateZ(-4px);filter:brightness(.75)}
 /* página direita fixa; folhas giram na lombada (x=1200) */
 .right,.leaf{position:absolute;top:0;left:1200px;width:1200px;height:1600px}
 .right{box-shadow:0 0 0 10px #7a2a26,0 50px 100px 10px #000c}
@@ -72,6 +74,9 @@ a{color:var(--mustard)}
 
 /* arte P&B em duotone: preto vira tinta, branco vira a cor do quadro (multiply) */
 .art{background-image:var(--img);background-size:cover;background-position:center;background-blend-mode:multiply}
-.a-sobre{--img:url(assets/sobre.webp)}
+.a-sobre{--img:url(assets/sobre.webp)}.a-erp{--img:url(assets/erp.webp)}.a-lojas{--img:url(assets/lojas.webp)}
+.a-barbearia{--img:url(assets/barbearia.webp)}.a-stack{--img:url(assets/stack.webp)}.a-contato{--img:url(assets/contato.webp)}
+.c-violet.art{background-color:#8a6fb0}  /* violeta mais claro: no escuro o desenho some */
 .a-cover{--img:url(assets/cover.webp);background-position:center bottom}
-.art b{-webkit-text-stroke:14px var(--black);paint-order:stroke fill}
+.art b{-webkit-text-stroke:14px var(--black);paint-order:stroke fill;color:var(--cream)}
+.art .note{background:var(--black);color:var(--cream);align-self:flex-start;padding:.2em .5em}
