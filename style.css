@@ -1,3 +1,6 @@
+@font-face{font-family:Anton;src:url(assets/fonts/anton.woff2) format("woff2");font-weight:400;font-display:swap}
+@font-face{font-family:"Barlow Semi Condensed";src:url(assets/fonts/barlow-400.woff2) format("woff2");font-weight:400;font-display:swap}
+@font-face{font-family:"Barlow Semi Condensed";src:url(assets/fonts/barlow-600.woff2) format("woff2");font-weight:600;font-display:swap}
 :root{--black:#000;--cream:#efe6d2;--blue:#2f5fa8;--sky:#7fb0d8;--red:#c4372f;--rust:#c9652e;--mustard:#e0a92e;--green:#3f8a5a;--violet:#4a3360}
 *{box-sizing:border-box;margin:0}
 body{background:radial-gradient(ellipse at 50% 40%,#1c1a20,var(--black) 70%) fixed;color:var(--cream);font:400 1.05rem/1.5 "Barlow Semi Condensed",system-ui,sans-serif}
