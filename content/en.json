@@ -1,12 +1,54 @@
 {
-"hero": {
-"kicker": "AI-native full-stack dev · Physics student",
-"title": "I move businesses off <em>spreadsheets</em> and into software.",
-"lead": "I built the ERP that runs Confecções Botezini: quotes that took 30 minutes now take 5. Curious and persistent, from São João del-Rei to the world."
-},
 "todo": {
-"erp": "ERP screenshot<br>pending",
-"botezini": "Botezini screenshot<br>pending",
-"btzn": "BTZN screenshot<br>pending"
+"erp": "ERP screenshot pending",
+"botezini": "Botezini screenshot pending",
+"btzn": "BTZN screenshot pending"
+},
+"sec": {
+"intro": {
+"k": "Vol. 01 — scroll to open",
+"t": "A portfolio in <em>comics</em>",
+"b": "<p>Scroll: the camera travels through every panel of the manga.</p>"
+},
+"hero": {
+"k": "AI-native full-stack dev · Physics student",
+"t": "I move businesses off <em>spreadsheets</em> and into software.",
+"b": "<p>I built the ERP that runs Confecções Botezini: quotes that took 30 minutes now take 5. From São João del-Rei, Brazil.</p>"
+},
+"sobre": {
+"k": "01 · About",
+"t": "Curious and <em>persistent</em>",
+"b": "<p>I've been coding for 1 year. I study Physics (BSc) at UFSJ and Systems Analysis and Development at Estácio.</p><p>I use AI as an engineering tool: lean context, small code, measured results.</p>"
+},
+"erp": {
+"k": "02 · Botezini ERP · in production",
+"t": "Quotes from <em>30 min</em> to 5",
+"b": "<p>Management system used by Confecções Botezini: quotes, orders, production, inventory, finance and an AI-powered insights module.</p><ul><li>Quotes: 20–30 min → 2–5 min</li><li>60+ orders placed through the system</li><li>Standardized inventory and quotes</li></ul><p class=\"mono\">React · TypeScript · Supabase · Gemini · Vercel</p>"
+},
+"botezini": {
+"k": "03 · botezini.com.br",
+"t": "A site that brings <em>clients</em> on its own",
+"b": "<p>The company's sales site, with technical SEO (structured data, automatic sitemap, IndexNow) and landing pages for customization and embroidery.</p><p>Result: qualified leads every week, passively.</p>"
+},
+"lojas": {
+"k": "04 · BTZN + Fora da Caixa",
+"t": "One platform, <em>two businesses</em>",
+"b": "<p>An in-house e-commerce base reused for a drop-based store (BTZN) and a flower shop with a bouquet builder (Fora da Caixa).</p><ul><li>Custom admin panel</li><li>Automated tests (Vitest + Playwright)</li><li>llms.txt for AI search engines</li></ul><p class=\"mono\">Astro · React · Upstash Redis · Vercel Blob</p>"
+},
+"barbearia": {
+"k": "05 · Stilo Black Barbershop",
+"t": "Real client, <em>live</em>",
+"b": "<p>The barbershop's website, live and in use.</p><p><a href=\"https://barbeariastiloblack.vercel.app\" target=\"_blank\" rel=\"noopener\">barbeariastiloblack.vercel.app</a></p><p class=\"mono\">React · TypeScript · Vite</p>"
+},
+"stack": {
+"k": "06 · Stack",
+"t": "Everyday <em>tools</em>",
+"b": "<p>React, TypeScript, Astro, Node, Supabase/Postgres, Tailwind, Vercel, Upstash, Zod, Vitest, Playwright, Gemini API and Claude Code.</p>"
+},
+"contato": {
+"k": "07 · Contact",
+"t": "Let's <em>talk</em>?",
+"b": "<ul><li><a href=\"https://wa.me/5532985112336?text=Hi%20Luiz%2C%20I%20saw%20your%20portfolio\" target=\"_blank\" rel=\"noopener\">WhatsApp</a></li><li><a href=\"mailto:luuiizhcc@gmail.com\">luuiizhcc@gmail.com</a></li><li><a href=\"https://www.linkedin.com/in/luiz-henrique-71a387234/\" target=\"_blank\" rel=\"noopener\">LinkedIn</a></li><li><a href=\"https://github.com/Luiz-H456\" target=\"_blank\" rel=\"noopener\">GitHub</a></li></ul>"
+}
 }
 }

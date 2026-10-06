@@ -2,7 +2,7 @@
 <html lang="pt-BR">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Luiz Henrique Carvalho — Dev full-stack AI-native</title>
 <meta name="description" content="Desenvolvedor full-stack AI-native e estudante de Física. ERP em produção, sites e lojas para negócios reais.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -16,25 +16,26 @@
   <span class="mono">Luiz Henrique Carvalho</span>
   <button id="lang" class="mono" aria-label="Mudar idioma">EN</button>
 </header>
-<main>
-  <section class="stage">
-    <div class="scene">
-      <div class="book">
-        <div class="pn p-title"><h1 class="ink">Luiz<br>Henrique</h1><span class="mono">vol. 01 · São João del-Rei</span></div>
-        <div class="pn p-port"><i></i></div>
-        <div class="pn p-mars"></div>
-        <div class="pn p-sky"></div>
-        <div class="pn p-shot c-blue"><span class="mono" data-i="todo.erp"></span></div>
-        <div class="pn p-shot c-red"><span class="mono" data-i="todo.botezini"></span></div>
-        <div class="pn p-shot c-mustard"><span class="mono" data-i="todo.btzn"></span></div>
+<main class="stage">
+  <div class="scene" aria-hidden="true">
+    <div class="book">
+      <div class="page">
+        <div class="pn c-black" data-s="hero"><b class="ink">Luiz<br>Henrique</b><span class="mono">vol. 01</span></div>
+        <div class="pn c-violet" data-s="sobre"><b class="ink">01 Sobre</b></div>
+        <div class="pn c-mars"></div>
+        <div class="pn c-blue lines" data-s="erp"><b class="ink">02 ERP</b><span class="mono" data-i="todo.erp"></span></div>
       </div>
-      <div class="hero">
-        <p class="mono cap" data-i="hero.kicker"></p>
-        <h2 class="display cap" data-i="hero.title"></h2>
-        <p class="lead cap" data-i="hero.lead"></p>
+      <div class="page">
+        <div class="pn c-red lines" data-s="botezini"><b class="ink">03 Botezini</b><span class="mono" data-i="todo.botezini"></span></div>
+        <div class="pn c-mustard lines" data-s="lojas"><b class="ink">04 Lojas</b><span class="mono" data-i="todo.btzn"></span></div>
+        <div class="pn c-sky" data-s="barbearia"><b class="ink">05 Barbearia</b></div>
+        <div class="pn c-green" data-s="stack"><b class="ink">06 Stack</b></div>
+        <div class="pn c-port" data-s="contato"><i></i><b class="ink">07 Contato</b></div>
       </div>
     </div>
-  </section>
+  </div>
+  <!-- legenda fora da cena 3D: texto sempre em tamanho legível -->
+  <aside class="cap" aria-live="polite"><p class="mono" id="cap-k"></p><h2 class="display" id="cap-t"></h2><div id="cap-b"></div></aside>
 </main>
 <script src="main.js" type="module"></script>
 </body>
