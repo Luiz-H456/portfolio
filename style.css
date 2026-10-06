@@ -1,12 +1,15 @@
-:root{--black:#0d0c0e;--cream:#efe6d2;--blue:#2f5fa8;--sky:#7fb0d8;--red:#c4372f;--rust:#c9652e;--mustard:#e0a92e;--green:#3f8a5a;--violet:#4a3360}
+:root{--black:#000;--cream:#efe6d2;--blue:#2f5fa8;--sky:#7fb0d8;--red:#c4372f;--rust:#c9652e;--mustard:#e0a92e;--green:#3f8a5a;--violet:#4a3360}
 *{box-sizing:border-box;margin:0}
-body{background:radial-gradient(ellipse at 50% 40%,#1d1a22,var(--black) 70%) fixed;color:var(--cream);font:400 1rem/1.5 "Inter Tight",system-ui,sans-serif}
+body{background:radial-gradient(ellipse at 50% 40%,#1c1a20,var(--black) 70%) fixed;color:var(--cream);font:400 1.05rem/1.5 "Barlow Semi Condensed",system-ui,sans-serif}
 body::after{content:"";position:fixed;inset:0;pointer-events:none;opacity:.14;mix-blend-mode:overlay;z-index:3;
   background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='.85'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
-.mono{font:400 .75rem/1.4 "JetBrains Mono",monospace;letter-spacing:.04em;text-transform:uppercase}
+.who,#lang{font-weight:600;letter-spacing:.02em}
+.kick{color:var(--mustard);font-weight:600}
 .ink,.display{font-family:Anton,Impact,sans-serif;font-weight:400;text-transform:uppercase;line-height:.9}
 .ink{filter:url(#ink)}
-header{position:fixed;z-index:4;top:0;inset-inline:0;display:flex;justify-content:space-between;padding:max(1.25rem,env(safe-area-inset-top)) clamp(1rem,4vw,3rem) 0}
+header{position:fixed;z-index:4;top:0;inset-inline:0;display:flex;justify-content:space-between;padding:max(1rem,env(safe-area-inset-top)) clamp(1rem,4vw,3rem) 2rem;background:linear-gradient(#000c,#0000);pointer-events:none}
+header button{pointer-events:auto}
+:focus-visible{outline:2px solid var(--mustard);outline-offset:3px}
 button{background:none;border:0;color:inherit;cursor:pointer;font:inherit}
 a{color:var(--mustard)}
 
@@ -27,9 +30,9 @@ a{color:var(--mustard)}
 .pn{position:relative;border:5px solid var(--black);overflow:hidden;padding:28px;display:flex;flex-direction:column;justify-content:space-between;
   background-image:radial-gradient(#0003 1.5px,transparent 2.4px);background-size:10px 10px}
 .pn b{font-size:110px;color:var(--cream);position:relative}
-.pn .mono{font-size:22px;position:relative;color:var(--black)}
+.pn .note{font:600 26px/1.2 "Barlow Semi Condensed",sans-serif;position:relative;color:var(--black)}
 .lines{background-image:repeating-conic-gradient(from 0deg at 70% 60%,#0002 0 2deg,transparent 2deg 9deg),radial-gradient(#0003 1.5px,transparent 2.4px)}
-.c-black{background-color:var(--black)}.c-black b{font-size:220px}.c-black .mono{color:var(--cream)}
+.c-black{background-color:var(--black)}.c-black b{font-size:220px}.c-black .note{color:var(--cream)}
 .c-violet{background-color:var(--violet)}.c-blue{background-color:var(--blue)}.c-red{background-color:var(--red)}
 .c-mustard{background-color:var(--mustard)}.c-mustard b{color:var(--black)}.c-green{background-color:var(--green)}
 .c-sky{background-color:var(--sky);background-image:linear-gradient(transparent 62%,var(--blue) 62% 66%,#1f3f73 66%),radial-gradient(#fff6 1.5px,transparent 2.4px)}
@@ -52,7 +55,7 @@ a{color:var(--mustard)}
   padding:1rem 1.1rem;max-height:42svh;overflow:auto;transition:opacity .35s,translate .35s}
 .cap.out{opacity:0;translate:0 12px}
 .cap h2{font-size:clamp(1.8rem,6vw,3.2rem);margin:.3rem 0 .5rem}
-.cap h2 em{font-style:normal;color:var(--mustard)}
-.cap div{color:#efe6d2cc;font-size:clamp(.95rem,1.2vw,1.05rem)}
+.cap div{color:#efe6d2cc;font-size:clamp(1rem,1.2vw,1.1rem);max-width:60ch}
+.cap .tools{margin-top:.6rem;color:var(--sky)}
 .cap div p+p,.cap ul{margin-top:.5rem}.cap ul{padding-left:1.1rem}
 @media (min-width:900px){.cap{inset:auto clamp(1.5rem,4vw,3.5rem) 3rem auto;width:min(30rem,36vw);max-height:70svh}}

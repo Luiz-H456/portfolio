@@ -17,7 +17,7 @@
 [ ] divida | index.html | fontes via Google Fonts (requisição externa); auto-hospedar woff2 depois | eu
 [ ] falta | index.html .p-shot | prints de ERP, Botezini e BTZN (hoje: quadros com aviso "pendente") | você
 [ ] divida | main.js | shader de fumaça removido no protótipo do mangá (está no commit 2e5c810); reaproveitar como nebulosa | eu
-[ ] estudo | fase 1 | CSS 3D (perspective, preserve-3d), animação guiada por scroll, FLIP (main.js measure/target/frame), interpolação e easing | você
+[ ] estudo | fase 1 | CSS 3D (perspective, preserve-3d), animação guiada por scroll, FLIP (main.js measure/target/frame), interpolação, easing e mola amortecida (oscilador harmônico) | você
 [ ] falta | content/*.json sec.lojas | BTZN vende o quê nos drops (roupa?) — hoje o texto diz só "loja de drops" | você
 [ ] falta | content/*.json sec.barbearia | o que o site da barbearia faz (agendamento? catálogo?) — texto está curto | você
 [ ] divida | style.css header | nome fixo no topo fica por cima do mangá em algumas paradas | eu
