@@ -34,7 +34,7 @@ a{color:var(--mustard)}
 .cover{background:var(--rust);padding:90px 90px 90px 170px;display:flex;flex-direction:column;justify-content:space-between;color:var(--black);
   box-shadow:inset 30px 0 0 var(--mustard),inset 44px 0 0 var(--black),inset 64px 0 0 var(--red),inset 78px 0 0 var(--black),0 0 0 10px #7a2a26,0 50px 100px 10px #000c}
 .cover b{font-size:250px;color:var(--black)}
-.cover span{font:600 48px/1.1 "Barlow Semi Condensed",sans-serif}
+.cover span{font:600 48px/1.15 "Barlow Semi Condensed",sans-serif;align-self:flex-start;background:var(--black);color:var(--cream);padding:.3em .5em}
 .inside{transform:rotateY(180deg);background:#7a2a26}
 .pn{position:relative;border:5px solid var(--black);overflow:hidden;padding:28px;display:flex;flex-direction:column;justify-content:space-between;
   background-image:radial-gradient(#0003 1.5px,transparent 2.4px);background-size:10px 10px}
