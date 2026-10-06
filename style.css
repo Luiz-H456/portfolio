@@ -81,7 +81,12 @@ a{color:var(--mustard)}
 .a-cover{--img:url(assets/cover.webp);background-position:center bottom}
 .art b{-webkit-text-stroke:14px var(--black);paint-order:stroke fill;color:var(--cream)}
 .art .note{background:var(--black);color:var(--cream);align-self:flex-start;padding:.2em .5em}
-/* print real colado sobre a arte, como foto num quadro de mangá */
-.shot{position:absolute;right:28px;bottom:28px;width:62%;height:auto;border:8px solid var(--black);rotate:-2deg;box-shadow:12px 12px 0 #0008}
-.shot.s2{right:auto;left:28px;bottom:auto;top:150px;width:52%;rotate:3deg}
-.a-barbearia .shot{width:34%}
+/* baralho de prints: sai do quadro quando a câmera chega e volta quando ela sai (main.js decks) */
+.deck{position:absolute;width:0;height:0;transform-style:preserve-3d}
+.card{position:absolute;left:0;top:0;width:var(--cw,480px);margin:0;border:8px solid var(--black);background:var(--black);box-shadow:16px 16px 0 #0007;cursor:pointer;opacity:0;transform-origin:50% 50%}
+.card.tall{width:calc(var(--cw,480px) * .42)}
+.card img{display:block;width:100%;height:auto}
+.deck-ui{display:flex;align-items:center;gap:.75rem;margin-top:.8rem;padding-top:.7rem;border-top:1px solid #efe6d233}
+.deck-ui p{flex:1;font-weight:600;color:var(--cream)}
+.deck-ui button{font-weight:600;color:var(--mustard);padding:.35rem .2rem}
+.deck-ui[hidden]{display:none}

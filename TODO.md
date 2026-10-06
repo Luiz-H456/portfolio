@@ -25,3 +25,4 @@
 [ ] divida | assets/ | upscale feito por Lanczos 2× + nitidez (sem IA, não cria detalhe); se quiser mais nitidez, upscale com IA (Magnific/Krea) | você
 [ ] falta | assets/contato.webp | opcional: refazer quadrado e sem moldura (recortei para 4:3) | você
 [ ] falta | assets/shots/erp.webp | print do ERP com dados fictícios: não rodo o ERP daqui (usaria as chaves de produção commitadas e dados reais de clientes) | você
+[ ] estudo | fase 1 | animação independente da taxa de quadros (passos de tempo em frame()), lazy-load de imagens | você

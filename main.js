@@ -8,6 +8,7 @@ async function setLang(l) {
   document.getElementById('lang').textContent = l === 'pt' ? 'EN' : 'PT'
   try { localStorage.setItem('lang', l) } catch { }
   cur = -1
+  if (decks.length) deckLabel()
 }
 document.getElementById('lang').onclick = () => setLang(document.documentElement.lang === 'en' ? 'pt' : 'en')
 
@@ -34,6 +35,62 @@ function measure() {
   })
   stage.style.height = keys.length * 100 + 'svh'
   cam ??= { ...keys[0] }
+  buildDecks()
+}
+
+// Baralho de prints: cartas empilhadas no centro do quadro; quando a câmera chega, saem uma de cima da outra e abrem em leque (x, y, z)
+const decks = []
+function buildDecks() {
+  panels.forEach((el, i) => {
+    const shots = t.sec[el.dataset.s].shots, k = keys[i + 2]
+    if (!shots) return
+    let dk = decks.find(d => d.key === i + 2)
+    if (!dk) {
+      const box = Object.assign(document.createElement('div'), { className: 'deck' })
+      const cards = shots.map((sh, j) => {
+        const c = Object.assign(document.createElement('figure'), { className: sh.tall ? 'card tall' : 'card' })
+        c.innerHTML = `<img data-src="${sh.src}" alt="" decoding="async">`
+        c.onclick = () => { dk.a = j; deckLabel() }
+        box.append(c); return { el: c, p: { x: 0, y: 0, z: 0, ry: 0, rz: 0, s: .8, o: 0 } }
+      })
+      book.append(box)
+      dk = { box, cards, key: i + 2, a: 0, d: 0, s: el.dataset.s }
+      decks.push(dk)
+    }
+    dk.box.style.left = k.x + 1200 + 'px'; dk.box.style.top = k.y + 800 + 'px'
+    dk.box.style.setProperty('--cw', Math.min(el.offsetWidth * .8, el.offsetHeight * 1.15) + 'px')  // carta cabe no quadro
+  })
+}
+function deckOf(n) { return decks.find(d => d.key === n) }
+function deckLabel() {
+  const dk = deckOf(cur), ui = cap.querySelector('.deck-ui')
+  ui.hidden = !dk
+  if (dk) { const sh = t.sec[dk.s].shots; cap.querySelector('#deck-l').textContent = `${sh[dk.a].t}, ${dk.a + 1} ${t.ui.of} ${sh.length}` }
+}
+function step(dir) { const dk = deckOf(cur); if (dk) { dk.a = (dk.a + dir + dk.cards.length) % dk.cards.length; deckLabel() } }
+document.getElementById('prev').onclick = () => step(-1)
+document.getElementById('next').onclick = () => step(1)
+addEventListener('keydown', e => { if (e.key === 'ArrowRight') step(1); if (e.key === 'ArrowLeft') step(-1) })
+function renderDecks(n, P, steps) {
+  const lerp = k => still ? 1 : 1 - (1 - k) ** steps
+  for (const dk of decks) {
+    const near = still ? +(n === dk.key) : ease(1 - clamp(Math.abs(P - dk.key) / .55))
+    dk.d += (near - dk.d) * lerp(.12)
+    if (dk.d < .001 && near === 0) { if (dk.cards[0].p.o > .001) dk.cards.forEach(c => { c.p.o = 0; c.el.style.opacity = 0 }); continue }
+    const N = dk.cards.length
+    dk.cards.forEach((c, j) => {
+      const img = c.el.firstChild; if (!img.src) img.src = img.dataset.src  // só baixa o print quando o baralho começa a abrir
+      const rel = (j - dk.a + N) % N, f = ease(clamp(dk.d * 1.5 - rel * .12))  // rel 0 = carta da frente; as de trás saem depois
+      const g = still
+        ? { x: 0, y: 0, z: 0, ry: 0, rz: 0, s: 1, o: rel ? 0 : f }
+        : { x: rel * 46 * f, y: -rel * 34 * f, z: (130 - rel * 55) * f, ry: -rel * 8 * f, rz: (rel ? (rel % 2 ? 3 : -2) : -1.5) * f, s: .8 + .2 * f, o: f * Math.max(0, 1 - rel * .3) }
+      for (const q in g) c.p[q] += (g[q] - c.p[q]) * lerp(.14)
+      const p = c.p
+      c.el.style.transform = `translate(-50%,-50%) translate3d(${p.x}px,${p.y}px,${p.z}px) rotateY(${p.ry}deg) rotateZ(${p.rz}deg) scale(${p.s})`
+      c.el.style.opacity = p.o
+      c.el.style.pointerEvents = p.o > .5 ? 'auto' : 'none'
+    })
+  }
 }
 function target() {
   const P = Math.min(keys.length - 1, scrollY / innerHeight)
@@ -51,11 +108,13 @@ function caption(n) {
   setTimeout(() => {
     const s = t.sec[n > 1 ? panels[n - 2].dataset.s : 'intro']
     cap.querySelector('#cap-k').textContent = s.k; cap.querySelector('#cap-t').innerHTML = s.t; cap.querySelector('#cap-b').innerHTML = s.b
-    cap.classList.remove('out')
+    cap.classList.remove('out'); deckLabel()
   }, still ? 0 : 250)
 }
-let shown = -1
-function frame() {
+let shown = -1, last = 0
+function frame(now) {
+  const steps = Math.min(4, Math.max(1, Math.round((now - (last || now - 16.7)) / 16.7)))  // quadros perdidos viram passos extras: mesma velocidade a 30 ou 120 fps
+  last = now
   const [k, n, P] = target()
   if (still && n !== shown) { scene.classList.add('dip'); setTimeout(() => scene.classList.remove('dip'), 150) }
   shown = n
@@ -63,7 +122,7 @@ function frame() {
   // viajando (ou pausa curta entre cliques da roda): quase crítico, ~1%; parado ~150 ms: uma passada de ~5,6% e assenta
   const [d, r] = idle < 9 ? [.55, .1] : [.72, .05]
   lastP = P
-  for (const p in k) {
+  for (let i = 0; i < steps; i++) for (const p in k) {
     if (still) { cam[p] = k[p]; continue }
     vel[p] = (vel[p] || 0) * d + (k[p] - cam[p]) * r
     cam[p] += vel[p]
@@ -76,6 +135,7 @@ function frame() {
     el.style.transform = `translateZ(${mix(d + 1, j + 1, f) * 1.5 + Math.sin(Math.PI * f) * 90}px) rotateY(${-180 * f}deg)`
   })
   caption(n)
+  renderDecks(n, P, steps)
   requestAnimationFrame(frame)
 }
 addEventListener('resize', measure)

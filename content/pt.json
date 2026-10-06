@@ -26,17 +26,83 @@
 "botezini": {
 "k": "botezini.com.br",
 "t": "Site que traz cliente sozinho",
-"b": "<p>Site comercial da confecção, com SEO técnico (dados estruturados, sitemap automático, IndexNow) e páginas de venda para personalização e bordado.</p><p>Resultado: leads qualificados chegando toda semana, de forma passiva.</p>"
+"b": "<p>Site comercial da confecção, com SEO técnico (dados estruturados, sitemap automático, IndexNow) e páginas de venda para personalização e bordado.</p><p>Resultado: leads qualificados chegando toda semana, de forma passiva.</p><p><a href=\"https://botezini.com.br\" target=\"_blank\" rel=\"noopener\">Abrir botezini.com.br</a></p>",
+"shots": [
+{
+"src": "assets/shots/botezini-1.webp",
+"t": "Página inicial",
+"tall": false
+},
+{
+"src": "assets/shots/botezini-2.webp",
+"t": "Personalização: bordado, DTF e silk",
+"tall": false
+},
+{
+"src": "assets/shots/botezini-3.webp",
+"t": "No celular",
+"tall": true
+}
+]
 },
 "lojas": {
 "k": "BTZN + Fora da Caixa",
 "t": "Uma plataforma, dois negócios",
-"b": "<p>Base de e-commerce própria reaproveitada numa loja de roupas com lançamentos em drops e contagem regressiva (BTZN) e numa loja de presentes com rosas eternas e montador de buquê (Fora da Caixa).</p><ul><li>Painel administrativo próprio</li><li>Testes automatizados (Vitest + Playwright)</li><li>llms.txt para buscadores de IA</li></ul><p class=\"tools\">Astro, React, Upstash Redis, Vercel Blob</p>"
+"b": "<p>Base de e-commerce própria reaproveitada numa loja de roupas com lançamentos em drops e contagem regressiva (BTZN) e numa loja de presentes com rosas eternas e montador de buquê (Fora da Caixa).</p><ul><li>Painel administrativo próprio</li><li>Testes automatizados (Vitest + Playwright)</li><li>llms.txt para buscadores de IA</li></ul><p class=\"tools\">Astro, React, Upstash Redis, Vercel Blob</p><p><a href=\"https://btzn.com.br\" target=\"_blank\" rel=\"noopener\">Abrir btzn.com.br</a><br><a href=\"https://foradacaixa.btzn.com.br\" target=\"_blank\" rel=\"noopener\">Abrir foradacaixa.btzn.com.br</a></p>",
+"shots": [
+{
+"src": "assets/shots/btzn-1.webp",
+"t": "BTZN: página inicial com o próximo drop",
+"tall": false
+},
+{
+"src": "assets/shots/btzn-2.webp",
+"t": "BTZN: catálogo de camisetas",
+"tall": false
+},
+{
+"src": "assets/shots/btzn-3.webp",
+"t": "BTZN: página do drop no celular",
+"tall": true
+},
+{
+"src": "assets/shots/fdc-1.webp",
+"t": "Fora da Caixa: página inicial",
+"tall": false
+},
+{
+"src": "assets/shots/fdc-2.webp",
+"t": "Fora da Caixa: montador de buquê",
+"tall": false
+},
+{
+"src": "assets/shots/fdc-3.webp",
+"t": "Fora da Caixa: no celular",
+"tall": true
+}
+]
 },
 "barbearia": {
 "k": "Barbearia Stilo Black",
 "t": "Cliente real, no ar",
-"b": "<p>Site da barbearia em funcionamento, com agendamento pelo app, galeria de cortes e contato por WhatsApp.</p><p><a href=\"https://barbeariastiloblack.vercel.app\" target=\"_blank\" rel=\"noopener\">barbeariastiloblack.vercel.app</a></p><p class=\"tools\">React, TypeScript, Vite</p>"
+"b": "<p>Site da barbearia em funcionamento, com agendamento pelo app, galeria de cortes e contato por WhatsApp.</p><p><a href=\"https://barbeariastiloblack.vercel.app\" target=\"_blank\" rel=\"noopener\">barbeariastiloblack.vercel.app</a></p><p class=\"tools\">React, TypeScript, Vite</p>",
+"shots": [
+{
+"src": "assets/shots/barbearia-1.webp",
+"t": "Página inicial",
+"tall": false
+},
+{
+"src": "assets/shots/barbearia-2.webp",
+"t": "Serviços mais procurados",
+"tall": false
+},
+{
+"src": "assets/shots/barbearia-3.webp",
+"t": "No celular",
+"tall": true
+}
+]
 },
 "stack": {
 "k": "Stack",
@@ -48,5 +114,10 @@
 "t": "Bora conversar?",
 "b": "<ul><li><a href=\"https://wa.me/5532985112336?text=Oi%20Luiz%2C%20vi%20seu%20portf%C3%B3lio\" target=\"_blank\" rel=\"noopener\">WhatsApp</a></li><li><a href=\"mailto:luuiizhcc@gmail.com\">luuiizhcc@gmail.com</a></li><li><a href=\"https://www.linkedin.com/in/luiz-henrique-71a387234/\" target=\"_blank\" rel=\"noopener\">LinkedIn</a></li><li><a href=\"https://github.com/Luiz-H456\" target=\"_blank\" rel=\"noopener\">GitHub</a></li></ul>"
 }
+},
+"ui": {
+"prev": "Anterior",
+"next": "Próximo",
+"of": "de"
 }
 }

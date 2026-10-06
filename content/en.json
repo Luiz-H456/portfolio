@@ -26,17 +26,83 @@
 "botezini": {
 "k": "botezini.com.br",
 "t": "A site that brings clients on its own",
-"b": "<p>The company's sales site, with technical SEO (structured data, automatic sitemap, IndexNow) and landing pages for customization and embroidery.</p><p>Result: qualified leads every week, passively.</p>"
+"b": "<p>The company's sales site, with technical SEO (structured data, automatic sitemap, IndexNow) and landing pages for customization and embroidery.</p><p>Result: qualified leads every week, passively.</p><p><a href=\"https://botezini.com.br\" target=\"_blank\" rel=\"noopener\">Open botezini.com.br</a></p>",
+"shots": [
+{
+"src": "assets/shots/botezini-1.webp",
+"t": "Home page",
+"tall": false
+},
+{
+"src": "assets/shots/botezini-2.webp",
+"t": "Customization: embroidery, DTF and screen print",
+"tall": false
+},
+{
+"src": "assets/shots/botezini-3.webp",
+"t": "On mobile",
+"tall": true
+}
+]
 },
 "lojas": {
 "k": "BTZN + Fora da Caixa",
 "t": "One platform, two businesses",
-"b": "<p>An in-house e-commerce base reused for a clothing store with countdown drops (BTZN) and a gift shop with everlasting roses and a bouquet builder (Fora da Caixa).</p><ul><li>Custom admin panel</li><li>Automated tests (Vitest + Playwright)</li><li>llms.txt for AI search engines</li></ul><p class=\"tools\">Astro, React, Upstash Redis, Vercel Blob</p>"
+"b": "<p>An in-house e-commerce base reused for a clothing store with countdown drops (BTZN) and a gift shop with everlasting roses and a bouquet builder (Fora da Caixa).</p><ul><li>Custom admin panel</li><li>Automated tests (Vitest + Playwright)</li><li>llms.txt for AI search engines</li></ul><p class=\"tools\">Astro, React, Upstash Redis, Vercel Blob</p><p><a href=\"https://btzn.com.br\" target=\"_blank\" rel=\"noopener\">Open btzn.com.br</a><br><a href=\"https://foradacaixa.btzn.com.br\" target=\"_blank\" rel=\"noopener\">Open foradacaixa.btzn.com.br</a></p>",
+"shots": [
+{
+"src": "assets/shots/btzn-1.webp",
+"t": "BTZN: home with the next drop",
+"tall": false
+},
+{
+"src": "assets/shots/btzn-2.webp",
+"t": "BTZN: t-shirt catalog",
+"tall": false
+},
+{
+"src": "assets/shots/btzn-3.webp",
+"t": "BTZN: drop page on mobile",
+"tall": true
+},
+{
+"src": "assets/shots/fdc-1.webp",
+"t": "Fora da Caixa: home page",
+"tall": false
+},
+{
+"src": "assets/shots/fdc-2.webp",
+"t": "Fora da Caixa: bouquet builder",
+"tall": false
+},
+{
+"src": "assets/shots/fdc-3.webp",
+"t": "Fora da Caixa: on mobile",
+"tall": true
+}
+]
 },
 "barbearia": {
 "k": "Stilo Black Barbershop",
 "t": "Real client, live",
-"b": "<p>The barbershop's live website, with app booking, a haircut gallery and WhatsApp contact.</p><p><a href=\"https://barbeariastiloblack.vercel.app\" target=\"_blank\" rel=\"noopener\">barbeariastiloblack.vercel.app</a></p><p class=\"tools\">React, TypeScript, Vite</p>"
+"b": "<p>The barbershop's live website, with app booking, a haircut gallery and WhatsApp contact.</p><p><a href=\"https://barbeariastiloblack.vercel.app\" target=\"_blank\" rel=\"noopener\">barbeariastiloblack.vercel.app</a></p><p class=\"tools\">React, TypeScript, Vite</p>",
+"shots": [
+{
+"src": "assets/shots/barbearia-1.webp",
+"t": "Home page",
+"tall": false
+},
+{
+"src": "assets/shots/barbearia-2.webp",
+"t": "Most booked services",
+"tall": false
+},
+{
+"src": "assets/shots/barbearia-3.webp",
+"t": "On mobile",
+"tall": true
+}
+]
 },
 "stack": {
 "k": "Stack",
@@ -48,5 +114,10 @@
 "t": "Let's talk?",
 "b": "<ul><li><a href=\"https://wa.me/5532985112336?text=Hi%20Luiz%2C%20I%20saw%20your%20portfolio\" target=\"_blank\" rel=\"noopener\">WhatsApp</a></li><li><a href=\"mailto:luuiizhcc@gmail.com\">luuiizhcc@gmail.com</a></li><li><a href=\"https://www.linkedin.com/in/luiz-henrique-71a387234/\" target=\"_blank\" rel=\"noopener\">LinkedIn</a></li><li><a href=\"https://github.com/Luiz-H456\" target=\"_blank\" rel=\"noopener\">GitHub</a></li></ul>"
 }
+},
+"ui": {
+"prev": "Previous",
+"next": "Next",
+"of": "of"
 }
 }
