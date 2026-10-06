@@ -23,7 +23,8 @@
 "t": "Quotes from 20–30 down to 2–5 minutes",
 "b": "<p>Management system used by Confecções Botezini: quotes, orders, production, inventory, finance.</p><ul><li>Quotes: 20–30 min → 2–5 min</li><li>60+ orders placed through the system</li><li>Standardized inventory and quotes</li></ul><p class=\"tools\">React, TypeScript, Supabase, Vercel</p>",
 "chap": {
-"art": "5/1/9/7",
+"art": "6/1/9/7",
+"artp": "R3",
 "items": [
 {
 "in": {
@@ -48,11 +49,60 @@
 "a": "3/1/9/7"
 },
 {
-"html": "<span>Dashboard</span><span>Quotes</span><span>Orders</span><span>Production</span><span>Inventory</span><span>Finance</span><span>Records</span><span>Insights</span>",
+"html": "<div class=\"mods\"><span>Dashboard</span><span>Quotes</span><span>Orders</span><span>Production</span><span>Inventory</span><span>Finance</span><span>Records</span><span>Reports</span></div>",
 "t": "8 modules, one operation",
-"n": "From quote to finance on the same database: what is sold reserves inventory and enters production.",
+"n": "From quote to finance on the same base: what is sold goes into production and consumes inventory.",
 "p": "R",
 "a": "1/1/5/7"
+},
+{
+"html": "<dl class=\"stats\"><div><dt>92</dt><dd>source files</dd></div><div><dt>~21k</dt><dd>lines of TypeScript</dd></div><div><dt>31</dt><dd>Postgres tables</dd></div><div><dt>26</dt><dd>triggers</dd></div><div><dt>14</dt><dd>database functions</dd></div><div><dt>~95</dt><dd>commits in 10 weeks</dd></div></dl>",
+"t": "The size of the system",
+"n": "Counted straight from the repository.",
+"p": "R",
+"a": "5/1/9/7"
+},
+{
+"code": "const fabricCostTotal = fabricCostPerM * calcFabricM\nconst overheadCost = fabricCostTotal * (calcOverhead / 100)\nconst laborHoursPerPiece = (calcWorkers * 8) / piecesDay\nconst laborCostPerPiece = laborHoursPerPiece * calcLaborRate\n\nconst cmvBase = fabricCostTotal + overheadCost + laborCostPerPiece\nconst cmvCalculated = cmvBase + cmvBase * (calcTaxRate / 100)\nconst suggestedPrice = cmvCalculated * calcMarkup",
+"t": "What a garment costs",
+"n": "The suggested price comes from real cost: fabric at inventory average cost, overhead, labor from the factory daily capacity, taxes and margin.",
+"p": "L2",
+"a": "1/1/5/7"
+},
+{
+"html": "<p class=\"flow\"><span>Waiting for material</span><i>→</i><span>Cutting</span><i>→</i><span>Customization</span><i>→</i><span>Sewing</span><i>→</i><span>Finishing</span><i>→</i><span>Shipping</span></p>",
+"t": "Production on a kanban board",
+"n": "Each approved order becomes a production order and moves through the factory stages. The \"factory\" profile only sees this screen.",
+"p": "L2",
+"a": "5/1/9/7"
+},
+{
+"code": "SELECT * INTO v_insumo FROM insumos\n  WHERE id = NEW.insumo_id FOR UPDATE;  -- trava a linha\n\nIF NEW.type = &#x27;IN&#x27; THEN\n  v_new_qty := v_insumo.current_stock + NEW.quantity;\n  v_new_cost := (v_insumo.current_stock * v_insumo.average_unit_cost\n               + NEW.quantity * NEW.unit_cost) / v_new_qty;\nELSIF NEW.type = &#x27;OUT&#x27; THEN\n  v_new_qty := v_insumo.current_stock - NEW.quantity;\n  NEW.unit_cost := v_insumo.average_unit_cost;\nEND IF;",
+"t": "Average cost inside the database",
+"n": "Every stock entry recalculates the weighted average cost in a trigger, with the row locked (FOR UPDATE) so two simultaneous movements cannot corrupt inventory.",
+"p": "R2",
+"a": "1/1/9/7"
+},
+{
+"html": "<p class=\"flow\"><span>Obligation</span><i>→</i><span>Payment</span><i>→</i><span>Dated reversal</span><i>→</i><span>Derived status</span></p>",
+"t": "Money is never deleted",
+"n": "Payables and receivables are kept apart from payments. A wrong payment is reversed with a date, not deleted: the history stays auditable.",
+"p": "L3",
+"a": "1/1/4/7"
+},
+{
+"code": "projected balance = balance in banks\n                  + open receivables\n                  − open payables\n-- a reversed payment is not deleted: it gets reversed_at\n-- and leaves the sum (FILTER WHERE reversed_at IS NULL)",
+"t": "A balance that adds up",
+"n": "Reconciliation crosses banks, open bills and active payments. When the projected balance did not match, the system got a script that redoes the math to find the gap.",
+"p": "L3",
+"a": "4/1/9/7"
+},
+{
+"html": "<ul class=\"todo\"><li>Automated tests in finance (today there is a single test file)</li><li>Move profile permissions into the database (RLS), not only the interface</li><li>Clean debug scripts out of the repository root</li><li>A real README explaining architecture and decisions</li></ul>",
+"t": "Next steps",
+"n": "What a system in use still needs, said honestly.",
+"p": "R3",
+"a": "1/1/6/7"
 }
 ]
 }

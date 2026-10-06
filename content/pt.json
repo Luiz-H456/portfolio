@@ -23,7 +23,8 @@
 "t": "Orçamento de 20–30 para 2–5 minutos",
 "b": "<p>Sistema de gestão usado pela Confecções Botezini: orçamentos, pedidos, produção, estoque, financeiro.</p><ul><li>Orçamento: 20–30 min → 2–5 min</li><li>Mais de 60 pedidos feitos pelo sistema</li><li>Estoque e orçamentos padronizados</li></ul><p class=\"tools\">React, TypeScript, Supabase, Vercel</p>",
 "chap": {
-"art": "5/1/9/7",
+"art": "6/1/9/7",
+"artp": "R3",
 "items": [
 {
 "in": {
@@ -48,11 +49,60 @@
 "a": "3/1/9/7"
 },
 {
-"html": "<span>Dashboard</span><span>Orçamentos</span><span>Pedidos</span><span>Produção</span><span>Estoque</span><span>Financeiro</span><span>Cadastros</span><span>Inteligência</span>",
+"html": "<div class=\"mods\"><span>Dashboard</span><span>Orçamentos</span><span>Pedidos</span><span>Produção</span><span>Estoque</span><span>Financeiro</span><span>Cadastros</span><span>Relatórios</span></div>",
 "t": "8 módulos, uma operação",
-"n": "Do orçamento ao financeiro, a mesma base de dados: o que é vendido já reserva estoque e entra na produção.",
+"n": "Do orçamento ao financeiro na mesma base: o que é vendido entra na produção e consome estoque.",
 "p": "R",
 "a": "1/1/5/7"
+},
+{
+"html": "<dl class=\"stats\"><div><dt>92</dt><dd>arquivos de código</dd></div><div><dt>~21 mil</dt><dd>linhas de TypeScript</dd></div><div><dt>31</dt><dd>tabelas no Postgres</dd></div><div><dt>26</dt><dd>triggers</dd></div><div><dt>14</dt><dd>funções no banco</dd></div><div><dt>~95</dt><dd>commits em 10 semanas</dd></div></dl>",
+"t": "O tamanho do sistema",
+"n": "Contado direto no repositório.",
+"p": "R",
+"a": "5/1/9/7"
+},
+{
+"code": "const fabricCostTotal = fabricCostPerM * calcFabricM\nconst overheadCost = fabricCostTotal * (calcOverhead / 100)\nconst laborHoursPerPiece = (calcWorkers * 8) / piecesDay\nconst laborCostPerPiece = laborHoursPerPiece * calcLaborRate\n\nconst cmvBase = fabricCostTotal + overheadCost + laborCostPerPiece\nconst cmvCalculated = cmvBase + cmvBase * (calcTaxRate / 100)\nconst suggestedPrice = cmvCalculated * calcMarkup",
+"t": "Quanto custa uma peça",
+"n": "O preço sugerido sai do custo real: tecido pelo custo médio do estoque, despesas, mão de obra pela capacidade diária da fábrica, impostos e margem.",
+"p": "L2",
+"a": "1/1/5/7"
+},
+{
+"html": "<p class=\"flow\"><span>Aguardando material</span><i>→</i><span>Corte</span><i>→</i><span>Personalização</span><i>→</i><span>Costura</span><i>→</i><span>Finalização</span><i>→</i><span>Transporte</span></p>",
+"t": "A produção em quadro kanban",
+"n": "Cada pedido aprovado vira ordem de produção e anda pelas etapas da fábrica. O perfil \"fábrica\" só enxerga esta tela.",
+"p": "L2",
+"a": "5/1/9/7"
+},
+{
+"code": "SELECT * INTO v_insumo FROM insumos\n  WHERE id = NEW.insumo_id FOR UPDATE;  -- trava a linha\n\nIF NEW.type = &#x27;IN&#x27; THEN\n  v_new_qty := v_insumo.current_stock + NEW.quantity;\n  v_new_cost := (v_insumo.current_stock * v_insumo.average_unit_cost\n               + NEW.quantity * NEW.unit_cost) / v_new_qty;\nELSIF NEW.type = &#x27;OUT&#x27; THEN\n  v_new_qty := v_insumo.current_stock - NEW.quantity;\n  NEW.unit_cost := v_insumo.average_unit_cost;\nEND IF;",
+"t": "Custo médio no próprio banco",
+"n": "Cada entrada recalcula o custo médio ponderado do insumo dentro de um trigger, com a linha travada (FOR UPDATE) para duas movimentações simultâneas não corromperem o estoque.",
+"p": "R2",
+"a": "1/1/9/7"
+},
+{
+"html": "<p class=\"flow\"><span>Obrigação</span><i>→</i><span>Pagamento</span><i>→</i><span>Estorno com data</span><i>→</i><span>Status derivado</span></p>",
+"t": "Dinheiro não se apaga",
+"n": "Obrigações a pagar e a receber ficam separadas dos pagamentos. Um pagamento errado é estornado com data, não apagado: o histórico continua auditável.",
+"p": "L3",
+"a": "1/1/4/7"
+},
+{
+"code": "saldo projetado = saldo nos bancos\n                + obrigações a receber em aberto\n                − obrigações a pagar em aberto\n-- pagamento estornado não some: ganha reversed_at\n-- e sai da soma (FILTER WHERE reversed_at IS NULL)",
+"t": "Saldo que fecha",
+"n": "A conciliação cruza bancos, contas em aberto e pagamentos ativos. Quando o saldo projetado não bateu, o sistema ganhou um script que refaz essa conta para achar a diferença.",
+"p": "L3",
+"a": "4/1/9/7"
+},
+{
+"html": "<ul class=\"todo\"><li>Testes automatizados no financeiro (hoje há um só arquivo de teste)</li><li>Levar as permissões de perfil para o banco (RLS), não só para a interface</li><li>Limpar a raiz do repositório dos scripts de depuração</li><li>README próprio explicando arquitetura e decisões</li></ul>",
+"t": "Próximos passos",
+"n": "O que um sistema em uso ainda precisa, dito com honestidade.",
+"p": "R3",
+"a": "1/1/6/7"
 }
 ]
 }

@@ -20,10 +20,11 @@ a{color:var(--mustard)}
 .scene{transition:opacity .15s}.scene.dip{opacity:0}
 .book{position:absolute;left:50%;top:50%;width:2400px;height:1600px;margin:-800px 0 0 -1200px;transform-style:preserve-3d}
 /* chão: plano dentro da cena 3D, abaixo do livro; move junto com a câmera */
-.book::before{content:"";position:absolute;inset:-1200px -1800px;background:url(assets/floor.webp) center/cover;transform:translateZ(-4px);filter:brightness(.75)}
+.book::before{content:"";position:absolute;inset:-1200px -1800px;background:url(assets/floor.webp) center/cover;transform:translateZ(-14px);filter:brightness(.75)}
 /* página direita fixa; folhas giram na lombada (x=1200) */
 .leaf,.cright{position:absolute;top:0;left:1200px;width:1200px;height:1600px}
-.cright{transform:translateZ(-3px)}  /* folga de profundidade: sem isso a placa de vídeo alterna as duas páginas */
+.cright{transform:translateZ(-6px)}
+#cx{position:absolute;inset:0;transform-style:preserve-3d}  /* folga de profundidade: sem isso a placa de vídeo alterna as duas páginas */
 .right,.cright{box-shadow:0 0 0 10px #7a2a26,0 50px 100px 10px #000c}
 .leaf{transform-origin:0 50%;transform-style:preserve-3d}
 .face{position:absolute;inset:0;backface-visibility:hidden}
@@ -120,3 +121,10 @@ a{color:var(--mustard)}
 /* tela baixa (zoom alto, celular deitado): legenda compacta */
 @media (max-height:520px){.cap{padding:.8rem 1rem;max-height:86svh}.cap div{font-size:.95rem}.cap ul,.cap .tools{display:none}#chap-b{font-size:1.1rem;padding:.5rem .8rem}}
 .cover i{font-style:normal}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:0}
+.stats div{background:var(--cream);color:var(--black);border:4px solid var(--black);padding:14px 16px;box-shadow:5px 5px 0 var(--black)}
+.stats dt{font:400 max(40px,6cqw)/1 Anton,Impact,sans-serif}.stats dd{margin:6px 0 0;font:600 max(20px,2.6cqw)/1.15 "Barlow Semi Condensed",sans-serif}
+.ccode .flow{margin:0 0 auto!important}
+.todo{margin:0;padding:0;list-style:none;display:grid;gap:12px}
+.todo li{background:var(--cream);color:var(--black);border:4px solid var(--black);padding:12px 16px 12px 52px;position:relative;font:600 max(22px,3cqw)/1.25 "Barlow Semi Condensed",sans-serif;box-shadow:5px 5px 0 var(--black)}
+.todo li::before{content:"";position:absolute;left:16px;top:50%;width:20px;height:20px;translate:0 -50%;border:4px solid var(--black)}

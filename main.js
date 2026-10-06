@@ -15,7 +15,7 @@ document.getElementById('lang').onclick = () => setLang(document.documentElement
 // Câmera: paradas = livro fechado, visão geral e cada quadro com data-s; com capítulo aberto, os quadros dele entram logo após o projeto.
 // O scroll escolhe a parada; a câmera chega por mola amortecida.
 const stage = document.querySelector('.stage'), scene = document.querySelector('.scene'), book = document.querySelector('.book'), cap = document.querySelector('.cap')
-const capBtn = document.getElementById('chap-b'), cL = document.getElementById('cL'), cR = document.getElementById('cR'), mainLeaf = book.querySelector('.leaf.main')
+const capBtn = document.getElementById('chap-b'), cL = document.getElementById('cL'), cR = document.getElementById('cR'), cX = document.getElementById('cx'), mainLeaf = book.querySelector('.leaf.main')
 const panels = [...book.querySelectorAll('.pn[data-s]')].sort((a, b) => a.closest('.right') ? 1 : b.closest('.right') ? -1 : 0)
 const leaves = [...book.querySelectorAll('.leaf:not(.main)')]  // ordem do DOM: de baixo p/ cima; a capa (última) vira primeiro
 // reduzir movimento: sem 3D nem zoom contínuo; câmera pula de quadro em quadro com fade curto
@@ -23,13 +23,15 @@ const mq = matchMedia('(prefers-reduced-motion: reduce)')
 let still = mq.matches; mq.onchange = e => { still = e.matches }
 const clamp = v => Math.min(1, Math.max(0, v)), ease = u => u * u * u * (u * (6 * u - 15) + 10), mix = (a, b, u) => a + (b - a) * u
 let keys = [], meta = [], cam, vel = {}, lastP = 0, idle = 0, chap = null, cf = 0
-const chapShots = () => [...cL.children, ...cR.children].filter(c => +c.dataset.c >= 0), chapLen = () => chapShots().length + 2  // +2: visão das 2 páginas e título
+const chapShots = () => [...book.querySelectorAll('#cL [data-c],#cR [data-c],#cx [data-c]')].filter(c => +c.dataset.c >= 0).sort((a, b) => a.dataset.c - b.dataset.c)
+const chapLen = () => chapShots().length + 2  // +2: visão das 2 páginas e título
+let xl = []  // folhas extras do capítulo: { el, f }
 function measure() {
   const W = innerWidth, H = innerHeight, wide = W >= 900 || (W > H && W >= 600), cw = wide ? cap.offsetWidth + 48 : 0, ch = wide ? 0 : H * .42 + 16  // celular: reserva a altura máxima da legenda (CSS 42svh)
   const ox = -cw / 2, oy = -ch / 2, fw = (W - cw) * (wide ? .85 : .92), fh = (H - ch) * .78
   // verso de folha aparece espelhado de volta: x local = x no livro; páginas da direita começam em 1200
   const stop = (el, i, rx) => {
-    const w = el.offsetWidth, h = el.offsetHeight, base = el.closest('.right,.cright') ? 1200 : 0
+    const w = el.offsetWidth, h = el.offsetHeight, base = el.closest('.right,.cright,.rp') ? 1200 : 0
     return { x: base + el.offsetLeft + w / 2 - 1200, y: el.offsetTop + h / 2 - 800, s: Math.min(fw / w, fh / h), rx, rz: i % 2 ? 4 : -4, ox, oy, o: 1 }
   }
   keys = [
@@ -40,9 +42,9 @@ function measure() {
     keys.push(stop(el, i, 20)); meta.push({ s: el.dataset.s })
     if (chap?.s !== el.dataset.s) return
     chap.at = keys.length - 1
-    keys.push({ ...keys[1], s: keys[1].s * 1.05, rx: 30, rz: -3 }); meta.push({ s: chap.s, shot: -1 })  // capítulo aberto inteiro, sem zoom
-    keys.push(stop(cL.firstElementChild, 1, 14)); meta.push({ s: chap.s, shot: -1 })  // foco no título do projeto
-    chapShots().forEach((c, j) => { keys.push(stop(c, j, 12)); meta.push({ s: chap.s, shot: +c.dataset.c }) })  // inclinação menor: print legível
+    keys.push({ ...keys[1], s: keys[1].s * 1.05, rx: 30, rz: -3 }); meta.push({ s: chap.s, shot: -1, sp: 1 })  // capítulo aberto inteiro, sem zoom
+    keys.push(stop(cL.firstElementChild, 1, 14)); meta.push({ s: chap.s, shot: -1, sp: 1 })  // foco no título do projeto
+    chapShots().forEach((c, j) => { keys.push(stop(c, j, 12)); meta.push({ s: chap.s, shot: +c.dataset.c, sp: +c.dataset.sp }) })  // inclinação menor: print legível
   })
   // fim: câmera se afasta, o livro se fecha e volta à capa (igual à parada 0; ao chegar, o scroll volta ao topo sem corte)
   keys.push({ ...keys[1], s: keys[1].s * .85, rx: 46 }, { ...keys[1], x: 300, s: keys[1].s * .7, rx: 50, rz: -10, o: .45 }, { ...keys[0] })
@@ -65,13 +67,19 @@ function target() {
 const inside = d => `<p class="kick">${t.ui.inside}</p><b class="num">${d.num}</b><p class="numl">${d.numl}</p><p>${d.prob}</p><ul>${d.dec.map(x => `<li>${x}</li>`).join('')}</ul>${d.flow ? `<p class="flow">${d.flow.map(x => `<span>${x}</span>`).join('<i>→</i>')}</p>` : ''}`
 const body = it => it.src ? `<img src="${it.src}" alt="${it.t}" decoding="async"><p class="cn">${it.n}</p>`
   : it.in ? inside(it.in) : it.code ? `<pre>${it.code}</pre><p class="cn">${it.n}</p>` : `<div class="mods">${it.html}</div><p class="cn">${it.n}</p>`
+// páginas: L/R = 1ª dupla, L2/R2 = 2ª... L1 é o verso da folha principal, a última R fica embaixo (#cR),
+// cada dupla intermediária é uma folha extra: frente = R da dupla, verso = L da seguinte
 function fillChap(s) {
-  const sec = t.sec[s], c = sec.chap, L = [], R = []
-  L.push(`<div class="pn chead" data-c="-1" style="grid-area:1/1/3/7"><span class="kick">${sec.k}</span><b class="display">${sec.t}</b>${sec.b.match(/<p class="tools">.*?<\/p>/)?.[0] || ''}</div>`)
-  c.items.forEach((it, j) => (it.p === 'L' ? L : R).push(
-    `<div class="pn ${it.src ? 'cp' : it.in ? 'cin' : 'ccode'}${it.tall ? ' tall' : ''}" data-c="${j}" style="grid-area:${it.a}">${body(it)}</div>`))
-  if (c.art) R.push(`<div class="pn art on a-${s} c-${CAP[s][0]}" style="grid-area:${c.art}"></div>`)
-  cL.innerHTML = L.join(''); cR.innerHTML = R.join('')
+  const sec = t.sec[s], c = sec.chap, pg = {}
+  const add = (p, h) => (pg[p] ??= []).push(h)
+  add('L', `<div class="pn chead" data-c="-1" style="grid-area:1/1/3/7"><span class="kick">${sec.k}</span><b class="display">${sec.t}</b>${sec.b.match(/<p class="tools">.*?<\/p>/)?.[0] || ''}</div>`)
+  c.items.forEach((it, j) => add(it.p, `<div class="pn ${it.src ? 'cp' : it.in ? 'cin' : 'ccode'}${it.tall ? ' tall' : ''}" data-c="${j}" data-sp="${+it.p.slice(1) || 1}" style="grid-area:${it.a}">${body(it)}</div>`))
+  const S = Math.max(...c.items.map(it => +it.p.slice(1) || 1)), R = n => n > 1 ? 'R' + n : 'R', L = n => n > 1 ? 'L' + n : 'L'
+  if (c.art) add(c.artp || R(S), `<div class="pn art on a-${s} c-${CAP[s][0]}" style="grid-area:${c.art}"></div>`)
+  const html = p => (pg[p] || []).join('')
+  cL.innerHTML = html('L'); cR.innerHTML = html(R(S))
+  cX.innerHTML = Array.from({ length: S - 1 }, (_, i) => `<div class="leaf"><div class="face front page rp">${html(R(i + 1))}</div><div class="face back page">${html(L(i + 2))}</div></div>`).join('')
+  xl = [...cX.children].map(el => ({ el, f: 0 }))
 }
 function openChap(s) {
   if (!t.sec[s].chap || chap) return
@@ -143,6 +151,12 @@ function frame(now) {
   cf = still ? +!!open : clamp(cf + (open ? 1 : -1) * steps * 16.7 / 900)  // virada do capítulo: 0,9 s, acelera e freia por igual
   const f = ease(cf)
   mainLeaf.style.transform = `translateZ(${mix(.75, 8, f)}px) rotateY(${-180 * f}deg)`  // virada: fica acima da página esquerda principal
+  const sp = open ? meta[n]?.sp || 1 : 0
+  xl.forEach((x, i) => {  // folha i vira quando a câmera passa para a dupla i+2; empilha abaixo da principal à direita e acima dela à esquerda
+    x.f = still ? +(sp > i + 1) : clamp(x.f + (sp > i + 1 ? 1 : -1) * steps * 16.7 / 900)
+    const g = ease(x.f)
+    x.el.style.transform = `translateZ(${mix(-2 - 2 * i, 10 + 2 * i, g)}px) rotateY(${-180 * g}deg)`
+  })
   caption(n)
   requestAnimationFrame(frame)
 }
