@@ -67,7 +67,7 @@ function target() {
 // Quadro = print (src), "por dentro" (in: número, problema, decisões, fluxo) ou código/texto (code). Ao rolar além do último, volta e segue.
 const inside = d => `<p class="kick">${t.ui.inside}</p><b class="num">${d.num}</b><p class="numl">${d.numl}</p><p>${d.prob}</p><ul>${d.dec.map(x => `<li>${x}</li>`).join('')}</ul>${d.flow ? `<p class="flow">${d.flow.map(x => `<span>${x}</span>`).join('<i>→</i>')}</p>` : ''}`
 const body = it => it.src ? `<img src="${it.src}" alt="${it.t}" decoding="async"><p class="cn">${it.n}</p>`
-  : it.in ? inside(it.in) : it.code ? `<pre>${it.code}</pre><p class="cn">${it.n}</p>` : `<div class="mods">${it.html}</div><p class="cn">${it.n}</p>`
+  : it.in ? inside(it.in) : it.code ? `<pre>${it.code}</pre><p class="cn">${it.n}</p>` : `<div class="hx">${it.html}</div><p class="cn">${it.n}</p>`
 // páginas: L/R = 1ª dupla, L2/R2 = 2ª... L1 é o verso da folha principal, a última R fica embaixo (#cR),
 // cada dupla intermediária é uma folha extra: frente = R da dupla, verso = L da seguinte
 function fillChap(s) {
@@ -116,7 +116,7 @@ panels.forEach((el, i) => {
 })
 
 // cor da legenda = cor do quadro (fundo, texto)
-const CAP = { intro: ['rust', 'black'], fim: ['rust', 'black'], metodo: ['violet', 'cream'], hero: ['mustard', 'black'], sobre: ['rust', 'black'], erp: ['blue', 'cream'], botezini: ['red', 'cream'],
+const CAP = { intro: ['rust', 'black'], fim: ['rust', 'black'], ic: ['sky', 'black'], metodo: ['violet', 'cream'], hero: ['mustard', 'black'], sobre: ['rust', 'black'], erp: ['blue', 'cream'], botezini: ['red', 'cream'],
   lojas: ['mustard', 'black'], barbearia: ['sky', 'black'], stack: ['green', 'cream'], contato: ['cream', 'black'] }
 function caption(n) {
   if (n === cur || !t || !meta[n]) return

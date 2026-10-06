@@ -19,12 +19,12 @@
 "b": "<p>Estudo Física na UFSJ e Análise e Desenvolvimento de Sistemas na Estácio, e programo há cerca de um ano.</p><p>Aprendo construindo: problemas reais de orçamento, produção, estoque e financeiro viram sistemas usados na operação.</p><p>Uso IA para acelerar investigação e implementação; meu trabalho é decompor o problema, dar contexto, testar o resultado e responder por ele.</p>"
 },
 "erp": {
-"k": "ERP Botezini, em produção",
+"k": "ERP Botezini: produto, arquitetura e IA",
 "t": "Orçamento de 20–30 para 2–5 minutos",
-"b": "<p>Sistema de gestão usado pela Confecções Botezini: orçamentos, pedidos, produção, estoque, financeiro.</p><ul><li>Orçamento: 20–30 min → 2–5 min</li><li>Mais de 60 pedidos feitos pelo sistema</li><li>Estoque e orçamentos padronizados</li></ul><p class=\"tools\">React, TypeScript, Supabase, Vercel</p>",
+"b": "<p>Três ângulos no capítulo: o produto (quem usa e o fluxo), o design de software (camadas, banco e regras de negócio) e a engenharia com IA (como as tarefas são especificadas para o agente).</p><p>Sistema de gestão usado pela Confecções Botezini: orçamentos, pedidos, produção, estoque, financeiro.</p><ul><li>Orçamento: 20–30 min → 2–5 min</li><li>Mais de 60 pedidos feitos pelo sistema</li><li>Estoque e orçamentos padronizados</li></ul><p class=\"tools\">React, TypeScript, Supabase, Vercel</p>",
 "chap": {
 "art": "6/1/9/7",
-"artp": "R3",
+"artp": "R2",
 "items": [
 {
 "in": {
@@ -44,65 +44,86 @@
 "Financeiro"
 ]
 },
-"t": "O que tem por dentro do ERP",
+"t": "O problema do produto",
 "p": "L",
 "a": "3/1/9/7"
 },
 {
-"html": "<div class=\"mods\"><span>Dashboard</span><span>Orçamentos</span><span>Pedidos</span><span>Produção</span><span>Estoque</span><span>Financeiro</span><span>Cadastros</span><span>Relatórios</span></div>",
-"t": "8 módulos, uma operação",
-"n": "Do orçamento ao financeiro na mesma base: o que é vendido entra na produção e consome estoque.",
+"html": "<dl class=\"stats one\"><div><dt>Administrador</dt><dd>Visão de lucro, cadastros e configurações</dd></div><div><dt>Gerente</dt><dd>Orçamentos, clientes e baixas financeiras</dd></div><div><dt>Fábrica</dt><dd>Só o kanban: corte, personalização, costura, finalização, transporte</dd></div></dl>",
+"t": "Produto: quem usa",
+"n": "Três perfis, três telas de entrada. Quem é da fábrica abre direto no kanban de produção e não vê o financeiro.",
 "p": "R",
 "a": "1/1/5/7"
+},
+{
+"html": "<p class=\"flow\"><span>Orçamento</span><i>→</i><span>Aprovação</span><i>→</i><span>Pedido</span><i>→</i><span>Recebível</span><i>→</i><span>Fila da fábrica</span></p>",
+"t": "Produto: o fluxo planejado",
+"n": "Do plano de integração do projeto: um orçamento aprovado vira pedido, que gera o recebível no financeiro e entra na fila da fábrica sozinho.",
+"p": "R",
+"a": "5/1/9/7"
+},
+{
+"html": "<div class=\"layers\"><span>Páginas<small>o que o usuário vê</small></span><span>Hooks<small>estado e filtros de cada tela</small></span><span>Services<small>fachada única para a interface</small></span><span>Repositories<small>um por domínio: financeiro, estoque, CRM</small></span><span>Postgres<small>views, triggers e funções com as regras</small></span></div>",
+"t": "Design: o sistema em camadas",
+"n": "A tela não fala com o banco. Cada camada tem um papel, e regra de dinheiro e estoque fica no banco, onde não dá para pular.",
+"p": "L2",
+"a": "1/1/6/7"
+},
+{
+"html": "<p class=\"flow\"><span>Obrigação</span><i>→</i><span>Pagamento</span><i>→</i><span>Estorno com data</span><i>→</i><span>Status derivado</span></p>",
+"t": "Design: dinheiro não se apaga",
+"n": "Contas a pagar e a receber saem de uma view única. Pagamento errado é estornado com data, nunca apagado: o histórico fica auditável.",
+"p": "L2",
+"a": "6/1/9/7"
+},
+{
+"code": "SELECT * INTO v_insumo FROM insumos\n  WHERE id = NEW.insumo_id FOR UPDATE;  -- trava a linha\n\nIF NEW.type = &#x27;IN&#x27; THEN\n  v_new_qty := v_insumo.current_stock + NEW.quantity;\n  v_new_cost := (v_insumo.current_stock * v_insumo.average_unit_cost\n               + NEW.quantity * NEW.unit_cost) / v_new_qty;\nELSIF NEW.type = &#x27;OUT&#x27; THEN\n  v_new_qty := v_insumo.current_stock - NEW.quantity;\n  NEW.unit_cost := v_insumo.average_unit_cost;\nEND IF;",
+"t": "Técnico: custo médio no banco",
+"n": "Cada entrada recalcula o custo médio ponderado do insumo num trigger, com a linha travada (FOR UPDATE) para duas movimentações simultâneas não corromperem o estoque.",
+"p": "R2",
+"a": "1/1/4/7"
+},
+{
+"code": "const fabricCostTotal = fabricCostPerM * calcFabricM\nconst overheadCost = fabricCostTotal * (calcOverhead / 100)\nconst laborCostPerPiece = (calcWorkers * 8) / piecesDay * calcLaborRate\n\nconst cmvBase = fabricCostTotal + overheadCost + laborCostPerPiece\nconst cmvCalculated = cmvBase + cmvBase * (calcTaxRate / 100)\nconst suggestedPrice = cmvCalculated * calcMarkup",
+"t": "Técnico: quanto custa uma peça",
+"n": "O preço sugerido sai do custo real: tecido pelo custo médio do estoque, despesas, mão de obra pela capacidade diária da fábrica, impostos e margem.",
+"p": "R2",
+"a": "4/1/6/7"
+},
+{
+"code": "# [Tarefa]\n## 1. Objetivo principal\n## 2. Contexto (onde focar: frontend, Supabase)\n## 3. Critérios de aceite obrigatórios\n## 4. O que NÃO fazer (escopo negativo)\n## 5. Passos: investigar → propor plano e\n##    pedir aprovação → executar → atualizar a doc",
+"t": "IA: como eu especifico uma tarefa",
+"n": "O modelo de pedido ao agente, guardado no repositório: objetivo, contexto, critérios de aceite e o que não fazer. Menos ida e volta, menos código fora do padrão.",
+"p": "L3",
+"a": "1/1/5/7"
+},
+{
+"html": "<ul class=\"todo\"><li>Ler a arquitetura antes de qualquer mudança estrutural</li><li>Atualizar a documentação viva depois, só a seção que mudou</li><li>Componentes com menos de 300 linhas</li><li>Não criar padrões novos sem checar os que existem</li></ul>",
+"t": "IA: regras do agente",
+"n": "Um prompt de sistema e regras fixas para o agente que trabalha no código.",
+"p": "L3",
+"a": "5/1/9/7"
+},
+{
+"html": "<div class=\"mods\"><span>PRD → tarefas</span><span>Feature financeira</span><span>Refatorar página</span><span>Analisar repositório</span></div>",
+"t": "IA: skills do projeto",
+"n": "Instruções reutilizáveis guardadas no projeto para tarefas recorrentes do ERP.",
+"p": "R3",
+"a": "1/1/3/7"
 },
 {
 "html": "<dl class=\"stats\"><div><dt>92</dt><dd>arquivos de código</dd></div><div><dt>~21 mil</dt><dd>linhas de TypeScript</dd></div><div><dt>31</dt><dd>tabelas no Postgres</dd></div><div><dt>26</dt><dd>triggers</dd></div><div><dt>14</dt><dd>funções no banco</dd></div><div><dt>~95</dt><dd>commits em 10 semanas</dd></div></dl>",
 "t": "O tamanho do sistema",
 "n": "Contado direto no repositório.",
-"p": "R",
-"a": "5/1/9/7"
+"p": "R3",
+"a": "3/1/6/7"
 },
 {
-"code": "const fabricCostTotal = fabricCostPerM * calcFabricM\nconst overheadCost = fabricCostTotal * (calcOverhead / 100)\nconst laborHoursPerPiece = (calcWorkers * 8) / piecesDay\nconst laborCostPerPiece = laborHoursPerPiece * calcLaborRate\n\nconst cmvBase = fabricCostTotal + overheadCost + laborCostPerPiece\nconst cmvCalculated = cmvBase + cmvBase * (calcTaxRate / 100)\nconst suggestedPrice = cmvCalculated * calcMarkup",
-"t": "Quanto custa uma peça",
-"n": "O preço sugerido sai do custo real: tecido pelo custo médio do estoque, despesas, mão de obra pela capacidade diária da fábrica, impostos e margem.",
-"p": "L2",
-"a": "1/1/5/7"
-},
-{
-"html": "<p class=\"flow\"><span>Aguardando material</span><i>→</i><span>Corte</span><i>→</i><span>Personalização</span><i>→</i><span>Costura</span><i>→</i><span>Finalização</span><i>→</i><span>Transporte</span></p>",
-"t": "A produção em quadro kanban",
-"n": "Cada pedido aprovado vira ordem de produção e anda pelas etapas da fábrica. O perfil \"fábrica\" só enxerga esta tela.",
-"p": "L2",
-"a": "5/1/9/7"
-},
-{
-"code": "SELECT * INTO v_insumo FROM insumos\n  WHERE id = NEW.insumo_id FOR UPDATE;  -- trava a linha\n\nIF NEW.type = &#x27;IN&#x27; THEN\n  v_new_qty := v_insumo.current_stock + NEW.quantity;\n  v_new_cost := (v_insumo.current_stock * v_insumo.average_unit_cost\n               + NEW.quantity * NEW.unit_cost) / v_new_qty;\nELSIF NEW.type = &#x27;OUT&#x27; THEN\n  v_new_qty := v_insumo.current_stock - NEW.quantity;\n  NEW.unit_cost := v_insumo.average_unit_cost;\nEND IF;",
-"t": "Custo médio no próprio banco",
-"n": "Cada entrada recalcula o custo médio ponderado do insumo dentro de um trigger, com a linha travada (FOR UPDATE) para duas movimentações simultâneas não corromperem o estoque.",
-"p": "R2",
-"a": "1/1/9/7"
-},
-{
-"html": "<p class=\"flow\"><span>Obrigação</span><i>→</i><span>Pagamento</span><i>→</i><span>Estorno com data</span><i>→</i><span>Status derivado</span></p>",
-"t": "Dinheiro não se apaga",
-"n": "Obrigações a pagar e a receber ficam separadas dos pagamentos. Um pagamento errado é estornado com data, não apagado: o histórico continua auditável.",
-"p": "L3",
-"a": "1/1/4/7"
-},
-{
-"code": "saldo projetado = saldo nos bancos\n                + obrigações a receber em aberto\n                − obrigações a pagar em aberto\n-- pagamento estornado não some: ganha reversed_at\n-- e sai da soma (FILTER WHERE reversed_at IS NULL)",
-"t": "Saldo que fecha",
-"n": "A conciliação cruza bancos, contas em aberto e pagamentos ativos. Quando o saldo projetado não bateu, o sistema ganhou um script que refaz essa conta para achar a diferença.",
-"p": "L3",
-"a": "4/1/9/7"
-},
-{
-"html": "<ul class=\"todo\"><li>Testes automatizados no financeiro (hoje há um só arquivo de teste)</li><li>Levar as permissões de perfil para o banco (RLS), não só para a interface</li><li>Limpar a raiz do repositório dos scripts de depuração</li><li>README próprio explicando arquitetura e decisões</li></ul>",
+"html": "<ul class=\"todo\"><li>Testes automatizados no financeiro (hoje há um só arquivo de teste)</li><li>Levar as permissões de perfil para o banco (RLS), não só para a interface</li><li>Limpar a raiz do repositório dos scripts de depuração</li></ul>",
 "t": "Próximos passos",
 "n": "O que um sistema em uso ainda precisa, dito com honestidade.",
 "p": "R3",
-"a": "1/1/6/7"
+"a": "6/1/9/7"
 }
 ]
 }
@@ -385,6 +406,51 @@
 }
 ]
 }
+},
+"ic": {
+"k": "Iniciação científica, UFSJ",
+"t": "Física computacional: o que acontece na superfície de um cristal",
+"b": "<p>Iniciação científica no Laboratório de Estrutura Eletrônica da UFSJ (PIIC, 2026–2027), orientada pelo Prof. Horácio Wagner Leite Alves. Em andamento: a Parte 1, o modelo em uma dimensão, está concluída e validada.</p><p class=\"tools\">Python, NumPy, SciPy, Matplotlib, DFTB+</p>",
+"chap": {
+"items": [
+{
+"in": {
+"num": "4",
+"numl": "métodos independentes chegando ao mesmo resultado",
+"prob": "Num cristal infinito os elétrons se espalham pelo material todo. Na superfície a simetria quebra, e aparecem estados que decaem para dentro do cristal. A estrutura de bandas complexa descreve esses estados.",
+"dec": [
+"Primeiro entender e validar o conceito num modelo 1D, onde existe resposta exata",
+"Depois levar o método para a superfície do TiO₂ com o DFTB+",
+"No fim, a interface TiO₂/Ni, uma barreira Schottky",
+"Comparar com dados experimentais da literatura"
+],
+"flow": [
+"Modelo 1D",
+"Validação",
+"TiO₂(001)",
+"TiO₂/Ni"
+]
+},
+"t": "A pergunta da pesquisa",
+"p": "L",
+"a": "3/1/9/7"
+},
+{
+"html": "<img class=\"fig\" src=\"assets/ic.svg\" alt=\"\">",
+"t": "A estrutura de bandas complexa",
+"n": "À esquerda, as bandas com k real. À direita, o laço de k complexo atravessando o gap (faixa cinza): estados que decaem em cerca de 16 Å, umas 5 células do cristal.",
+"p": "R",
+"a": "1/1/5/7"
+},
+{
+"html": "<table class=\"mtab\"><tr><th>Método</th><th>E (eV)</th></tr><tr><td>Duas ondas (analítico)</td><td>4,1716</td></tr><tr><td>Matriz de transferência (exato)</td><td>4,1496</td></tr><tr><td>Slab de 60 células, extrapolado</td><td>4,14956</td></tr><tr><td>Ondas planas, problema inverso</td><td>mesmo κ</td></tr></table>",
+"t": "Mesmo resultado por 4 caminhos",
+"n": "O estado de superfície calculado por métodos que não dependem um do outro. O slab, extrapolado, fica a 1,5 μeV da resposta exata. Caderno em Python feito com IA como par de estudo.",
+"p": "R",
+"a": "5/1/9/7"
+}
+]
+}
 }
 },
 "ui": {
@@ -394,6 +460,7 @@
 "inside": "Por dentro",
 "cover": "Desenvolvedor full-stack",
 "edu": "Formação",
-"home": "Início"
+"home": "Início",
+"ic": "Física"
 }
 }
