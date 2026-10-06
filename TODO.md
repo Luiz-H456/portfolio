@@ -22,6 +22,10 @@
 [ ] falta | content/*.json sec.barbearia | o que o site da barbearia faz (agendamento? catálogo?) — texto está curto | você
 [ ] divida | style.css header | nome fixo no topo fica por cima do mangá em algumas paradas | eu
 [ ] divida | main.js | navegação por teclado (↑↓) e pular direto para um quadro | eu
-[ ] falta | assets/ | gerar imagens e vídeos de docs/assets.md (prioridade: prints reais > capa/chão > quadros > vídeos) | você
+[ ] falta | assets/ | enviar os ARQUIVOS (zip) das imagens geradas — só recebi prints da galeria | você
+[ ] falta | assets/stack.webp | refazer: saiu pilha de roupas, o prompt pede painel de nave (prompt 7) | você
+[ ] falta | assets/contato.webp, assets/floor.webp | não gerados | você
+[ ] falta | assets/cover.webp | versão 1 saiu 3:2; versão 2 (3:4) tem a nave no topo, onde vai o título — deixar o topo vazio | você
+[ ] decidir | vídeos | os 2 gerados (nave/moto e carro na estrada, 8 s 1080p) não são os loops pedidos; o carro tem o Pão de Açúcar (RJ), não MG | você
 [ ] falta | docs/assets.md | qual gerador você usa (Midjourney, Flux, Nano Banana...)? Ajusto os prompts ao modelo | você
 [ ] divida | style.css | duotone das artes P&B (mix-blend-mode) quando os assets chegarem | eu
