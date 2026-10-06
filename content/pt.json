@@ -340,8 +340,51 @@
 "n": "Separado com honestidade: produção, projeto e estudo.",
 "p": "R",
 "a": "1/1/6/7"
+},
+{
+"html": "<div class=\"use\"><b>Cálculo 01 e 02</b><p>Derivada é taxa de variação; integral é acumulação; os dois juntos acham o melhor valor de alguma coisa. Base de toda otimização, de preço a modelo de IA.</p></div>",
+"t": "Cálculo 01 e 02",
+"n": "Na prática: otimização, de preço de produto a treino de IA.",
+"p": "L2",
+"a": "1/1/4/7"
+},
+{
+"html": "<div class=\"use\"><b>Equações Diferenciais e Cálculo Vetorial</b><p>A mola da câmera deste site é uma equação diferencial (posição, velocidade e atrito) resolvida passo a passo a cada quadro. Gradientes e campos são a matemática de 3D, shaders e gradiente descendente.</p></div>",
+"t": "Equações diferenciais e Cálculo Vetorial",
+"n": "Na prática: a mola da câmera e o 3D.",
+"p": "L2",
+"a": "4/1/7/7"
+},
+{
+"html": "<div class=\"use\"><b>Geometria Analítica e Álgebra Linear</b><p>Vetores e matrizes. Toda rotação, escala e perspectiva do mangá é uma composição de matrizes. Em IA, textos viram vetores e a semelhança entre eles é um produto escalar.</p></div>",
+"t": "Geometria Analítica e Álgebra Linear",
+"n": "Na prática: a perspectiva do mangá e os vetores de texto da IA.",
+"p": "L2",
+"a": "7/1/9/7"
+},
+{
+"html": "<div class=\"use\"><b>Física 01 a 04 e Mecânica Clássica</b><p>Modelar o mundo com poucas leis e testar contra a medida. O oscilador amortecido da mecânica é a mola da câmera; Estrutura da Matéria e Física Quântica são a base da IC.</p></div>",
+"t": "Física 01 a 04, Mecânica e Quântica",
+"n": "Na prática: modelar, medir e conferir.",
+"p": "R2",
+"a": "1/1/4/7"
+},
+{
+"html": "<div class=\"use\"><b>Programação e Física Computacional 01 a 03</b><p>Métodos numéricos em Python: achar raízes, resolver equações diferenciais, diagonalizar matrizes e medir o erro de cada aproximação. É o que a IC usa, e o hábito de validar resultado vale para qualquer código.</p></div>",
+"t": "Programação e Física Computacional",
+"n": "Na prática: o caderno da IC e o hábito de medir o erro.",
+"p": "R2",
+"a": "4/1/7/7"
+},
+{
+"html": "<div class=\"use\"><b>Simulação de Sistemas Complexos</b><p>Muitas partes simples interagindo geram um comportamento que ninguém programou diretamente. É o mesmo olhar de quem desenha um sistema em que um pedido mexe em produção, estoque e financeiro.</p></div>",
+"t": "Simulação de Sistemas Complexos",
+"n": "Na prática: pensar o sistema inteiro, não só a peça.",
+"p": "R2",
+"a": "7/1/9/7"
 }
-]
+],
+"artp": "R"
 }
 },
 "contato": {

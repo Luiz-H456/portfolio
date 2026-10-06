@@ -340,8 +340,51 @@
 "n": "Split honestly: production, project and study.",
 "p": "R",
 "a": "1/1/6/7"
+},
+{
+"html": "<div class=\"use\"><b>Calculus 01 and 02</b><p>A derivative is a rate of change; an integral is accumulation; together they find the best value of something. The basis of all optimization, from product pricing to AI models.</p></div>",
+"t": "Calculus 01 and 02",
+"n": "In practice: optimization, from pricing to AI training.",
+"p": "L2",
+"a": "1/1/4/7"
+},
+{
+"html": "<div class=\"use\"><b>Differential Equations and Vector Calculus</b><p>This site camera spring is a differential equation (position, velocity and friction) solved step by step every frame. Gradients and fields are the math of 3D, shaders and gradient descent.</p></div>",
+"t": "Differential equations and Vector Calculus",
+"n": "In practice: the camera spring and 3D.",
+"p": "L2",
+"a": "4/1/7/7"
+},
+{
+"html": "<div class=\"use\"><b>Analytic Geometry and Linear Algebra</b><p>Vectors and matrices. Every rotation, scale and perspective of the manga is a composition of matrices. In AI, texts become vectors and their similarity is a dot product.</p></div>",
+"t": "Analytic Geometry and Linear Algebra",
+"n": "In practice: the manga perspective and AI text vectors.",
+"p": "L2",
+"a": "7/1/9/7"
+},
+{
+"html": "<div class=\"use\"><b>Physics 01 to 04 and Classical Mechanics</b><p>Model the world with a few laws and test against measurement. The damped oscillator from mechanics is the camera spring; Structure of Matter and Quantum Physics are the basis of the research.</p></div>",
+"t": "Physics 01–04, Mechanics and Quantum",
+"n": "In practice: model, measure and check.",
+"p": "R2",
+"a": "1/1/4/7"
+},
+{
+"html": "<div class=\"use\"><b>Programming and Computational Physics 01 to 03</b><p>Numerical methods in Python: finding roots, solving differential equations, diagonalizing matrices and measuring the error of every approximation. It is what the research uses, and validating results applies to any code.</p></div>",
+"t": "Programming and Computational Physics",
+"n": "In practice: the research notebook and measuring error.",
+"p": "R2",
+"a": "4/1/7/7"
+},
+{
+"html": "<div class=\"use\"><b>Simulation of Complex Systems</b><p>Many simple parts interacting produce behavior nobody programmed directly. The same lens as designing a system where one order moves production, inventory and finance.</p></div>",
+"t": "Simulation of Complex Systems",
+"n": "In practice: thinking about the whole system, not just the part.",
+"p": "R2",
+"a": "7/1/9/7"
 }
-]
+],
+"artp": "R"
 }
 },
 "contato": {

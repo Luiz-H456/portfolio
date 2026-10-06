@@ -41,3 +41,7 @@
 [ ] falta | capítulo Formação | cursos, certificados e qualificações (nome, instituição, ano) e se quer citar a atuação comercial B2B na Botezini | você
 [ ] estudo | IC | antes de mostrar o portfólio a alguém da física: explicar EBC, κ_max e por que 4 métodos (o capítulo afirma isso) | você
 [ ] estudo | ERP | explicar camadas (pages→hooks→services→repositories→Postgres), o trigger com FOR UPDATE e o modelo de tarefa para o agente | você
+[ ] falta | capítulo Formação | dizer quais disciplinas da base da Física você já concluiu e qual período está (hoje o texto não afirma conclusão) | você
+[ ] estudo | Formação | saber explicar cada exemplo "na prática" (integral numérica da câmera, matrizes da perspectiva, produto escalar em IA) | você
+[ ] falta | capítulo Formação | confirmar a legenda da grade (figurinha = concluída? bolinha verde = cursando?) para marcar o status de cada disciplina | você
+[ ] estudo | Formação | saber explicar cada exemplo "na prática" (EDO da mola, matrizes da perspectiva, produto escalar em IA) | você
