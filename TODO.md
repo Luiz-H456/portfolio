@@ -5,7 +5,6 @@
 [ ] falta | content/projetos.md | por case: problema do cliente, resultado (número se houver), seu papel | você
 [ ] falta | content/projetos.md | ERP: prints de ambiente com dados fictícios | você
 [ ] falta | content/projetos.md | prints/vídeo dos 4 sites (proxy pode bloquear captura daqui) | você
-[ ] seg | botezinipvd | .env, .env.local e .env.vercel estão commitados: rotacionar chaves (Supabase, Gemini, etc.) e remover do repo | você
 [ ] estudo | fase 1 | View Transitions API, Speculation Rules, Core Web Vitals | você
 [ ] estudo | fase 2 | streaming SSE, Vercel Functions, saída estruturada + Zod, prompt caching, contagem de tokens | você
 [ ] estudo | fase 3 | prompt injection e defesas, evals (conjunto de testes, regressão) | você
@@ -31,3 +30,4 @@
 [ ] estudo | capítulo Como eu trabalho | oscilador harmônico amortecido (mola da câmera) e passos de tempo fixo | você
 [ ] falta | ERP | prints com dados fictícios: entram no capítulo do ERP no lugar da arte | você
 [ ] falta | foto | foto sua (opcional) para o Sobre/capa, eu aplico o duotone | você
+[ ] seg | botezinipvd | URGENTE: trocar chaves Google/Gemini e OpenAI (formato válido, commitadas em .env/.env.local/.env.vercel, + chaves antigas comentadas no .env) e token Vercel; depois remover os .env do repo | você
