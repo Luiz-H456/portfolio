@@ -1,0 +1,11 @@
+:root{--paper:#f4f1ea;--ink:#141414;--accent:#2b3cff;--mute:#6b675f}
+*{box-sizing:border-box;margin:0}
+body{background:var(--paper);color:var(--ink);font:400 1.05rem/1.5 "Inter Tight",system-ui,sans-serif}
+#bg{position:fixed;inset:0;width:100%;height:100%;z-index:-1}
+.mono{font:400 .8rem/1.4 "JetBrains Mono",monospace;letter-spacing:.02em;text-transform:uppercase}
+header{position:fixed;top:0;inset-inline:0;display:flex;justify-content:space-between;padding:1.25rem clamp(1rem,4vw,3rem)}
+button{background:none;border:0;color:inherit;cursor:pointer}
+.hero{min-height:100svh;display:grid;align-content:center;gap:1.5rem;padding:0 clamp(1rem,6vw,6rem);max-width:80rem}
+h1{font:400 clamp(3rem,9vw,8.5rem)/.92 "Instrument Serif",serif;letter-spacing:-.02em}
+h1 em{font-style:italic;color:var(--accent)}
+.lead{max-width:34rem;font-size:clamp(1.05rem,1.6vw,1.3rem);color:var(--mute)}

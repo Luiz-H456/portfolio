@@ -13,3 +13,6 @@
 [ ] falta | content/ | revisão do texto em EN (eu traduzo, você valida) | você
 [ ] falta | content/projetos.md | ERP: quantos dias economizados (só com dado real; ex.: orçamentos/mês × ~20 min) | você
 [ ] decidir | domínio | comprar .dev ou .com.br (até lá: *.vercel.app) | você
+[ ] falta | content/pt.json | validar hero: a Botezini usava planilha antes do ERP? "30→5 min" usa o pior caso de cada faixa | você
+[ ] estudo | fase 1 | shaders: fbm, domain warping (main.js) — thebookofshaders.com | você
+[ ] divida | index.html | fontes via Google Fonts (requisição externa); auto-hospedar woff2 depois | eu
