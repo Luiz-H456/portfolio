@@ -51,7 +51,7 @@ function measure() {
   cam ??= { ...keys[0] }
 }
 function target() {
-  const P = Math.min(keys.length - 1, scrollY / innerHeight)
+  const P = Math.min(keys.length - 1, Math.max(0, scrollY / innerHeight))  // scrollY fica negativo no "elástico" do Mac/iPhone
   if (still) { const i = Math.round(P); return [{ ...keys[i], rx: 0, rz: 0, o: 1 }, i, P] }
   const i = Math.floor(P), a = keys[i], b = keys[i + 1] || a
   const u = ease(clamp((P - i - .2) / .8)), arc = Math.sin(Math.PI * u)
@@ -96,7 +96,7 @@ panels.forEach((el, i) => {
 const CAP = { intro: ['rust', 'black'], fim: ['rust', 'black'], metodo: ['violet', 'cream'], hero: ['mustard', 'black'], sobre: ['rust', 'black'], erp: ['blue', 'cream'], botezini: ['red', 'cream'],
   lojas: ['mustard', 'black'], barbearia: ['sky', 'black'], stack: ['green', 'cream'], contato: ['cream', 'black'] }
 function caption(n) {
-  if (n === cur || !t) return
+  if (n === cur || !t || !meta[n]) return
   cur = n; cap.classList.add('out')
   panels.forEach((el, i) => { i <= n && el.classList.add('on'); el.classList.toggle('here', !chap && el.dataset.s === meta[n].s) })  // arte até 2 quadros à frente; .here = quadro atual
   setTimeout(() => {
