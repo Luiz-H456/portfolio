@@ -7,20 +7,33 @@
 <meta name="description" content="Desenvolvedor full-stack AI-native e estudante de Física. ERP em produção, sites e lojas para negócios reais.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter+Tight:wght@400;600&family=JetBrains+Mono&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter+Tight:wght@400;600&family=JetBrains+Mono&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<canvas id="bg" aria-hidden="true"></canvas>
+<svg width="0" height="0" aria-hidden="true"><filter id="ink"><feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="2"/><feColorMatrix values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -.9 1.25"/><feComposite in="SourceGraphic" operator="in"/></filter></svg>
 <header>
   <span class="mono">Luiz Henrique Carvalho</span>
   <button id="lang" class="mono" aria-label="Mudar idioma">EN</button>
 </header>
 <main>
-  <section id="inicio" class="hero">
-    <p class="mono" data-i="hero.kicker"></p>
-    <h1 data-i="hero.title"></h1>
-    <p class="lead" data-i="hero.lead"></p>
+  <section class="stage">
+    <div class="scene">
+      <div class="book">
+        <div class="pn p-title"><h1 class="ink">Luiz<br>Henrique</h1><span class="mono">vol. 01 · São João del-Rei</span></div>
+        <div class="pn p-port"><i></i></div>
+        <div class="pn p-mars"></div>
+        <div class="pn p-sky"></div>
+        <div class="pn p-shot c-blue"><span class="mono" data-i="todo.erp"></span></div>
+        <div class="pn p-shot c-red"><span class="mono" data-i="todo.botezini"></span></div>
+        <div class="pn p-shot c-mustard"><span class="mono" data-i="todo.btzn"></span></div>
+      </div>
+      <div class="hero">
+        <p class="mono cap" data-i="hero.kicker"></p>
+        <h2 class="display cap" data-i="hero.title"></h2>
+        <p class="lead cap" data-i="hero.lead"></p>
+      </div>
+    </div>
   </section>
 </main>
 <script src="main.js" type="module"></script>

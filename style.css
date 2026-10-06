@@ -1,11 +1,39 @@
-:root{--paper:#f4f1ea;--ink:#141414;--accent:#2b3cff;--mute:#6b675f}
+:root{--black:#0d0c0e;--cream:#efe6d2;--blue:#2f5fa8;--sky:#7fb0d8;--red:#c4372f;--rust:#c9652e;--mustard:#e0a92e;--green:#3f8a5a;--violet:#4a3360}
 *{box-sizing:border-box;margin:0}
-body{background:var(--paper);color:var(--ink);font:400 1.05rem/1.5 "Inter Tight",system-ui,sans-serif}
-#bg{position:fixed;inset:0;width:100%;height:100%;z-index:-1}
-.mono{font:400 .8rem/1.4 "JetBrains Mono",monospace;letter-spacing:.02em;text-transform:uppercase}
-header{position:fixed;top:0;inset-inline:0;display:flex;justify-content:space-between;padding:1.25rem clamp(1rem,4vw,3rem)}
+body{background:var(--black);color:var(--cream);font:400 1.05rem/1.5 "Inter Tight",system-ui,sans-serif}
+body::after{content:"";position:fixed;inset:0;pointer-events:none;opacity:.14;mix-blend-mode:overlay;
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='.85'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+.mono{font:400 .75rem/1.4 "JetBrains Mono",monospace;letter-spacing:.04em;text-transform:uppercase}
+.ink,.display{font-family:Anton,Impact,sans-serif;text-transform:uppercase;line-height:.9}
+.ink{filter:url(#ink)}
+header{position:fixed;z-index:9;top:0;inset-inline:0;display:flex;justify-content:space-between;padding:1.25rem clamp(1rem,4vw,3rem)}
 button{background:none;border:0;color:inherit;cursor:pointer}
-.hero{min-height:100svh;display:grid;align-content:center;gap:1.5rem;padding:0 clamp(1rem,6vw,6rem);max-width:80rem}
-h1{font:400 clamp(3rem,9vw,8.5rem)/.92 "Instrument Serif",serif;letter-spacing:-.02em}
-h1 em{font-style:italic;color:var(--accent)}
-.lead{max-width:34rem;font-size:clamp(1.05rem,1.6vw,1.3rem);color:var(--mute)}
+
+/* palco: 400vh de scroll, cena presa na tela */
+.stage{height:400vh}
+.scene{position:sticky;top:0;height:100svh;display:grid;place-items:center;perspective:1400px;overflow:hidden}
+.book{width:min(62svh,86vw);aspect-ratio:2/3;display:grid;grid:repeat(8,1fr)/repeat(6,1fr);gap:7px;padding:7px;
+  background:var(--cream);transform-style:preserve-3d;box-shadow:0 40px 80px #000a}
+.pn{position:relative;border:3px solid var(--black);overflow:hidden;will-change:transform;
+  background-image:radial-gradient(#0003 1px,transparent 1.6px);background-size:6px 6px}
+.p-title{grid-area:1/1/4/5;background-color:var(--black);padding:.8rem;display:flex;flex-direction:column;justify-content:space-between}
+.p-title h1{font-size:clamp(2rem,6.5svh,4rem);color:var(--cream)}
+.p-port{will-change:auto;grid-area:1/5/4/7;background:linear-gradient(var(--violet) 0 35%,#8a3f5c 35% 55%,var(--rust) 55% 72%,var(--mustard) 72%)}
+.p-port i{position:absolute;width:78%;aspect-ratio:1;left:11%;top:50%;translate:0 -50%;border:6px solid var(--black);border-radius:50%;
+  background:linear-gradient(90deg,transparent 47%,var(--black) 47% 53%,transparent 53%)}
+.p-mars{grid-area:4/1/6/3;background-color:var(--rust);
+  box-shadow:inset 10px 0 0 var(--mustard),inset 16px 0 0 var(--black),inset 22px 0 0 var(--red)}
+.p-sky{grid-area:4/3/6/7;background-color:var(--sky);
+  background-image:linear-gradient(transparent 62%,var(--blue) 62% 66%,#1f3f73 66%),radial-gradient(#fff6 1px,transparent 1.6px)}
+.p-shot{display:grid;place-items:center;text-align:center;padding:.5rem;color:var(--black);
+  background-image:repeating-conic-gradient(from 0deg at 50% 50%,#0002 0 2deg,transparent 2deg 9deg),radial-gradient(#0003 1px,transparent 1.6px)}
+.p-shot:nth-of-type(5){grid-area:6/1/9/4}
+.p-shot:nth-of-type(6){grid-area:6/4/8/7}
+.p-shot:nth-of-type(7){grid-area:8/4/9/7}
+.c-blue{background-color:var(--blue)}.c-red{background-color:var(--red)}.c-mustard{background-color:var(--mustard)}
+
+.hero{position:absolute;inset:0;display:grid;align-content:center;justify-items:start;gap:.6rem;padding:0 clamp(1rem,7vw,7rem);opacity:0;pointer-events:none}
+.cap{background:var(--black);padding:.4em .6em}
+.hero h2{font-size:clamp(2.6rem,7vw,6.5rem);max-width:13ch}
+.hero h2 em{font-style:normal;color:var(--mustard)}
+.lead{max-width:34rem;font-size:clamp(1rem,1.5vw,1.2rem);color:#efe6d2cc}

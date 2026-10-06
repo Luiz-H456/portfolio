@@ -1,4 +1,12 @@
-{"hero":{
-"kicker":"Dev full-stack AI-native · estudante de Física",
-"title":"Tiro empresas da <em>planilha</em> e coloco no sistema.",
-"lead":"Construí o ERP que roda a Confecções Botezini: orçamentos que levavam 30 minutos saem em 5. Curioso e persistente, de São João del-Rei para o mundo."}}
+{
+"hero": {
+"kicker": "Dev full-stack AI-native · estudante de Física",
+"title": "Tiro empresas da <em>planilha</em> e coloco no sistema.",
+"lead": "Construí o ERP que roda a Confecções Botezini: orçamentos que levavam 30 minutos saem em 5. Curioso e persistente, de São João del-Rei para o mundo."
+},
+"todo": {
+"erp": "print do ERP<br>pendente",
+"botezini": "print Botezini<br>pendente",
+"btzn": "print BTZN<br>pendente"
+}
+}
