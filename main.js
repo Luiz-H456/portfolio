@@ -16,7 +16,7 @@ const stage = document.querySelector('.stage'), book = document.querySelector('.
 const panels = [...book.querySelectorAll('[data-s]')]
 const still = matchMedia('(prefers-reduced-motion: reduce)').matches
 const clamp = v => Math.min(1, Math.max(0, v)), ease = u => u * u * u * (u * (6 * u - 15) + 10), mix = (a, b, u) => a + (b - a) * u
-let keys = [], cam, vel = {}
+let keys = [], cam, vel = {}, lastP = 0, idle = 0
 function measure() {
   const W = innerWidth, H = innerHeight, wide = W >= 900, cw = wide ? cap.offsetWidth + 48 : 0, ch = wide ? 0 : cap.offsetHeight + 16
   const ox = -cw / 2, oy = -ch / 2, fw = (W - cw) * (wide ? .85 : .92), fh = (H - ch) * .78
@@ -34,7 +34,7 @@ function target() {
   const u = ease(clamp((P - i - .2) / .8)), arc = Math.sin(Math.PI * u)
   const k = {}; for (const p in a) k[p] = mix(a[p], b[p], u)
   k.s *= 1 - .22 * arc; k.rx += 8 * arc  // recua um pouco no meio da viagem: os quadros vizinhos aparecem
-  return [k, u < .5 ? i : i + 1]
+  return [k, u < .5 ? i : i + 1, P]
 }
 function caption(n) {
   if (n === cur || !t) return
@@ -46,10 +46,14 @@ function caption(n) {
   }, still ? 0 : 250)
 }
 function frame() {
-  const [k, n] = target()
+  const [k, n, P] = target()
+  idle = Math.abs(P - lastP) > 1e-4 ? 0 : idle + 1
+  // viajando (ou pausa curta entre cliques da roda): quase crítico, ~1%; parado ~150 ms: uma passada de ~5,6% e assenta
+  const [d, r] = idle < 9 ? [.55, .1] : [.72, .05]
+  lastP = P
   for (const p in k) {
     if (still) { cam[p] = k[p]; continue }
-    vel[p] = (vel[p] || 0) * .78 + (k[p] - cam[p]) * .045  // mola: rigidez .045, amortecimento .78
+    vel[p] = (vel[p] || 0) * d + (k[p] - cam[p]) * r
     cam[p] += vel[p]
   }
   book.style.transform = `translate(${cam.ox}px,${cam.oy}px) rotateX(${cam.rx}deg) rotateZ(${cam.rz}deg) scale(${cam.s}) translate(${-cam.x}px,${-cam.y}px)`
