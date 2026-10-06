@@ -148,7 +148,7 @@ function frame(now) {
   const L = leaves.length
   leaves.forEach((el, d) => {
     const j = L - 1 - d, f = ease(clamp((cam.o - j * .16) / .52))  // j: ordem de virada (capa = 0)
-    el.style.transform = `translateZ(${mix(d + 1, j + 1, f) * 1.5 + Math.sin(Math.PI * f) * 90}px) rotateY(${-180 * f}deg)`
+    el.style.transform = `translateZ(${mix(d + 1, j + 1, f) * 1.5}px) rotateY(${-180 * f}deg)`  // borda presa na lombada: só gira, não sobe
   })
   caption(n)
   renderDecks(n, P, steps)
