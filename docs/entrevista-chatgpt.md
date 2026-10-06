@@ -85,3 +85,66 @@ I) 3 perguntas suas para o Claude sobre o código ou os projetos
 
 ## Depois das 7 mensagens
 O resultado final vira: textos novos do site (`content/pt.json` e `en.json`), o "Sobre" e o hero reescritos, os posts de `docs/linkedin.md` atualizados e itens de estudo no `TODO.md`. Eu faço essa parte.
+
+---
+
+## Prompt 2 (cole no ChatGPT, depois da Mensagem 1)
+
+```
+=== PROMPT 2 DO CLAUDE ===
+Boa Mensagem 1: honesta e sem inflar. Antes de responder suas perguntas, três correções de fonte, porque se isso passar errado para o site, o Luiz é que paga numa entrevista:
+
+CORREÇÕES
+1. "20–30 → 2–5 min" e "mais de 60 pedidos" NÃO foram verificados por mim. Vieram do Luiz. Eu verifiquei: os 8 módulos (pastas do código), a stack (package.json), os 619 testes (rodei as duas suítes), as 148 linhas de JS e zero bibliotecas do portfólio, e que o ERP nasceu de um template do Google AI Studio. Daqui em diante: fonte dos números do ERP = "Luiz disse".
+2. A história "processos fragmentados antes do ERP" não está confirmada por ninguém. Não use sem o Luiz confirmar como era antes.
+3. O método de índice/pendências/regras para IA é do portfólio, não do ERP. O ERP usou outro fluxo: um agente com planos e logs em arquivos (task_plan.md, findings.md, progress.md), onde a IA analisa e "prepara explicação para o usuário", que é o Luiz.
+
+RESPOSTAS ÀS SUAS PERGUNTAS
+
+1) Evidência real × inferência
+Abri o conteúdo de três arquivos agora; o resto é inferência pelo nome.
+- debug_balance.cjs (VERIFICADO): script para "achar os R$ 664,00 fantasmas". Cruza saldo das contas bancárias, obrigações em aberto (a pagar/a receber) e pagamentos não estornados para fechar o saldo projetado. Houve uma divergência real de R$ 664 no financeiro, e alguém escreveu uma ferramenta de diagnóstico para caçá-la. Essa é a melhor história técnica do ERP, se o Luiz lembrar dela.
+- O mesmo script revela o modelo financeiro (VERIFICADO): obrigações a pagar/receber separadas dos pagamentos, pagamento estornado com data de estorno (reversed_at) em vez de apagado, conta bancária com exclusão lógica, uma view (obligation_summary) com status derivado. É modelagem contábil correta: trilha de auditoria em vez de apagar dinheiro.
+- fix_policies.cjs (VERIFICADO): torna as migrations reexecutáveis (insere DROP POLICY IF EXISTS antes de cada CREATE POLICY). Problema real: rodar migrations duas vezes quebrava nas políticas de acesso (RLS). Prova que o sistema usa RLS.
+- progress.md (VERIFICADO): sessão de "refatoração financeira" conduzida por um agente de IA, que mapeou impactos e preparou a explicação para o Luiz.
+- migrate_camel_to_snake, fix_grants, fix_rpc, fix_audit_indexes, fix_financial_v2 (INFERIDO pelo nome, não abri).
+
+2) Decisões arquiteturais tomadas pelo Luiz antes da IA
+Não tenho como saber pelo código: o git não guarda quem pensou, só quem salvou. Existem decisões boas no sistema (estorno em vez de apagar, exclusão lógica, camadas pages → services → repositories, validação com Zod, IA rodando no servidor), mas a autoria da ideia só o Luiz pode dizer. Pergunte especificamente: "estornar em vez de apagar pagamento: foi ideia sua, de um contador, da operação ou da IA?". Se foi da operação ("o financeiro precisava ver o histórico"), isso é ótimo: é ele traduzindo necessidade de negócio em modelo de dados.
+
+3) Crítica técnica, sem verniz
+Forte para ~1 ano:
+- Lojas: 619 testes passando, testes end-to-end (Playwright), senha do admin guardada só como hash, scripts que geram marca/ícones/imagens. Base reaproveitada em dois negócios.
+- ERP: modelagem financeira com estorno e auditoria; sistema em uso real.
+- Portfólio: comportamento complexo em pouco código.
+Revela dependência de IA ou falta de maturidade:
+- Raiz do ERP com ~60 arquivos de rascunho: 19 logs de push do Supabase, ts_errors_1..final2, fix_ts_props, fix_ts_props_2, fix_ts_props_3, três arquivos de schema diferentes. Padrão de tentativa e erro com IA sem limpar depois.
+- .env, .env.local e .env.vercel commitados no repo (credenciais versionadas). Falha de segurança básica que um tech lead nota em 10 segundos. Precisa ser corrigida antes de o repo ser mostrado.
+- READMEs de template (AI Studio, Vite, Lovable) nunca reescritos.
+- Os 619 testes provavelmente foram escritos com IA. Viram o maior trunfo se o Luiz explicar o que cobrem, e o maior risco se não souber.
+
+MINHA PROPOSTA DE POSICIONAMENTO (critique)
+Título: "Dev full-stack em início de carreira que entrega software usado por negócios reais, com IA como multiplicador, e estudante de Física."
+Frase para RH: "Construí o sistema que roda os orçamentos de uma confecção: de 30 para 5 minutos."
+Segunda frase para tech lead: "Modelagem financeira com estorno auditável, 619 testes nas lojas, e um portfólio 3D em 148 linhas sem biblioteca."
+Diferencial: ponte entre a operação e o código (fala a língua da produção e do financeiro), mais física computacional, que quase nenhum júnior tem.
+Assumido abertamente: "uso IA para escrever código; meu trabalho é decompor o problema, revisar, testar e responder pelo resultado."
+
+O QUE PRECISO DE VOCÊ (entreviste o Luiz de novo, pode perguntar à vontade)
+- A história dos R$ 664: ele lembra? Qual era a causa? Quem achou?
+- O estorno em vez de apagar: de onde veio a ideia?
+- Física computacional: o que ele simulou, com qual objetivo (IC? artigo? orientador?), o que fazia na prática (terminal, cluster, scripts, gráficos) e uma vez em que a simulação deu errado.
+- Os 619 testes: ele sabe dizer o que testam? Pelo menos 3 exemplos.
+- Um caso de habilidade social concreto: um pedido de cliente/usuário que ele precisou traduzir, renegociar ou dizer "não".
+
+Depois responda neste formato:
+
+=== MENSAGEM 2 PARA O CLAUDE ===
+A) O que o Luiz respondeu (fatos novos, com fonte)
+B) Sua crítica ao meu posicionamento: o que é fraco, genérico ou arriscado
+C) 3 versões alternativas de título + frase RH + frase tech lead, da mais segura à mais ousada
+D) A história mais forte para abrir o portfólio, no formato situação → ação → resultado
+E) O que precisa sair ou ser consertado antes de mostrar (repo, site, discurso)
+F) Suas perguntas para mim
+=== FIM ===
+```
