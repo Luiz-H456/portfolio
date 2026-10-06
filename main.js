@@ -114,11 +114,12 @@ let shown = -1, last = 0
 function frame(now) {
   const steps = Math.min(4, Math.max(1, Math.round((now - (last || now - 16.7)) / 16.7)))  // quadros perdidos viram passos extras: mesma velocidade a 30 ou 120 fps
   last = now
-  if (chap) {  // saiu do capítulo rolando: para baixo segue p/ o próximo projeto, para cima fecha
+  if (chap) {  // saiu do capítulo rolando: para baixo a página vira já, mas o scroll só é reajustado parado (rolagem suave do navegador ainda mira a posição antiga)
     const P = scrollY / innerHeight, end = chap.at + chapLen()
-    if (P > end + .5) closeChap('next'); else if (P < chap.at - .5) closeChap('up')
+    if (P < chap.at - .5) closeChap('up')
+    else { chap.leaving = P > end + .3; if (chap.leaving && idle > 15) closeChap('next') }
   }
-  if (!chap && scrollY / innerHeight >= keys.length - 1.02) scrollTo({ top: 0, behavior: 'instant' })  // chegou na capa de novo: recomeça
+  if (!chap && idle > 20 && scrollY / innerHeight >= keys.length - 1.02) scrollTo({ top: 0, behavior: 'instant' })  // chegou na capa e parou: recomeça
   const [k, n, P] = target()
   if (still && n !== shown) { scene.classList.add('dip'); setTimeout(() => scene.classList.remove('dip'), 150) }
   shown = n
@@ -138,7 +139,8 @@ function frame(now) {
     const j = L - 1 - d, f = ease(clamp((cam.o - j * .16) / .52))  // j: ordem de virada (capa = 0)
     el.style.transform = `translateZ(${mix(d + 1, j + 1, f) * 1.5}px) rotateY(${-180 * f}deg)`  // borda presa na lombada: só gira, não sobe
   })
-  cf = still ? +!!chap : clamp(cf + (chap ? 1 : -1) * steps * 16.7 / 900)  // virada do capítulo: 0,9 s, acelera e freia por igual
+  const open = chap && !chap.leaving
+  cf = still ? +!!open : clamp(cf + (open ? 1 : -1) * steps * 16.7 / 900)  // virada do capítulo: 0,9 s, acelera e freia por igual
   const f = ease(cf)
   mainLeaf.style.transform = `translateZ(${mix(.75, 8, f)}px) rotateY(${-180 * f}deg)`  // virada: fica acima da página esquerda principal
   caption(n)
