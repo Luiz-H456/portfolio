@@ -23,7 +23,7 @@ const mq = matchMedia('(prefers-reduced-motion: reduce)')
 let still = mq.matches; mq.onchange = e => { still = e.matches }
 const clamp = v => Math.min(1, Math.max(0, v)), ease = u => u * u * u * (u * (6 * u - 15) + 10), mix = (a, b, u) => a + (b - a) * u
 let keys = [], meta = [], cam, vel = {}, lastP = 0, idle = 0, chap = null, cf = 0
-const chapShots = () => [...cL.children, ...cR.children].filter(c => +c.dataset.c >= 0), chapLen = () => chapShots().length + 1  // +1: visão das 2 páginas
+const chapShots = () => [...cL.children, ...cR.children].filter(c => +c.dataset.c >= 0), chapLen = () => chapShots().length + 2  // +2: visão das 2 páginas e título
 function measure() {
   const W = innerWidth, H = innerHeight, wide = W >= 900, cw = wide ? cap.offsetWidth + 48 : 0, ch = wide ? 0 : H * .42 + 16  // celular: reserva a altura máxima da legenda (CSS 42svh)
   const ox = -cw / 2, oy = -ch / 2, fw = (W - cw) * (wide ? .85 : .92), fh = (H - ch) * .78
@@ -41,8 +41,12 @@ function measure() {
     if (chap?.s !== el.dataset.s) return
     chap.at = keys.length - 1
     keys.push({ ...keys[1], s: keys[1].s * 1.05, rx: 30, rz: -3 }); meta.push({ s: chap.s, shot: -1 })  // capítulo aberto inteiro, sem zoom
+    keys.push(stop(cL.firstElementChild, 1, 14)); meta.push({ s: chap.s, shot: -1 })  // foco no título do projeto
     chapShots().forEach((c, j) => { keys.push(stop(c, j, 12)); meta.push({ s: chap.s, shot: +c.dataset.c }) })  // inclinação menor: print legível
   })
+  // fim: câmera se afasta, o livro se fecha e volta à capa (igual à parada 0; ao chegar, o scroll volta ao topo sem corte)
+  keys.push({ ...keys[1], s: keys[1].s * .85, rx: 46 }, { ...keys[1], x: 300, s: keys[1].s * .7, rx: 50, rz: -10, o: .45 }, { ...keys[0] })
+  meta.push({ s: 'fim' }, { s: 'fim' }, { s: 'intro' })
   stage.style.height = keys.length * 100 + 'svh'
   cam ??= { ...keys[0] }
 }
@@ -78,7 +82,7 @@ function closeChap(how) {
   chap = null; measure(); cur = -1
   scrollTo({ top: y, behavior: 'instant' })
 }
-capBtn.onclick = () => chap ? closeChap('back') : openChap(meta[cur].s)
+capBtn.onclick = () => chap ? closeChap('back') : t.sec[meta[cur].s].shots ? openChap(meta[cur].s) : scrollTo({ top: 0, behavior: still ? 'instant' : 'smooth' })
 addEventListener('keydown', e => { if (e.key === 'Escape' && chap) closeChap('back') })
 panels.forEach((el, i) => {
   if (el.querySelector('.go')) el.classList.add('has-chap')
@@ -86,7 +90,7 @@ panels.forEach((el, i) => {
 })
 
 // cor da legenda = cor do quadro (fundo, texto)
-const CAP = { intro: ['rust', 'black'], hero: ['mustard', 'black'], sobre: ['rust', 'black'], erp: ['blue', 'cream'], botezini: ['red', 'cream'],
+const CAP = { intro: ['rust', 'black'], fim: ['rust', 'black'], hero: ['mustard', 'black'], sobre: ['rust', 'black'], erp: ['blue', 'cream'], botezini: ['red', 'cream'],
   lojas: ['mustard', 'black'], barbearia: ['sky', 'black'], stack: ['green', 'cream'], contato: ['cream', 'black'] }
 function caption(n) {
   if (n === cur || !t) return
@@ -98,7 +102,8 @@ function caption(n) {
     cap.querySelector('#cap-k').textContent = sec.k
     cap.querySelector('#cap-t').innerHTML = sh ? sh.t : sec.t
     cap.querySelector('#cap-b').innerHTML = sh ? `<p>${sh.n}</p>` : sec.b
-    capBtn.hidden = !sec.shots; capBtn.textContent = chap ? t.ui.back : t.ui.open
+    const top = m.s === 'contato' || m.s === 'fim'
+    capBtn.hidden = !sec.shots && !top; capBtn.textContent = chap ? t.ui.back : sec.shots ? t.ui.open : t.ui.top
     cap.classList.remove('out')
   }, still ? 0 : 250)
 }
@@ -110,6 +115,7 @@ function frame(now) {
     const P = scrollY / innerHeight, end = chap.at + chapLen()
     if (P > end + .5) closeChap('next'); else if (P < chap.at - .5) closeChap('up')
   }
+  if (!chap && scrollY / innerHeight >= keys.length - 1.02) scrollTo({ top: 0, behavior: 'instant' })  // chegou na capa de novo: recomeça
   const [k, n, P] = target()
   if (still && n !== shown) { scene.classList.add('dip'); setTimeout(() => scene.classList.remove('dip'), 150) }
   shown = n

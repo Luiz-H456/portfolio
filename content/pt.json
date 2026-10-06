@@ -158,10 +158,16 @@
 "k": "Contato",
 "t": "Bora conversar?",
 "b": "<ul><li><a href=\"https://wa.me/5532985112336?text=Oi%20Luiz%2C%20vi%20seu%20portf%C3%B3lio\" target=\"_blank\" rel=\"noopener\">WhatsApp</a></li><li><a href=\"mailto:luuiizhcc@gmail.com\">luuiizhcc@gmail.com</a></li><li><a href=\"https://www.linkedin.com/in/luiz-henrique-71a387234/\" target=\"_blank\" rel=\"noopener\">LinkedIn</a></li><li><a href=\"https://github.com/Luiz-H456\" target=\"_blank\" rel=\"noopener\">GitHub</a></li></ul>"
+},
+"fim": {
+"k": "Fim do volume 1",
+"t": "Obrigado pela leitura",
+"b": "<p>Role mais um pouco para voltar à capa, ou me chame no WhatsApp ou por e-mail.</p>"
 }
 },
 "ui": {
 "open": "Abrir capítulo",
-"back": "Voltar ao livro"
+"back": "Voltar ao livro",
+"top": "Voltar ao início"
 }
 }
