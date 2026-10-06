@@ -240,3 +240,52 @@ Não precisa responder com outro relatório. Só confirme que guardou e que topa
 - **LinkedIn:** headline e Sobre no topo de `docs/linkedin.md`.
 - **Estudo:** plano priorizado no `TODO.md`.
 - **Pendente:** as 8 perguntas SIM/NÃO (Mensagem 3, item D). Cada SIM libera uma história no site.
+
+---
+
+## Prompt extra: a iniciação científica (cole no ChatGPT)
+
+```
+=== PROMPT EXTRA DO CLAUDE: A INICIAÇÃO CIENTÍFICA ===
+Fato novo: o Luiz contou que fez a parte computacional da iniciação científica (DFTB+, Quantum ESPRESSO, estrutura de bandas, interface TiO₂(001)/Ni, barreira Schottky) com a ajuda do Claude. Isso muda a pergunta. Já não é "ele fez simulação?", é "o que ele entende do que foi simulado?". No portfólio, a física só entra se passar por esse teste.
+
+Seu papel agora: banca de IC cética e justa. Entreviste o Luiz uma pergunta por vez, sem aceitar resposta vaga, e sem humilhar. "Não sei" é uma resposta válida e útil.
+
+1. O trabalho
+- Qual era a pergunta científica? O que se queria descobrir sobre a interface TiO₂/Ni?
+- Quem definiu o problema: orientador, grupo, ele? Qual era exatamente a parte dele?
+- Existe resultado concreto (relatório, pôster, apresentação, artigo)? Em que estágio está?
+
+2. Entendimento físico (sem consultar IA)
+- Em uma frase cada: o que é DFT? O que o DFTB+ faz de diferente e por que usar os dois?
+- O que é uma estrutura de bandas e o que ela mostrou nesse sistema?
+- O que é uma barreira Schottky e por que ela importa numa interface metal/semicondutor?
+- Por que a superfície (001) do TiO₂, e não outra?
+
+3. A parte computacional
+- O que ele fazia de verdade: montar a entrada, escolher parâmetros, rodar, processar a saída, gerar gráficos? Onde rodava (WSL, máquina própria, cluster)?
+- Quais parâmetros precisavam de teste de convergência (energia de corte, malha de pontos k, smearing) e como se sabe que convergiu?
+- O problema de buffer/MPI no Quantum ESPRESSO: o que era, e quem diagnosticou, ele ou o Claude?
+- Algum resultado deu fisicamente errado? Como perceberam?
+
+4. Divisão com o Claude
+Para cada etapa (montar a entrada, escolher parâmetros, rodar, depurar, interpretar resultados, escrever), classifique:
+(a) fez sozinho, (b) fez com a IA e sabe explicar, (c) a IA fez e ele não saberia refazer.
+
+Depois da entrevista, responda neste formato:
+
+=== MENSAGEM SOBRE A IC PARA O CLAUDE ===
+A) O que o trabalho é de fato (2–4 frases, sem inflar)
+B) Tabela das etapas com a classificação (a), (b) ou (c)
+C) O que ele demonstrou entender e o que não demonstrou
+D) Veredito para o portfólio. Escolha uma opção e justifique:
+   1. não mencionar ainda;
+   2. só "estudo Física na UFSJ";
+   3. "uso computação em simulação de materiais" com descrição curta;
+   4. virar um capítulo próprio no portfólio
+E) A frase exata que pode ir para o site e o LinkedIn, se o veredito permitir
+F) O que ele precisa estudar para defender a IC numa conversa técnica, em ordem
+=== FIM ===
+```
+
+Traga a "MENSAGEM SOBRE A IC PARA O CLAUDE" e eu aplico o veredito no site e no LinkedIn.
