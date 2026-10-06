@@ -11,3 +11,5 @@
 [ ] estudo | fase 3 | prompt injection e defesas, evals (conjunto de testes, regressão) | você
 [ ] estudo | fase 4 | agentes e tool use | você
 [ ] falta | content/ | revisão do texto em EN (eu traduzo, você valida) | você
+[ ] falta | content/projetos.md | ERP: quantos dias economizados (só com dado real; ex.: orçamentos/mês × ~20 min) | você
+[ ] decidir | domínio | comprar .dev ou .com.br (até lá: *.vercel.app) | você

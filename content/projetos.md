@@ -2,8 +2,8 @@
 
 ## Luiz
 Luiz Henrique Carvalho · São João del-Rei, MG · programa há 1 ano · cursando Física (bacharelado, UFSJ) e ADS (Estácio).
-Autodescrição: "curioso e teimoso".
-Contato: WhatsApp (32) 98511-2336 · luuiizhcc@gmail.com · linkedin.com/in/luiz-henrique-71a387234 · github.com/Luiz-H456
+Título: "Desenvolvedor full-stack AI-native · estudante de Física". Autodescrição: "curioso e persistente".
+Contato: WhatsApp 5532985112336 (só via botão wa.me, número não aparece escrito) · luuiizhcc@gmail.com · linkedin.com/in/luiz-henrique-71a387234 · github.com/Luiz-H456
 Sem domínio próprio ainda.
 
 ## ERP Botezini — repo botezinipvd (privado)
@@ -11,12 +11,12 @@ Stack: React 18, TypeScript, Vite, Tailwind 4, Supabase (Postgres, RLS), TanStac
 Módulos (src/pages): Dashboard, Orçamentos, Pedidos, Produção, Estoque, Financeiro, Cadastros, Inteligência (IA).
 Arquitetura: pages / services / repositories / hooks.
 Usado em produção pela Confecções Botezini. Resolveu: controle de estoque, padronização e rapidez de orçamentos.
-? números: tempo de um orçamento antes/depois, nº de usuários, pedidos/mês
+Orçamento: 20–30 min → 2–5 min. Mais de 60 pedidos feitos pelo sistema.
+? dias economizados (não calcular sem dado real)
 
 ## Botezini — botezini.com.br — repo botezini_site_vercel
 Site institucional/comercial de uniformes. SEO técnico (schema, lastmod via git, IndexNow), páginas-funil de personalização e bordado.
-Segundo o Luiz: aumentou vendas e trouxe credibilidade.
-? número: leads/mês ou contatos antes/depois
+Deu visibilidade: leads qualificados chegam toda semana de forma passiva.
 
 ## BTZN — btzn.com.br — repo btzn-loja
 Astro 5 + React, Vercel (SSR adapter), Upstash Redis, Vercel Blob, Nanostores, Zod. Testes Vitest + Playwright. Scripts próprios de geração de marca, ícones e OG.
