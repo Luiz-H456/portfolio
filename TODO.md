@@ -17,7 +17,6 @@
 [ ] divida | main.js | shader de fumaça removido no protótipo do mangá (está no commit 2e5c810); reaproveitar como nebulosa | eu
 [ ] estudo | fase 1 | CSS 3D (perspective, preserve-3d), animação guiada por scroll, FLIP (main.js measure/target/frame), interpolação, easing e mola amortecida (oscilador harmônico) | você
 [ ] divida | style.css header | nome fixo no topo fica por cima do mangá em algumas paradas | eu
-[ ] divida | main.js | navegação por teclado (↑↓) e pular direto para um quadro | eu
 [ ] falta | assets/cover.webp | em uso a versão 765px; refazer (prompt novo, sem canhão frontal) e fazer upscale 2× | você
 [ ] decidir | vídeos | os 2 gerados (nave/moto e carro na estrada, 8 s 1080p) não são os loops pedidos; o carro tem o Pão de Açúcar (RJ), não MG | você
 [ ] falta | docs/assets.md | qual gerador você usa (Midjourney, Flux, Nano Banana...)? Ajusto os prompts ao modelo | você
@@ -40,3 +39,4 @@
 [ ] falta | entrevista | responder as 8 perguntas SIM/NÃO (docs/entrevista-chatgpt.md): liberam R$ 664, estorno, física e caso de cliente no site | você
 [ ] falta | IC | quando der: rodar o prompt da IC (docs/entrevista-chatgpt.md, fim) e trazer o veredito; até lá o site NÃO menciona a IC | você
 [ ] estudo | IC | fazer à mão os 4 exercícios do fim do notebook PIIC_parte1_EBC antes de qualquer apresentação | você
+[ ] falta | capítulo Formação | cursos, certificados e qualificações (nome, instituição, ano) e se quer citar a atuação comercial B2B na Botezini | você

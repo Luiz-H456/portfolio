@@ -293,9 +293,35 @@
 }
 },
 "stack": {
-"k": "Stack",
-"t": "Ferramentas do dia a dia",
-"b": "<p>React, TypeScript, Astro, Node, Supabase/Postgres, Tailwind, Vercel, Upstash, Zod, Vitest, Playwright e Claude Code.</p>"
+"k": "Formação e ferramentas",
+"t": "O que eu estudo e com o que construo",
+"b": "<p>Física na UFSJ e Análise e Desenvolvimento de Sistemas na Estácio, as duas em andamento. As ferramentas abaixo estão separadas pelo que de fato já uso em produção e pelo que ainda estou estudando.</p>",
+"chap": {
+"art": "6/1/9/7",
+"items": [
+{
+"html": "<dl class=\"stats one\"><div><dt>Física</dt><dd>Bacharelado, UFSJ, em andamento</dd></div><div><dt>ADS</dt><dd>Análise e Desenvolvimento de Sistemas, Estácio, em andamento</dd></div></dl>",
+"t": "Formação",
+"n": "As duas graduações em andamento, em paralelo.",
+"p": "L",
+"a": "3/1/6/7"
+},
+{
+"html": "<p class=\"flow\"><span>Problema real</span><i>→</i><span>Pesquisa</span><i>→</i><span>Protótipo</span><i>→</i><span>Teste</span><i>→</i><span>Revisão</span></p>",
+"t": "Como eu aprendo",
+"n": "Problema real primeiro, teoria logo atrás.",
+"p": "L",
+"a": "6/1/9/7"
+},
+{
+"html": "<div class=\"lv\"><div><h4>Uso em produção</h4><p><span>React</span><span>TypeScript</span><span>Supabase/Postgres</span><span>Astro</span><span>Vercel</span><span>Git</span></p></div><div><h4>Já usei em projeto</h4><p><span>Zod</span><span>TanStack Query</span><span>Upstash Redis</span><span>Vitest</span><span>Playwright</span><span>PWA</span><span>Tailwind</span></p></div><div><h4>Estudando agora</h4><p><span>SQL avançado</span><span>RLS e segurança</span><span>Testes</span><span>Arquitetura</span></p></div></div>",
+"t": "Ferramentas por nível",
+"n": "Separado com honestidade: produção, projeto e estudo.",
+"p": "R",
+"a": "1/1/6/7"
+}
+]
+}
 },
 "contato": {
 "k": "Contato",
@@ -366,6 +392,8 @@
 "back": "Voltar ao livro",
 "top": "Voltar ao início",
 "inside": "Por dentro",
-"cover": "Desenvolvedor full-stack"
+"cover": "Desenvolvedor full-stack",
+"edu": "Formação",
+"home": "Início"
 }
 }

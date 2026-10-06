@@ -8,6 +8,7 @@ async function setLang(l) {
   document.getElementById('lang').textContent = l === 'pt' ? 'EN' : 'PT'
   try { localStorage.setItem('lang', l) } catch { }
   if (chap) fillChap(chap.s)
+  if (keys.length) buildToc()
   cur = -1
 }
 document.getElementById('lang').onclick = () => setLang(document.documentElement.lang === 'en' ? 'pt' : 'en')
@@ -94,7 +95,21 @@ function closeChap(how) {
   scrollTo({ top: y, behavior: 'instant' })
 }
 capBtn.onclick = () => chap ? closeChap('back') : t.sec[meta[cur].s].chap ? openChap(meta[cur].s) : scrollTo({ top: 0, behavior: still ? 'instant' : 'smooth' })
-addEventListener('keydown', e => { if (e.key === 'Escape' && chap) closeChap('back') })
+// teclado: ↓/PageDown/espaço avançam uma parada, ↑/PageUp voltam, Home volta à capa, Esc fecha o capítulo
+let kt = null  // destino pendente: toques rápidos somam em vez de repetir a mesma parada
+const go = i => { kt = Math.max(0, Math.min(keys.length - 1, i)); scrollTo({ top: kt * innerHeight, behavior: still ? 'instant' : 'smooth' }) }
+addEventListener('keydown', e => {
+  if (e.key === 'Escape' && chap) return closeChap('back')
+  if (e.target.closest?.('button,a,input')) return
+  const P = kt ?? Math.round(scrollY / innerHeight), d = { ArrowDown: 1, PageDown: 1, ' ': 1, ArrowUp: -1, PageUp: -1 }[e.key]
+  if (d) { e.preventDefault(); go(P + d) } else if (e.key === 'Home') { e.preventDefault(); go(0) }
+})
+// índice no topo: pula direto para um quadro (fecha o capítulo aberto antes)
+const toc = document.getElementById('toc')
+function buildToc() {
+  toc.innerHTML = panels.map((el, i) => `<button data-i="${i}">${el.dataset.s === 'hero' ? t.ui.home : el.querySelector('b').textContent}</button>`).join('')
+  toc.querySelectorAll('button').forEach(b => b.onclick = () => { if (chap) closeChap('up'); go(+b.dataset.i + 2) })
+}
 panels.forEach((el, i) => {
   if (el.querySelector('.go')) el.classList.add('has-chap')
   el.onclick = () => { const s = el.dataset.s; if (!t.sec[s].chap) return; meta[cur]?.s === s ? openChap(s) : scrollTo({ top: (i + 2) * innerHeight, behavior: 'smooth' }) }
@@ -114,6 +129,7 @@ function caption(n) {
     cap.querySelector('#cap-t').innerHTML = it ? it.t : sec.t
     cap.querySelector('#cap-b').innerHTML = !it ? sec.b : it.in ? `<p>${it.in.prob}</p><ul>${it.in.dec.map(x => `<li>${x}</li>`).join('')}</ul>` : `<p>${it.n}</p>`
     const top = m.s === 'contato' || m.s === 'fim'
+    toc.querySelectorAll('button').forEach(b => b.toggleAttribute('aria-current', panels[b.dataset.i].dataset.s === m.s))
     capBtn.hidden = !sec.chap && !top; capBtn.textContent = chap ? t.ui.back : sec.chap ? t.ui.open : t.ui.top
     cap.classList.remove('out')
   }, still ? 0 : 250)
@@ -132,6 +148,7 @@ function frame(now) {
   if (still && n !== shown) { scene.classList.add('dip'); setTimeout(() => scene.classList.remove('dip'), 150) }
   shown = n
   idle = Math.abs(P - lastP) > 1e-4 ? 0 : idle + 1
+  if (idle > 10) kt = null
   // viajando (ou pausa curta entre cliques da roda): quase crítico, ~1%; parado ~150 ms: uma passada de ~5,6% e assenta
   const [d, r] = idle < 9 ? [.55, .1] : [.72, .05]
   lastP = P
@@ -161,4 +178,4 @@ function frame(now) {
   requestAnimationFrame(frame)
 }
 addEventListener('resize', measure)
-setLang(lang0).then(() => { measure(); requestAnimationFrame(frame) })
+setLang(lang0).then(() => { measure(); buildToc(); requestAnimationFrame(frame) })

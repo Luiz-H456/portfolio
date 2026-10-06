@@ -293,9 +293,35 @@
 }
 },
 "stack": {
-"k": "Stack",
-"t": "Everyday tools",
-"b": "<p>React, TypeScript, Astro, Node, Supabase/Postgres, Tailwind, Vercel, Upstash, Zod, Vitest, Playwright and Claude Code.</p>"
+"k": "Education and tools",
+"t": "What I study and what I build with",
+"b": "<p>Physics at UFSJ and Systems Analysis and Development at Estácio, both in progress. The tools below are split by what I actually use in production and what I am still studying.</p>",
+"chap": {
+"art": "6/1/9/7",
+"items": [
+{
+"html": "<dl class=\"stats one\"><div><dt>Physics</dt><dd>BSc, UFSJ, in progress</dd></div><div><dt>Systems Dev.</dt><dd>Systems Analysis and Development, Estácio, in progress</dd></div></dl>",
+"t": "Education",
+"n": "Both degrees in progress, in parallel.",
+"p": "L",
+"a": "3/1/6/7"
+},
+{
+"html": "<p class=\"flow\"><span>Real problem</span><i>→</i><span>Research</span><i>→</i><span>Prototype</span><i>→</i><span>Test</span><i>→</i><span>Review</span></p>",
+"t": "How I learn",
+"n": "Real problem first, theory right behind.",
+"p": "L",
+"a": "6/1/9/7"
+},
+{
+"html": "<div class=\"lv\"><div><h4>Used in production</h4><p><span>React</span><span>TypeScript</span><span>Supabase/Postgres</span><span>Astro</span><span>Vercel</span><span>Git</span></p></div><div><h4>Used in a project</h4><p><span>Zod</span><span>TanStack Query</span><span>Upstash Redis</span><span>Vitest</span><span>Playwright</span><span>PWA</span><span>Tailwind</span></p></div><div><h4>Studying now</h4><p><span>Advanced SQL</span><span>RLS and security</span><span>Testing</span><span>Architecture</span></p></div></div>",
+"t": "Tools by level",
+"n": "Split honestly: production, project and study.",
+"p": "R",
+"a": "1/1/6/7"
+}
+]
+}
 },
 "contato": {
 "k": "Contact",
@@ -366,6 +392,8 @@
 "back": "Back to the book",
 "top": "Back to the start",
 "inside": "Under the hood",
-"cover": "Full-stack developer"
+"cover": "Full-stack developer",
+"edu": "Education",
+"home": "Home"
 }
 }
