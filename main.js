@@ -47,6 +47,7 @@ function target() {
 function caption(n) {
   if (n === cur || !t) return
   cur = n; cap.classList.add('out')
+  panels.forEach((el, i) => i <= n && el.classList.add('on'))  // carrega a arte deste quadro e dos 2 seguintes (n conta 2 paradas antes dos quadros)
   setTimeout(() => {
     const s = t.sec[n > 1 ? panels[n - 2].dataset.s : 'intro']
     cap.querySelector('#cap-k').textContent = s.k; cap.querySelector('#cap-t').innerHTML = s.t; cap.querySelector('#cap-b').innerHTML = s.b
