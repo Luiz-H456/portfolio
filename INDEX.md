@@ -13,3 +13,4 @@ assets/shots/ | prints reais (<projeto>-1/2 desktop 1200×750, -3 celular 360×7
 docs/linkedin.md | rascunhos de posts do LinkedIn (projetos, formação, portfólio) | -
 favicon-32.png, apple-touch-icon.png | ícones (nave preta sobre ferrugem) | -
 docs/novo-projeto.md | passo a passo p/ adicionar projeto e plano de capítulos (virar página) | -
+docs/entrevista-chatgpt.md | roteiro Claude×ChatGPT p/ posicionamento: fluxo de 7 mensagens e Prompt 1 | -
