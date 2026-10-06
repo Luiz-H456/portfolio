@@ -61,15 +61,19 @@ a{color:var(--mustard)}
 .right>:nth-child(4){grid-area:6/1/9/4}
 .right>:nth-child(5){grid-area:6/4/9/7}
 
-/* legenda: celular embaixo, desktop à direita */
-.cap{position:fixed;z-index:2;inset:auto 1rem max(1rem,env(safe-area-inset-bottom));background:var(--black);border:2px solid var(--cream);
-  padding:1rem 1.1rem;max-height:42svh;overflow:auto;transition:opacity .35s,translate .35s}
-.cap.out{opacity:0;translate:0 12px}
-.cap h2{font-size:clamp(1.8rem,6vw,3.2rem);margin:.3rem 0 .5rem}
-.cap div{color:#efe6d2cc;font-size:clamp(1rem,1.2vw,1.1rem);max-width:60ch}
-.cap .tools{margin-top:.6rem;color:var(--sky)}
+/* legenda = title card: cor do quadro atual (--cb/--cf via main.js), borda grossa, sombra dura, leve inclinação */
+.cap{--cb:var(--mustard);--cf:var(--black);position:fixed;z-index:2;inset:auto .75rem max(.75rem,env(safe-area-inset-bottom));
+  background:var(--cb);color:var(--cf);border:4px solid var(--black);box-shadow:8px 8px 0 var(--black);rotate:-1deg;
+  padding:1.1rem 1.2rem 1rem;max-height:42svh;overflow:auto;transition:opacity .3s,translate .3s cubic-bezier(.2,.9,.3,1.2),rotate .3s,background-color .3s}
+.cap.out{opacity:0;translate:0 18px;rotate:-4deg}
+.cap .kick{color:inherit;opacity:.8;font-weight:600}
+.cap h2{font-size:clamp(2.1rem,7vw,4.2rem);line-height:.92;margin:.25rem 0 .6rem}
+.cap div{color:inherit;font-size:clamp(1rem,1.15vw,1.12rem);max-width:60ch}
 .cap div p+p,.cap ul{margin-top:.5rem}.cap ul{padding-left:1.1rem}
-@media (min-width:900px){.cap{inset:auto clamp(1.5rem,4vw,3.5rem) 3rem auto;width:min(30rem,36vw);max-height:70svh}}
+.cap a{color:inherit;font-weight:600;text-decoration-thickness:2px;text-underline-offset:3px}
+.cap .tools{margin-top:.6rem;font-weight:600;opacity:.85}
+@media (min-width:900px){.cap{inset:50% clamp(1.5rem,4vw,3.5rem) auto auto;translate:0 -50%;width:min(34rem,38vw);max-height:80svh;padding:1.6rem 1.7rem 1.4rem}
+  .cap.out{translate:0 calc(-50% + 18px)}}
 
 /* arte: versão pequena (assets/sm) p/ visão geral; a grande só com .on, quando a câmera se aproxima (main.js) */
 /* arte P&B em duotone: preto vira tinta, branco vira a cor do quadro (multiply) */
@@ -85,7 +89,8 @@ a{color:var(--mustard)}
 .card{position:absolute;left:0;top:0;width:var(--cw,480px);margin:0;border:8px solid var(--black);background:var(--black);box-shadow:16px 16px 0 #0007;cursor:pointer;opacity:0;transform-origin:50% 50%}
 .card.tall{width:calc(var(--cw,480px) * .42)}
 .card img{display:block;width:100%;height:auto}
-.deck-ui{display:flex;align-items:center;gap:.75rem;margin-top:.8rem;padding-top:.7rem;border-top:1px solid #efe6d233}
-.deck-ui p{flex:1;font-weight:600;color:var(--cream)}
-.deck-ui button{font-weight:600;color:var(--mustard);padding:.35rem .2rem}
+.deck-ui{display:flex;align-items:center;gap:.6rem;margin-top:1rem;padding-top:.9rem;border-top:3px solid var(--black)}
+.deck-ui p{flex:1;font-weight:600;line-height:1.25}
+.deck-ui button{font-weight:600;background:var(--black);color:var(--cream);padding:.55rem .9rem;box-shadow:3px 3px 0 #0006}
+.deck-ui button:active{translate:2px 2px;box-shadow:1px 1px 0 #0006}
 .deck-ui[hidden]{display:none}

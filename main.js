@@ -22,11 +22,11 @@ let still = mq.matches; mq.onchange = e => { still = e.matches }
 const clamp = v => Math.min(1, Math.max(0, v)), ease = u => u * u * u * (u * (6 * u - 15) + 10), mix = (a, b, u) => a + (b - a) * u
 let keys = [], cam, vel = {}, lastP = 0, idle = 0
 function measure() {
-  const W = innerWidth, H = innerHeight, wide = W >= 900, cw = wide ? cap.offsetWidth + 48 : 0, ch = wide ? 0 : cap.offsetHeight + 16
+  const W = innerWidth, H = innerHeight, wide = W >= 900, cw = wide ? cap.offsetWidth + 48 : 0, ch = wide ? 0 : H * .42 + 16  // celular: reserva a altura máxima da legenda (CSS 42svh)
   const ox = -cw / 2, oy = -ch / 2, fw = (W - cw) * (wide ? .85 : .92), fh = (H - ch) * .78
   keys = [
-    { x: 600, y: 0, s: Math.min(W / 1200, H / 1600) * .8, rx: 38, rz: -4, ox: 0, oy: -ch / 3, o: 0 },  // livro fechado
-    { x: 0, y: 0, s: Math.min(W / 2400, H / 1600) * .95, rx: 42, rz: -6, ox: 0, oy: -ch / 3, o: 1 }]   // aberto, visão geral
+    { x: 600, y: 0, s: Math.min((W - cw) / 1200, (H - ch) / 1600) * .8, rx: 38, rz: -4, ox, oy, o: 0 },  // livro fechado
+    { x: 0, y: 0, s: Math.min((W - cw) / 2400, (H - ch) / 1600) * .95, rx: 42, rz: -6, ox, oy, o: 1 }]   // aberto, visão geral
   panels.forEach((el, i) => {
     // verso da folha aparece espelhado de volta: x local = x no livro; página direita começa em 1200
     const w = el.offsetWidth, h = el.offsetHeight, base = el.closest('.right') ? 1200 : 0
@@ -50,8 +50,8 @@ function buildDecks() {
       const cards = shots.map((sh, j) => {
         const c = Object.assign(document.createElement('figure'), { className: sh.tall ? 'card tall' : 'card' })
         c.innerHTML = `<img data-src="${sh.src}" alt="" decoding="async">`
-        c.onclick = () => { dk.a = j; deckLabel() }
-        box.append(c); return { el: c, p: { x: 0, y: 0, z: 0, ry: 0, rz: 0, s: .8, o: 0 } }
+        c.onclick = () => { const N = dk.cards.length, f = (j - dk.a + N) % N; if (f) step(f <= N / 2 ? 1 : -1, dk) }
+        box.append(c); return { el: c, p: { x: 0, y: 0, z: 0, ry: 0, rz: 0, s: .8, o: 0 }, fly: 0, dir: 1 }
       })
       book.append(box)
       dk = { box, cards, key: i + 2, a: 0, d: 0, s: el.dataset.s }
@@ -67,10 +67,21 @@ function deckLabel() {
   ui.hidden = !dk
   if (dk) { const sh = t.sec[dk.s].shots; cap.querySelector('#deck-l').textContent = `${sh[dk.a].t}, ${dk.a + 1} ${t.ui.of} ${sh.length}` }
 }
-function step(dir) { const dk = deckOf(cur); if (dk) { dk.a = (dk.a + dir + dk.cards.length) % dk.cards.length; deckLabel() } }
+// folhear: avançando, a carta da frente é jogada num arco e vai para o fundo; voltando, a do fundo faz o arco e vem para a frente
+function step(dir, dk = deckOf(cur)) {
+  if (!dk) return
+  const N = dk.cards.length, next = (dk.a + dir + N) % N, c = dk.cards[dir > 0 ? dk.a : next]
+  c.fly = 1; c.dir = dir; dk.a = next; deckLabel()
+}
 document.getElementById('prev').onclick = () => step(-1)
 document.getElementById('next').onclick = () => step(1)
 addEventListener('keydown', e => { if (e.key === 'ArrowRight') step(1); if (e.key === 'ArrowLeft') step(-1) })
+let tx0, ty0  // celular: arrastar o dedo para os lados folheia
+addEventListener('touchstart', e => { tx0 = e.touches[0].clientX; ty0 = e.touches[0].clientY }, { passive: true })
+addEventListener('touchend', e => {
+  const dx = e.changedTouches[0].clientX - tx0, dy = e.changedTouches[0].clientY - ty0
+  if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy) * 1.5) step(dx < 0 ? 1 : -1)
+}, { passive: true })
 function renderDecks(n, P, steps) {
   const lerp = k => still ? 1 : 1 - (1 - k) ** steps
   for (const dk of decks) {
@@ -85,8 +96,9 @@ function renderDecks(n, P, steps) {
         ? { x: 0, y: 0, z: 0, ry: 0, rz: 0, s: 1, o: rel ? 0 : f }
         : { x: rel * 46 * f, y: -rel * 34 * f, z: (130 - rel * 55) * f, ry: -rel * 8 * f, rz: (rel ? (rel % 2 ? 3 : -2) : -1.5) * f, s: .8 + .2 * f, o: f * Math.max(0, 1 - rel * .3) }
       for (const q in g) c.p[q] += (g[q] - c.p[q]) * lerp(.14)
-      const p = c.p
-      c.el.style.transform = `translate(-50%,-50%) translate3d(${p.x}px,${p.y}px,${p.z}px) rotateY(${p.ry}deg) rotateZ(${p.rz}deg) scale(${p.s})`
+      c.fly = still ? 0 : Math.max(0, c.fly - steps / 36)  // arco dura ~0,6 s
+      const p = c.p, arc = Math.sin(Math.PI * c.fly) * f, sd = c.dir
+      c.el.style.transform = `translate(-50%,-50%) translate3d(${p.x + sd * 340 * arc}px,${p.y - 120 * arc}px,${p.z + 140 * arc}px) rotateY(${p.ry - sd * 28 * arc}deg) rotateZ(${p.rz + sd * 12 * arc}deg) scale(${p.s})`
       c.el.style.opacity = p.o
       c.el.style.pointerEvents = p.o > .5 ? 'auto' : 'none'
     })
@@ -101,12 +113,16 @@ function target() {
   k.s *= 1 - .22 * arc; k.rx += 8 * arc  // recua um pouco no meio da viagem: os quadros vizinhos aparecem
   return [k, u < .5 ? i : i + 1, P]
 }
+// cor da legenda = cor do quadro (fundo, texto)
+const CAP = { intro: ['rust', 'black'], hero: ['mustard', 'black'], sobre: ['rust', 'black'], erp: ['blue', 'cream'], botezini: ['red', 'cream'],
+  lojas: ['mustard', 'black'], barbearia: ['sky', 'black'], stack: ['green', 'cream'], contato: ['cream', 'black'] }
 function caption(n) {
   if (n === cur || !t) return
   cur = n; cap.classList.add('out')
   panels.forEach((el, i) => i <= n && el.classList.add('on'))  // carrega a arte deste quadro e dos 2 seguintes (n conta 2 paradas antes dos quadros)
   setTimeout(() => {
-    const s = t.sec[n > 1 ? panels[n - 2].dataset.s : 'intro']
+    const s = t.sec[n > 1 ? panels[n - 2].dataset.s : 'intro'], [cb, cf] = CAP[n > 1 ? panels[n - 2].dataset.s : 'intro']
+    cap.style.setProperty('--cb', `var(--${cb})`); cap.style.setProperty('--cf', `var(--${cf})`)
     cap.querySelector('#cap-k').textContent = s.k; cap.querySelector('#cap-t').innerHTML = s.t; cap.querySelector('#cap-b').innerHTML = s.b
     cap.classList.remove('out'); deckLabel()
   }, still ? 0 : 250)
