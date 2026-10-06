@@ -8,3 +8,4 @@ content/pt.json, content/en.json | textos: todo.* (avisos) e sec.<data-s> (legen
 content/projetos.md | fatos levantados de cada case (fonte, não é publicado) | -
 .claude/skills/ | skills do projeto: frontend-design (Anthropic), motion-design (LottieFiles), 60fps-animation, accessible-animation, shader-glsl (iart.ai), superimage-generator (Bluebag), site-assets-art-direction (do Luiz: checklist de geração/aceite de assets) — licenças em cada pasta | -
 docs/assets.md | prompts de imagens/vídeos a gerar, tamanhos e nomes de arquivo | -
+assets/ | artes P&B (duotone via .art + --img no style.css): cover.webp, sobre.webp | -

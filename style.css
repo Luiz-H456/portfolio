@@ -45,7 +45,8 @@ a{color:var(--mustard)}
 .c-violet{background-color:var(--violet)}.c-blue{background-color:var(--blue)}.c-red{background-color:var(--red)}
 .c-mustard{background-color:var(--mustard)}.c-mustard b{color:var(--black)}.c-green{background-color:var(--green)}
 .c-sky{background-color:var(--sky);background-image:linear-gradient(transparent 62%,var(--blue) 62% 66%,#1f3f73 66%),radial-gradient(#fff6 1.5px,transparent 2.4px)}
-.c-mars{background-color:var(--rust);box-shadow:inset 26px 0 0 var(--mustard),inset 40px 0 0 var(--black),inset 56px 0 0 var(--red)}
+.c-rust{background-color:var(--rust)}
+.c-mars{background-color:var(--violet);box-shadow:inset 26px 0 0 var(--mustard),inset 40px 0 0 var(--black),inset 56px 0 0 var(--red)}
 .c-port{background:linear-gradient(var(--violet) 0 35%,#8a3f5c 35% 55%,var(--rust) 55% 72%,var(--mustard) 72%)}
 .c-port i{position:absolute;height:84%;aspect-ratio:1;left:50%;top:8%;translate:-50%;border:16px solid var(--black);border-radius:50%;
   background:linear-gradient(90deg,transparent 47%,var(--black) 47% 53%,transparent 53%)}
@@ -68,3 +69,9 @@ a{color:var(--mustard)}
 .cap .tools{margin-top:.6rem;color:var(--sky)}
 .cap div p+p,.cap ul{margin-top:.5rem}.cap ul{padding-left:1.1rem}
 @media (min-width:900px){.cap{inset:auto clamp(1.5rem,4vw,3.5rem) 3rem auto;width:min(30rem,36vw);max-height:70svh}}
+
+/* arte P&B em duotone: preto vira tinta, branco vira a cor do quadro (multiply) */
+.art{background-image:var(--img);background-size:cover;background-position:center;background-blend-mode:multiply}
+.a-sobre{--img:url(assets/sobre.webp)}
+.a-cover{--img:url(assets/cover.webp);background-position:center bottom}
+.art b{-webkit-text-stroke:14px var(--black);paint-order:stroke fill}

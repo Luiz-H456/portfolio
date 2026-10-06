@@ -6,12 +6,13 @@ Gere, exporte e coloque em `assets/` com o nome indicado. Eu integro.
 - **Arte original.** Não use personagens, naves, logos nem frames de Cowboy Bebop ou de outro anime, e não cite o nome de nenhuma obra no prompt.
 - **Arte em preto e branco** (tinta + retícula). A cor entra no site por CSS (duotone): preto vira tinta e branco vira a cor do quadro. Assim todos os quadros ficam coerentes, mesmo gerados em dias diferentes.
 - **Sem texto na imagem.** Os títulos são HTML.
-- **Exportar** em WebP, qualidade 80, no tamanho indicado (2× o quadro, para ficar nítido no zoom).
+- **Exportar** em WebP, qualidade 80, no tamanho indicado (2× o quadro, para ficar nítido no zoom). Se o gerador entregar menos (ex.: 1024px), use o upscale dele (Midjourney "Upscale (Creative)", Magnific, Krea) antes de exportar.
+- **Nunca cite o nome do arquivo no prompt.** O gerador lê "stack" como "pilha" e desenha roupas empilhadas.
 - **Modelo recomendado:** Midjourney (estilo artístico). Alternativas: Recraft (ilustração) e Flux. Para outro modelo, use o bloco de texto sem os parâmetros `--`.
 
 ### Bloco de estilo (cole no início de todo prompt de imagem)
 ```
-black and white Japanese manga ink illustration, 1990s hand-drawn cel-era aesthetic, bold confident brush-pen linework with varied line weight, heavy solid black shadows, mechanical halftone screentone dots for midtones, cross-hatching in deep shadows, high contrast, pure white paper background, cinematic composition, retro-futurist jazz-noir mood, no color, no gray gradients, no text, no lettering, no logos, no signature, no watermark
+black and white Japanese manga ink illustration, 1990s hand-drawn cel-era aesthetic, bold confident brush-pen linework with varied line weight, heavy solid black shadows, mechanical halftone screentone dots for midtones, cross-hatching in deep shadows, high contrast, pure white paper background, cinematic composition, retro-futurist jazz-noir mood, no color, no gray gradients, no text, no lettering, no logos, no signature, no watermark, full-bleed edge to edge, no panel border, no frame
 ```
 **Negativos:** `--no color, gradient shading, 3d render, photorealism, text, letters, logo, watermark, signature, frame border, characters' faces, blurry, low detail`
 
@@ -20,11 +21,13 @@ black and white Japanese manga ink illustration, 1990s hand-drawn cel-era aesthe
 ## Imagens
 
 ### 1. Capa do volume: `assets/cover.webp` (1200×1600, 3:4)
+Status: v1 recebida e em uso (765px, upscale pendente). Refazer com o prompt abaixo: a v1 tem um canhão longo na frente, o que lembra naves de anime conhecidas.
 ```
-[ESTILO] Vertical composition. A lone original retro-futurist single-seat spacecraft, angular hull with long forward boom and asymmetric fins, banking low over a rust-desert canyon at dusk, thin exhaust trail curving toward the viewer. Vast empty sky occupying the top 55% of the frame (reserved for the title, keep it nearly empty with only faint screentone stars). Low horizon, distant mesas, fine dust kicked up below the craft. Dramatic rim light from a low sun behind the mesas, long shadows. Wide-angle 24mm feel, slight dutch tilt. --ar 3:4 --style raw --stylize 200
+[ESTILO] Vertical composition. A lone original retro-futurist single-seat spacecraft with a short blunt rounded nose, chunky twin rear engines, stubby swept-back wings and a bubble canopy (no long cannon or boom protruding forward, no forward guns), banking low over a rust-desert canyon at dusk, thin exhaust trail curving toward the viewer. Vast empty sky occupying the top 55% of the frame (reserved for the title, keep it nearly empty with only faint screentone stars). Low horizon, distant mesas, fine dust kicked up below the craft. Dramatic rim light from a low sun behind the mesas, long shadows. Wide-angle 24mm feel, slight dutch tilt. --ar 3:4 --style raw --stylize 200
 ```
 
 ### 2. Sobre: `assets/sobre.webp` (1100×740, 3:2)
+Status: aprovada e em uso (1024px; upscale para 1100+ opcional).
 ```
 [ESTILO] View from inside a dark room through a large circular porthole window with a thick riveted metal frame, one vertical support bar crossing the glass. Outside, at sunset, a hillside colonial town of Minas Gerais: whitewashed houses with terracotta roofs, two baroque church bell towers silhouetted against towering cumulus clouds. Interior in near-total black silhouette, a desk edge and a coffee mug in the foreground lower-left, a laptop glowing faintly. Clouds rendered with stepped flat screentone bands. Calm, contemplative. --ar 3:2 --style raw --stylize 150
 ```
@@ -50,9 +53,10 @@ O print real do ERP continua sendo a prioridade. Esta arte é o fundo do quadro,
 [ESTILO] Ultra-wide panoramic interior of a classic barbershop at night: vintage hydraulic barber chair in the center, straight razor and comb on a counter in the foreground right, a large wall mirror reflecting rows of empty chairs into infinity, a rotating barber pole silhouette by the window on the left, rain streaks on the window glass. Moody noir lighting, single overhead lamp cone. --ar 3:1 --style raw --stylize 150
 ```
 
-### 7. Stack: `assets/stack.webp` (1100×1100, 1:1)
+### 7. Painel de comando (arquivo `assets/stack.webp`, 1100×1100, 1:1)
+Status: refazer. As 2 versões saíram como pilha de roupas.
 ```
-[ESTILO] Retro-futurist spaceship cockpit console seen from the pilot seat: banks of chunky toggle switches, round analog gauges, a small CRT monitor with scanlines showing an abstract wireframe cube (no text), thick bundles of cables snaking across the floor, a coffee cup on the dashboard. Through the curved windshield, a starfield rendered as screentone dots. Low angle, slight fisheye 18mm feel. --ar 1:1 --style raw --stylize 150
+[ESTILO] Interior view, no clothing, no fabric, no folded garments. Retro-futurist spaceship cockpit console seen from the pilot seat: banks of chunky toggle switches, round analog gauges, a small CRT monitor with scanlines showing an abstract wireframe cube (no text), thick bundles of cables snaking across the floor, a coffee cup on the dashboard. Through the curved windshield, a starfield rendered as screentone dots. Low angle, slight fisheye 18mm feel. --ar 1:1 --style raw --stylize 150
 ```
 
 ### 8. Contato: `assets/contato.webp` (1100×1100, 1:1)
