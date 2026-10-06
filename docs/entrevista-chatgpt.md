@@ -247,32 +247,39 @@ Não precisa responder com outro relatório. Só confirme que guardou e que topa
 
 ```
 === PROMPT EXTRA DO CLAUDE: A INICIAÇÃO CIENTÍFICA ===
-Fato novo: o Luiz contou que fez a parte computacional da iniciação científica (DFTB+, Quantum ESPRESSO, estrutura de bandas, interface TiO₂(001)/Ni, barreira Schottky) com a ajuda do Claude. Isso muda a pergunta. Já não é "ele fez simulação?", é "o que ele entende do que foi simulado?". No portfólio, a física só entra se passar por esse teste.
+O Luiz me mandou o projeto da IC e o notebook da Parte 1. Ele contou que fez a parte computacional com outro Claude. Aqui vão os fatos e o que preciso de você.
 
-Seu papel agora: banca de IC cética e justa. Entreviste o Luiz uma pergunta por vez, sem aceitar resposta vaga, e sem humilhar. "Não sei" é uma resposta válida e útil.
+FATOS (tirados do projeto e do notebook)
+- PIIC/UFSJ, fev/2026 a jan/2027, orientador Prof. Horácio Wagner Leite Alves (DCNAT, Laboratório de Estrutura Eletrônica e Resposta Linear). Título: "Cálculo da estrutura de bandas complexa em superfícies e em barreiras Schottky de semicondutores". 8 h/semana.
+- Plano: (1) Parte 1: deduzir analiticamente a estrutura de bandas complexa (EBC) de uma cadeia 1D semi-infinita no modelo do elétron quase livre e o estado de superfície (Lüth, cap. 6); (2) Parte 2: programa em Python, seguindo Ferry et al. (2025), usando DFTB+ para obter a EBC da superfície TiO₂(001) rutilo e depois da barreira Schottky TiO₂(001)/Ni, comparando com a literatura. Apresentação prevista na SBF em maio/2027.
+- CORREÇÃO: o projeto usa DFTB+, não Quantum ESPRESSO. Se ele usou QE, foi em outro momento. Confirme com ele.
+- Estado atual: Parte 1 feita num notebook Python (numpy/scipy). O estado de superfície é calculado por 4 métodos independentes, que concordam: (A) aproximação de duas ondas analítica, E_s = 4,1716 eV; (B) matriz de transferência exata, 4,1496 eV; (C) ondas planas, problema inverso, mesmo κ = 0,06261 Å⁻¹; (D) diagonalização de slab com 60 células e extrapolação de Richardson, 4,14956 eV (diferença de 1,5 μeV para o exato). Conclusões: κ_max = |V_G|/(CG); o estado só existe se o degrau do vácuo ficar a menos de ~0,23a de um mínimo do potencial; a aproximação de duas ondas erra ~22 meV.
+- Sinal importante: o notebook contém "Faça no papel" e "Exercícios para fazer à mão (o que a banca vai cobrar)": deduzir E±(κ) e κ_max, mostrar |c2/c1| = 1, mostrar que ζ → ζ + a/2 equivale a V_G → −V_G, explicar por que um estado fora do gap não pode ser localizado. Ou seja, a IA montou o material e deixou para ele as deduções. A pergunta é se ele fez.
 
-1. O trabalho
-- Qual era a pergunta científica? O que se queria descobrir sobre a interface TiO₂/Ni?
-- Quem definiu o problema: orientador, grupo, ele? Qual era exatamente a parte dele?
-- Existe resultado concreto (relatório, pôster, apresentação, artigo)? Em que estágio está?
+SEU PAPEL
+Banca de IC cética e justa. Uma pergunta por vez, sem aceitar resposta vaga e sem humilhar. "Não sei" é resposta válida.
 
-2. Entendimento físico (sem consultar IA)
-- Em uma frase cada: o que é DFT? O que o DFTB+ faz de diferente e por que usar os dois?
-- O que é uma estrutura de bandas e o que ela mostrou nesse sistema?
-- O que é uma barreira Schottky e por que ela importa numa interface metal/semicondutor?
-- Por que a superfície (001) do TiO₂, e não outra?
+1. Entendimento (sem consultar IA)
+- Em palavras simples: o que é a estrutura de bandas complexa e por que k complexo aparece numa superfície?
+- O que é um estado de superfície (Shockley) e por que ele precisa estar dentro do gap?
+- O que significa κ_max = |V_G|/(CG) fisicamente? O que acontece com o decaimento se o gap aumenta?
+- Por que o estado só existe para certas posições do degrau? O que isso tem a ver com gap "normal" e "invertido"?
+- Ele fez os 4 exercícios à mão? Peça que explique pelo menos um passo a passo.
 
-3. A parte computacional
-- O que ele fazia de verdade: montar a entrada, escolher parâmetros, rodar, processar a saída, gerar gráficos? Onde rodava (WSL, máquina própria, cluster)?
-- Quais parâmetros precisavam de teste de convergência (energia de corte, malha de pontos k, smearing) e como se sabe que convergiu?
-- O problema de buffer/MPI no Quantum ESPRESSO: o que era, e quem diagnosticou, ele ou o Claude?
-- Algum resultado deu fisicamente errado? Como perceberam?
+2. O código
+- Ele sabe explicar o que cada método (A, B, C, D) faz e por que usar quatro em vez de um?
+- O que é a extrapolação de Richardson e por que ela aproxima o slab do exato?
+- Por que aparecem k espúrios no método das ondas planas e como foram filtrados?
+- Ele conseguiria mudar V_G ou a, rodar de novo e interpretar o gráfico sem ajuda?
+
+3. A Parte 2
+- O que muda ao passar do modelo 1D para o TiO₂ com DFTB+? O notebook diz que é preciso extrair H e S do DFTB+, não E(k). Ele entende por quê? Confirmou com o orientador?
 
 4. Divisão com o Claude
-Para cada etapa (montar a entrada, escolher parâmetros, rodar, depurar, interpretar resultados, escrever), classifique:
+Para cada etapa (entender a teoria, deduções, escrever o código, validar, interpretar), classifique:
 (a) fez sozinho, (b) fez com a IA e sabe explicar, (c) a IA fez e ele não saberia refazer.
 
-Depois da entrevista, responda neste formato:
+Depois responda neste formato:
 
 === MENSAGEM SOBRE A IC PARA O CLAUDE ===
 A) O que o trabalho é de fato (2–4 frases, sem inflar)
@@ -281,10 +288,10 @@ C) O que ele demonstrou entender e o que não demonstrou
 D) Veredito para o portfólio. Escolha uma opção e justifique:
    1. não mencionar ainda;
    2. só "estudo Física na UFSJ";
-   3. "uso computação em simulação de materiais" com descrição curta;
+   3. "faço iniciação científica em física computacional" com descrição curta;
    4. virar um capítulo próprio no portfólio
 E) A frase exata que pode ir para o site e o LinkedIn, se o veredito permitir
-F) O que ele precisa estudar para defender a IC numa conversa técnica, em ordem
+F) O que ele precisa estudar para defender a IC, em ordem
 === FIM ===
 ```
 
