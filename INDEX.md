@@ -1,10 +1,10 @@
 # Índice (caminho | função | depende de)
 CLAUDE.md | regras para IA | -
 TODO.md | pendências, dívidas, decisões, estudo | -
-index.html | .stage > .scene > .book (.right = página direita; .leaf = folhas que viram, a última traz a página esquerda no verso; capa = última .leaf) + .cap (legenda fora do 3D) | style.css, main.js
+index.html | .stage > .scene > .book: #cR (pág. direita do capítulo, embaixo), .leaf.main (frente = pág. direita principal, verso #cL = esquerda do capítulo), .leaf = folhas da abertura (a última traz a pág. esquerda no verso; capa = última) + .cap (legenda, botão #chap-b) | style.css, main.js
 style.css | paleta Bebop (:root), grão, mangá aberto 2400×1600px, grade dos quadros, legenda responsiva | -
-main.js | i18n + câmera (measure/target/frame, mola com passos de tempo real) + virada das folhas + baralhos de prints (buildDecks/renderDecks; step() folheia com arco; clique, setas, botões e swipe); CAP = cor da legenda por quadro | content/*.json
-content/pt.json, content/en.json | textos: ui.*, todo.*, sec.<data-s> (k/t/b + shots [{src,t,tall}]) | -
+main.js | i18n; câmera (measure/target/frame, mola em passos de tempo real); keys+meta por parada; capítulo (fillChap/openChap/closeChap: insere paradas, vira .leaf.main, fecha ao rolar além do fim); CAP = cor da legenda | content/*.json
+content/pt.json, content/en.json | textos: ui.*, todo.*, sec.<data-s> (k/t/b; shots [{src,t,n,p,a,tall}] = print, rótulo, narração, página L/R, grid-area; chap.art) | -
 content/projetos.md | fatos levantados de cada case (fonte, não é publicado) | -
 .claude/skills/ | skills do projeto: frontend-design (Anthropic), motion-design (LottieFiles), 60fps-animation, accessible-animation, shader-glsl (iart.ai), superimage-generator (Bluebag), site-assets-art-direction (do Luiz: checklist de geração/aceite de assets) — licenças em cada pasta | -
 docs/assets.md | prompts de imagens/vídeos a gerar, tamanhos e nomes de arquivo | -

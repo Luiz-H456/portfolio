@@ -31,19 +31,31 @@
 {
 "src": "assets/shots/botezini-1.webp",
 "t": "Home page",
-"tall": false
+"tall": false,
+"n": "The promise in one sentence and a single button: run the numbers with a specialist.",
+"p": "L",
+"a": "3/1/6/7"
 },
 {
 "src": "assets/shots/botezini-2.webp",
 "t": "Customization: embroidery, DTF and screen print",
-"tall": false
+"tall": false,
+"n": "Embroidery, DTF and screen print side by side, so clients see which technique fits.",
+"p": "L",
+"a": "6/1/9/7"
 },
 {
 "src": "assets/shots/botezini-3.webp",
 "t": "On mobile",
-"tall": true
+"tall": true,
+"n": "On mobile, WhatsApp is always one tap away.",
+"p": "R",
+"a": "1/1/9/4"
 }
-]
+],
+"chap": {
+"art": "1/4/9/7"
+}
 },
 "lojas": {
 "k": "BTZN + Fora da Caixa",
@@ -53,34 +65,55 @@
 {
 "src": "assets/shots/btzn-1.webp",
 "t": "BTZN: home with the next drop",
-"tall": false
+"tall": false,
+"n": "BTZN: countdown to the next drop and a VIP list 24h early.",
+"p": "L",
+"a": "3/1/6/7"
 },
 {
 "src": "assets/shots/btzn-2.webp",
 "t": "BTZN: t-shirt catalog",
-"tall": false
+"tall": false,
+"n": "Catalog with the brand identity.",
+"p": "L",
+"a": "6/1/9/5"
 },
 {
 "src": "assets/shots/btzn-3.webp",
 "t": "BTZN: drop page on mobile",
-"tall": true
+"tall": true,
+"n": "On mobile, the drop takes the whole page.",
+"p": "L",
+"a": "6/5/9/7"
 },
 {
 "src": "assets/shots/fdc-1.webp",
 "t": "Fora da Caixa: home page",
-"tall": false
+"tall": false,
+"n": "Fora da Caixa: same platform, another brand.",
+"p": "R",
+"a": "1/1/4/7"
 },
 {
 "src": "assets/shots/fdc-2.webp",
 "t": "Fora da Caixa: bouquet builder",
-"tall": false
+"tall": false,
+"n": "Bouquet builder: size, flowers and colors, priced instantly.",
+"p": "R",
+"a": "4/1/7/5"
 },
 {
 "src": "assets/shots/fdc-3.webp",
 "t": "Fora da Caixa: on mobile",
-"tall": true
+"tall": true,
+"n": "On mobile, the bouquet and the build button on the first screen.",
+"p": "R",
+"a": "4/5/9/7"
 }
-]
+],
+"chap": {
+"art": "7/1/9/5"
+}
 },
 "barbearia": {
 "k": "Stilo Black Barbershop",
@@ -90,19 +123,31 @@
 {
 "src": "assets/shots/barbearia-1.webp",
 "t": "Home page",
-"tall": false
+"tall": false,
+"n": "Strong identity and app booking right on the first screen.",
+"p": "L",
+"a": "3/1/6/7"
 },
 {
 "src": "assets/shots/barbearia-2.webp",
 "t": "Most booked services",
-"tall": false
+"tall": false,
+"n": "Most booked services with prices, one tap from booking.",
+"p": "L",
+"a": "6/1/9/7"
 },
 {
 "src": "assets/shots/barbearia-3.webp",
 "t": "On mobile",
-"tall": true
+"tall": true,
+"n": "On mobile: WhatsApp, booking and haircuts in three buttons.",
+"p": "R",
+"a": "1/1/9/4"
 }
-]
+],
+"chap": {
+"art": "1/4/9/7"
+}
 },
 "stack": {
 "k": "Stack",
@@ -116,8 +161,7 @@
 }
 },
 "ui": {
-"prev": "Previous",
-"next": "Next",
-"of": "of"
+"open": "Open chapter",
+"back": "Back to the book"
 }
 }

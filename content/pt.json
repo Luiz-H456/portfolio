@@ -31,19 +31,31 @@
 {
 "src": "assets/shots/botezini-1.webp",
 "t": "Página inicial",
-"tall": false
+"tall": false,
+"n": "A promessa em uma frase e um só botão: fazer as contas com um especialista.",
+"p": "L",
+"a": "3/1/6/7"
 },
 {
 "src": "assets/shots/botezini-2.webp",
 "t": "Personalização: bordado, DTF e silk",
-"tall": false
+"tall": false,
+"n": "Bordado, DTF e silk lado a lado, para o cliente entender qual técnica serve ao pedido.",
+"p": "L",
+"a": "6/1/9/7"
 },
 {
 "src": "assets/shots/botezini-3.webp",
 "t": "No celular",
-"tall": true
+"tall": true,
+"n": "No celular, o WhatsApp fica sempre a um toque.",
+"p": "R",
+"a": "1/1/9/4"
 }
-]
+],
+"chap": {
+"art": "1/4/9/7"
+}
 },
 "lojas": {
 "k": "BTZN + Fora da Caixa",
@@ -53,34 +65,55 @@
 {
 "src": "assets/shots/btzn-1.webp",
 "t": "BTZN: página inicial com o próximo drop",
-"tall": false
+"tall": false,
+"n": "BTZN: contagem regressiva para o próximo drop e lista VIP 24h antes.",
+"p": "L",
+"a": "3/1/6/7"
 },
 {
 "src": "assets/shots/btzn-2.webp",
 "t": "BTZN: catálogo de camisetas",
-"tall": false
+"tall": false,
+"n": "Catálogo com a identidade da marca.",
+"p": "L",
+"a": "6/1/9/5"
 },
 {
 "src": "assets/shots/btzn-3.webp",
 "t": "BTZN: página do drop no celular",
-"tall": true
+"tall": true,
+"n": "No celular, o drop vira a página inteira.",
+"p": "L",
+"a": "6/5/9/7"
 },
 {
 "src": "assets/shots/fdc-1.webp",
 "t": "Fora da Caixa: página inicial",
-"tall": false
+"tall": false,
+"n": "Fora da Caixa: mesma plataforma, outra marca.",
+"p": "R",
+"a": "1/1/4/7"
 },
 {
 "src": "assets/shots/fdc-2.webp",
 "t": "Fora da Caixa: montador de buquê",
-"tall": false
+"tall": false,
+"n": "Montador de buquê: tamanho, flores e cores, com preço na hora.",
+"p": "R",
+"a": "4/1/7/5"
 },
 {
 "src": "assets/shots/fdc-3.webp",
 "t": "Fora da Caixa: no celular",
-"tall": true
+"tall": true,
+"n": "No celular, o buquê e o botão de montar na primeira tela.",
+"p": "R",
+"a": "4/5/9/7"
 }
-]
+],
+"chap": {
+"art": "7/1/9/5"
+}
 },
 "barbearia": {
 "k": "Barbearia Stilo Black",
@@ -90,19 +123,31 @@
 {
 "src": "assets/shots/barbearia-1.webp",
 "t": "Página inicial",
-"tall": false
+"tall": false,
+"n": "Identidade forte e agendamento pelo app logo na primeira tela.",
+"p": "L",
+"a": "3/1/6/7"
 },
 {
 "src": "assets/shots/barbearia-2.webp",
 "t": "Serviços mais procurados",
-"tall": false
+"tall": false,
+"n": "Serviços mais procurados com preço, a um toque de agendar.",
+"p": "L",
+"a": "6/1/9/7"
 },
 {
 "src": "assets/shots/barbearia-3.webp",
 "t": "No celular",
-"tall": true
+"tall": true,
+"n": "No celular: WhatsApp, agendamento e cortes em três botões.",
+"p": "R",
+"a": "1/1/9/4"
 }
-]
+],
+"chap": {
+"art": "1/4/9/7"
+}
 },
 "stack": {
 "k": "Stack",
@@ -116,8 +161,7 @@
 }
 },
 "ui": {
-"prev": "Anterior",
-"next": "Próximo",
-"of": "de"
+"open": "Abrir capítulo",
+"back": "Voltar ao livro"
 }
 }

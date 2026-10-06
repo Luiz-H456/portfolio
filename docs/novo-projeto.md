@@ -8,12 +8,12 @@
 ## O que eu faço (4 lugares, nada mais)
 | Onde | O quê |
 |---|---|
-| `content/pt.json` e `content/en.json` | `sec.<id>`: `k`, `t`, `b` (descrição, tecnologias, link) e `shots` (`src`, `t`, `tall`) |
+| `content/pt.json` e `content/en.json` | `sec.<id>`: `k`, `t`, `b` (descrição, tecnologias, link), `shots` (`src`, `t` rótulo, `n` narração, `p` página L/R, `a` grid-area, `tall`) e `chap.art` (área da arte no capítulo) |
 | `assets/<id>.webp`, `assets/sm/<id>.webp`, `assets/shots/<id>-N.webp` | arte (2× e prévia) e prints |
 | `index.html` | um `.pn` com `data-s="<id>"` e `class="art a-<id> c-<cor>"` numa página |
 | `style.css` + `main.js` | `grid-area` do quadro, `.a-<id>` com a arte e a cor da legenda em `CAP` |
 
-A câmera, o baralho, a legenda e o carregamento sob demanda funcionam sozinhos a partir do `data-s` e dos `shots`.
+A câmera, o capítulo (virar a página e mostrar os prints como quadros), a legenda e o carregamento sob demanda funcionam sozinhos a partir do `data-s` e dos `shots`. Cada capítulo comporta até ~7 prints nas 2 páginas.
 
 ## Limite de espaço
 - **Hoje:** 9 quadros em 2 páginas. Só o quadro roxo decorativo (ao lado de "Sobre") está livre, então cabe **1 projeto** sem mexer no layout.

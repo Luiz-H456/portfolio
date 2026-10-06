@@ -7,102 +7,43 @@ async function setLang(l) {
   document.documentElement.lang = l === 'pt' ? 'pt-BR' : 'en'
   document.getElementById('lang').textContent = l === 'pt' ? 'EN' : 'PT'
   try { localStorage.setItem('lang', l) } catch { }
+  if (chap) fillChap(chap.s)
   cur = -1
-  if (decks.length) deckLabel()
 }
 document.getElementById('lang').onclick = () => setLang(document.documentElement.lang === 'en' ? 'pt' : 'en')
 
-// Câmera: paradas = visão geral + cada quadro com data-s. Scroll escolhe a parada; a câmera chega por mola amortecida (passa um pouco e assenta).
+// Câmera: paradas = livro fechado, visão geral e cada quadro com data-s; com capítulo aberto, os quadros dele entram logo após o projeto.
+// O scroll escolhe a parada; a câmera chega por mola amortecida.
 const stage = document.querySelector('.stage'), scene = document.querySelector('.scene'), book = document.querySelector('.book'), cap = document.querySelector('.cap')
-const panels = [...book.querySelectorAll('[data-s]')].sort((a, b) => a.closest('.right') ? 1 : b.closest('.right') ? -1 : 0)
-const leaves = [...book.querySelectorAll('.leaf')]  // ordem do DOM: de baixo p/ cima; a capa (última) vira primeiro
+const capBtn = document.getElementById('chap-b'), cL = document.getElementById('cL'), cR = document.getElementById('cR'), mainLeaf = book.querySelector('.leaf.main')
+const panels = [...book.querySelectorAll('.pn[data-s]')].sort((a, b) => a.closest('.right') ? 1 : b.closest('.right') ? -1 : 0)
+const leaves = [...book.querySelectorAll('.leaf:not(.main)')]  // ordem do DOM: de baixo p/ cima; a capa (última) vira primeiro
 // reduzir movimento: sem 3D nem zoom contínuo; câmera pula de quadro em quadro com fade curto
 const mq = matchMedia('(prefers-reduced-motion: reduce)')
 let still = mq.matches; mq.onchange = e => { still = e.matches }
 const clamp = v => Math.min(1, Math.max(0, v)), ease = u => u * u * u * (u * (6 * u - 15) + 10), mix = (a, b, u) => a + (b - a) * u
-let keys = [], cam, vel = {}, lastP = 0, idle = 0
+let keys = [], meta = [], cam, vel = {}, lastP = 0, idle = 0, chap = null, cf = 0
+const chapPanels = () => [...cL.children, ...cR.children].filter(c => c.dataset.c)
 function measure() {
   const W = innerWidth, H = innerHeight, wide = W >= 900, cw = wide ? cap.offsetWidth + 48 : 0, ch = wide ? 0 : H * .42 + 16  // celular: reserva a altura máxima da legenda (CSS 42svh)
   const ox = -cw / 2, oy = -ch / 2, fw = (W - cw) * (wide ? .85 : .92), fh = (H - ch) * .78
+  // verso de folha aparece espelhado de volta: x local = x no livro; páginas da direita começam em 1200
+  const stop = (el, i, rx) => {
+    const w = el.offsetWidth, h = el.offsetHeight, base = el.closest('.right,.cright') ? 1200 : 0
+    return { x: base + el.offsetLeft + w / 2 - 1200, y: el.offsetTop + h / 2 - 800, s: Math.min(fw / w, fh / h), rx, rz: i % 2 ? 4 : -4, ox, oy, o: 1 }
+  }
   keys = [
     { x: 600, y: 0, s: Math.min((W - cw) / 1200, (H - ch) / 1600) * .8, rx: 38, rz: -4, ox, oy, o: 0 },  // livro fechado
     { x: 0, y: 0, s: Math.min((W - cw) / 2400, (H - ch) / 1600) * .95, rx: 42, rz: -6, ox, oy, o: 1 }]   // aberto, visão geral
+  meta = [{ s: 'intro' }, { s: 'intro' }]
   panels.forEach((el, i) => {
-    // verso da folha aparece espelhado de volta: x local = x no livro; página direita começa em 1200
-    const w = el.offsetWidth, h = el.offsetHeight, base = el.closest('.right') ? 1200 : 0
-    keys.push({ x: base + el.offsetLeft + w / 2 - 1200, y: el.offsetTop + h / 2 - 800,
-      s: Math.min(fw / w, fh / h), rx: 20, rz: i % 2 ? 4 : -4, ox, oy, o: 1 })
+    keys.push(stop(el, i, 20)); meta.push({ s: el.dataset.s })
+    if (chap?.s !== el.dataset.s) return
+    chap.at = keys.length - 1
+    chapPanels().forEach((c, j) => { keys.push(stop(c, j, 12)); meta.push({ s: chap.s, shot: +c.dataset.c }) })  // inclinação menor: print legível
   })
   stage.style.height = keys.length * 100 + 'svh'
   cam ??= { ...keys[0] }
-  buildDecks()
-}
-
-// Baralho de prints: cartas empilhadas no centro do quadro; quando a câmera chega, saem uma de cima da outra e abrem em leque (x, y, z)
-const decks = []
-function buildDecks() {
-  panels.forEach((el, i) => {
-    const shots = t.sec[el.dataset.s].shots, k = keys[i + 2]
-    if (!shots) return
-    let dk = decks.find(d => d.key === i + 2)
-    if (!dk) {
-      const box = Object.assign(document.createElement('div'), { className: 'deck' })
-      const cards = shots.map((sh, j) => {
-        const c = Object.assign(document.createElement('figure'), { className: sh.tall ? 'card tall' : 'card' })
-        c.innerHTML = `<img data-src="${sh.src}" alt="" decoding="async">`
-        c.onclick = () => { const N = dk.cards.length, f = (j - dk.a + N) % N; if (f) step(f <= N / 2 ? 1 : -1, dk) }
-        box.append(c); return { el: c, p: { x: 0, y: 0, z: 0, ry: 0, rz: 0, s: .8, o: 0 }, fly: 0, dir: 1 }
-      })
-      book.append(box)
-      dk = { box, cards, key: i + 2, a: 0, d: 0, s: el.dataset.s }
-      decks.push(dk)
-    }
-    dk.box.style.left = k.x + 1200 + 'px'; dk.box.style.top = k.y + 800 + 'px'
-    dk.box.style.setProperty('--cw', Math.min(el.offsetWidth * .8, el.offsetHeight * 1.15) + 'px')  // carta cabe no quadro
-  })
-}
-function deckOf(n) { return decks.find(d => d.key === n) }
-function deckLabel() {
-  const dk = deckOf(cur), ui = cap.querySelector('.deck-ui')
-  ui.hidden = !dk
-  if (dk) { const sh = t.sec[dk.s].shots; cap.querySelector('#deck-l').textContent = `${sh[dk.a].t}, ${dk.a + 1} ${t.ui.of} ${sh.length}` }
-}
-// folhear: avançando, a carta da frente é jogada num arco e vai para o fundo; voltando, a do fundo faz o arco e vem para a frente
-function step(dir, dk = deckOf(cur)) {
-  if (!dk) return
-  const N = dk.cards.length, next = (dk.a + dir + N) % N, c = dk.cards[dir > 0 ? dk.a : next]
-  c.fly = 1; c.dir = dir; dk.a = next; deckLabel()
-}
-document.getElementById('prev').onclick = () => step(-1)
-document.getElementById('next').onclick = () => step(1)
-addEventListener('keydown', e => { if (e.key === 'ArrowRight') step(1); if (e.key === 'ArrowLeft') step(-1) })
-let tx0, ty0  // celular: arrastar o dedo para os lados folheia
-addEventListener('touchstart', e => { tx0 = e.touches[0].clientX; ty0 = e.touches[0].clientY }, { passive: true })
-addEventListener('touchend', e => {
-  const dx = e.changedTouches[0].clientX - tx0, dy = e.changedTouches[0].clientY - ty0
-  if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy) * 1.5) step(dx < 0 ? 1 : -1)
-}, { passive: true })
-function renderDecks(n, P, steps) {
-  const lerp = k => still ? 1 : 1 - (1 - k) ** steps
-  for (const dk of decks) {
-    const near = still ? +(n === dk.key) : ease(1 - clamp(Math.abs(P - dk.key) / .55))
-    dk.d += (near - dk.d) * lerp(.12)
-    if (dk.d < .001 && near === 0) { if (dk.cards[0].p.o > .001) dk.cards.forEach(c => { c.p.o = 0; c.el.style.opacity = 0 }); continue }
-    const N = dk.cards.length
-    dk.cards.forEach((c, j) => {
-      const img = c.el.firstChild; if (!img.src) img.src = img.dataset.src  // só baixa o print quando o baralho começa a abrir
-      const rel = (j - dk.a + N) % N, f = ease(clamp(dk.d * 1.5 - rel * .12))  // rel 0 = carta da frente; as de trás saem depois
-      const g = still
-        ? { x: 0, y: 0, z: 0, ry: 0, rz: 0, s: 1, o: rel ? 0 : f }
-        : { x: rel * 46 * f, y: -rel * 34 * f, z: (130 - rel * 55) * f, ry: -rel * 8 * f, rz: (rel ? (rel % 2 ? 3 : -2) : -1.5) * f, s: .8 + .2 * f, o: f * Math.max(0, 1 - rel * .3) }
-      for (const q in g) c.p[q] += (g[q] - c.p[q]) * lerp(.14)
-      c.fly = still ? 0 : Math.max(0, c.fly - steps / 36)  // arco dura ~0,6 s
-      const p = c.p, arc = Math.sin(Math.PI * c.fly) * f, sd = c.dir
-      c.el.style.transform = `translate(-50%,-50%) translate3d(${p.x + sd * 340 * arc}px,${p.y - 120 * arc}px,${p.z + 140 * arc}px) rotateY(${p.ry - sd * 28 * arc}deg) rotateZ(${p.rz + sd * 12 * arc}deg) scale(${p.s})`
-      c.el.style.opacity = p.o
-      c.el.style.pointerEvents = p.o > .5 ? 'auto' : 'none'
-    })
-  }
 }
 function target() {
   const P = Math.min(keys.length - 1, scrollY / innerHeight)
@@ -113,24 +54,60 @@ function target() {
   k.s *= 1 - .22 * arc; k.rx += 8 * arc  // recua um pouco no meio da viagem: os quadros vizinhos aparecem
   return [k, u < .5 ? i : i + 1, P]
 }
+
+// Capítulo: a página direita vira (folha .main); o verso e a página de baixo mostram os prints do projeto como quadros.
+// Ao rolar além do último quadro, a página volta e a câmera segue para o próximo projeto.
+function fillChap(s) {
+  const sec = t.sec[s], L = [], R = []
+  L.push(`<div class="pn chead" data-c="-1" style="grid-area:1/1/3/7"><span class="kick">${sec.k}</span><b class="display">${sec.t}</b>${sec.b.match(/<p class="tools">.*?<\/p>/)?.[0] || ''}</div>`)
+  sec.shots.forEach((sh, j) => (sh.p === 'L' ? L : R).push(
+    `<div class="pn cp${sh.tall ? ' tall' : ''}" data-c="${j}" style="grid-area:${sh.a}"><img src="${sh.src}" alt="${sh.t}" decoding="async"><p class="cn">${sh.n}</p></div>`))
+  R.push(`<div class="pn art on a-${s} c-${CAP[s][0]}" style="grid-area:${sec.chap.art}"></div>`)
+  cL.innerHTML = L.join(''); cR.innerHTML = R.join('')
+}
+function openChap(s) {
+  if (!t.sec[s].shots || chap) return
+  fillChap(s); chap = { s }; measure(); cur = -1
+  scrollTo({ top: (chap.at + 1) * innerHeight, behavior: still ? 'instant' : 'smooth' })
+}
+// how: 'next' segue p/ o próximo projeto, 'back' volta ao quadro do projeto, 'up' fecha onde está (rolou para cima)
+function closeChap(how) {
+  const n = chapPanels().length, at = chap.at
+  const y = how === 'next' ? scrollY - n * innerHeight : how === 'back' ? at * innerHeight : scrollY
+  chap = null; measure(); cur = -1
+  scrollTo({ top: y, behavior: 'instant' })
+}
+capBtn.onclick = () => chap ? closeChap('back') : openChap(meta[cur].s)
+addEventListener('keydown', e => { if (e.key === 'Escape' && chap) closeChap('back') })
+panels.forEach((el, i) => {
+  el.onclick = () => { const s = el.dataset.s; if (!t.sec[s].shots) return; meta[cur]?.s === s ? openChap(s) : scrollTo({ top: (i + 2) * innerHeight, behavior: 'smooth' }) }
+})
+
 // cor da legenda = cor do quadro (fundo, texto)
 const CAP = { intro: ['rust', 'black'], hero: ['mustard', 'black'], sobre: ['rust', 'black'], erp: ['blue', 'cream'], botezini: ['red', 'cream'],
   lojas: ['mustard', 'black'], barbearia: ['sky', 'black'], stack: ['green', 'cream'], contato: ['cream', 'black'] }
 function caption(n) {
   if (n === cur || !t) return
   cur = n; cap.classList.add('out')
-  panels.forEach((el, i) => i <= n && el.classList.add('on'))  // carrega a arte deste quadro e dos 2 seguintes (n conta 2 paradas antes dos quadros)
+  panels.forEach((el, i) => i <= n && el.classList.add('on'))  // carrega a arte dos quadros até 2 à frente da parada atual
   setTimeout(() => {
-    const s = t.sec[n > 1 ? panels[n - 2].dataset.s : 'intro'], [cb, cf] = CAP[n > 1 ? panels[n - 2].dataset.s : 'intro']
+    const m = meta[n], sec = t.sec[m.s], sh = m.shot >= 0 ? sec.shots[m.shot] : null, [cb, cf] = CAP[m.s]
     cap.style.setProperty('--cb', `var(--${cb})`); cap.style.setProperty('--cf', `var(--${cf})`)
-    cap.querySelector('#cap-k').textContent = s.k; cap.querySelector('#cap-t').innerHTML = s.t; cap.querySelector('#cap-b').innerHTML = s.b
-    cap.classList.remove('out'); deckLabel()
+    cap.querySelector('#cap-k').textContent = sec.k
+    cap.querySelector('#cap-t').innerHTML = sh ? sh.t : sec.t
+    cap.querySelector('#cap-b').innerHTML = sh ? `<p>${sh.n}</p>` : sec.b
+    capBtn.hidden = !sec.shots; capBtn.textContent = chap ? t.ui.back : t.ui.open
+    cap.classList.remove('out')
   }, still ? 0 : 250)
 }
 let shown = -1, last = 0
 function frame(now) {
   const steps = Math.min(4, Math.max(1, Math.round((now - (last || now - 16.7)) / 16.7)))  // quadros perdidos viram passos extras: mesma velocidade a 30 ou 120 fps
   last = now
+  if (chap) {  // saiu do capítulo rolando: para baixo segue p/ o próximo projeto, para cima fecha
+    const P = scrollY / innerHeight, end = chap.at + chapPanels().length
+    if (P > end + .5) closeChap('next'); else if (P < chap.at - .5) closeChap('up')
+  }
   const [k, n, P] = target()
   if (still && n !== shown) { scene.classList.add('dip'); setTimeout(() => scene.classList.remove('dip'), 150) }
   shown = n
@@ -150,8 +127,10 @@ function frame(now) {
     const j = L - 1 - d, f = ease(clamp((cam.o - j * .16) / .52))  // j: ordem de virada (capa = 0)
     el.style.transform = `translateZ(${mix(d + 1, j + 1, f) * 1.5}px) rotateY(${-180 * f}deg)`  // borda presa na lombada: só gira, não sobe
   })
+  cf += ((chap ? 1 : 0) - cf) * (still ? 1 : 1 - .93 ** steps)  // virada do capítulo: ~0,7 s
+  const f = ease(clamp(cf))
+  mainLeaf.style.transform = `translateZ(${mix(.75, 8, f)}px) rotateY(${-180 * f}deg)`  // virada: fica acima da página esquerda principal
   caption(n)
-  renderDecks(n, P, steps)
   requestAnimationFrame(frame)
 }
 addEventListener('resize', measure)
