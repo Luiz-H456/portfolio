@@ -8,6 +8,7 @@ content/pt.json, content/en.json | textos: ui.*, todo.*, sec.<data-s> (k/t/b + s
 content/projetos.md | fatos levantados de cada case (fonte, não é publicado) | -
 .claude/skills/ | skills do projeto: frontend-design (Anthropic), motion-design (LottieFiles), 60fps-animation, accessible-animation, shader-glsl (iart.ai), superimage-generator (Bluebag), site-assets-art-direction (do Luiz: checklist de geração/aceite de assets) — licenças em cada pasta | -
 docs/assets.md | prompts de imagens/vídeos a gerar, tamanhos e nomes de arquivo | -
-assets/ | artes P&B em duotone (.art + --img; assets/sm = prévias p/ visão geral, grandes com .on): cover, sobre, erp (fábrica, usada no quadro Botezini), lojas, barbearia, stack, contato; floor.webp = chão colorido (.book::before) | -
+assets/ | artes P&B em duotone (.art + --img; assets/sm = prévias p/ visão geral, grandes com .on): cover, sobre, erp (escritório na nave), botezini (fábrica), lojas, barbearia, stack, contato; assets/deco/p0-4 = páginas de passagem desfocadas (300×400); floor.webp = chão colorido (.book::before) | -
 assets/shots/ | prints reais (<projeto>-1/2 desktop 1200×750, -3 celular 360×780); listados em content sec.<s>.shots | -
 docs/linkedin.md | rascunhos de posts do LinkedIn (projetos, formação, portfólio) | -
+favicon-32.png, apple-touch-icon.png | ícones (nave preta sobre ferrugem) | -

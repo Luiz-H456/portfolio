@@ -26,3 +26,4 @@
 [ ] falta | assets/contato.webp | opcional: refazer quadrado e sem moldura (recortei para 4:3) | você
 [ ] falta | assets/shots/erp.webp | print do ERP com dados fictícios: não rodo o ERP daqui (usaria as chaves de produção commitadas e dados reais de clientes) | você
 [ ] estudo | fase 1 | animação independente da taxa de quadros (passos de tempo em frame()), lazy-load de imagens | você
+[ ] decidir | favicon-32.png | a nave lembra muito a Swordfish II (Cowboy Bebop); trocar por algo original? | você

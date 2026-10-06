@@ -29,10 +29,9 @@ a{color:var(--mustard)}
 .back{transform:rotateY(180deg);box-shadow:0 0 0 10px #7a2a26}
 .page{display:grid;grid:repeat(8,1fr)/repeat(6,1fr);gap:18px;padding:40px;background:linear-gradient(-90deg,var(--cream) 92%,#d8ccb3)}
 .back.page{background:linear-gradient(90deg,var(--cream) 92%,#d8ccb3)}
-/* páginas de passagem: grade de quadros esmaecida */
-.deco{background:linear-gradient(90deg,#0000 49.5%,#0002 49.5% 50.5%,#0000 50.5%),linear-gradient(#0000 32%,#0002 32% 33%,#0000 33% 66%,#0002 66% 67%,#0000 67%),
-  radial-gradient(#0002 1.5px,#0000 2.4px) 0 0/10px 10px,var(--cream);border:40px solid var(--cream);outline:2px solid #0001;outline-offset:-60px}
-.back.deco{background-color:#e8dcc2}
+/* páginas de passagem: miniaturas 300×400 desfocadas (assets/deco), ampliadas de propósito */
+.deco{background:var(--cream) center/100% 100%}
+.d0{background-image:url(assets/deco/p0.webp)}.d1{background-image:url(assets/deco/p1.webp)}.d2{background-image:url(assets/deco/p2.webp)}.d3{background-image:url(assets/deco/p3.webp)}.d4{background-image:url(assets/deco/p4.webp)}
 .cover{background:var(--rust);padding:90px 90px 90px 170px;display:flex;flex-direction:column;justify-content:space-between;color:var(--black);
   box-shadow:inset 30px 0 0 var(--mustard),inset 44px 0 0 var(--black),inset 64px 0 0 var(--red),inset 78px 0 0 var(--black),0 0 0 10px #7a2a26,0 50px 100px 10px #000c}
 .cover b{font-size:250px;color:var(--black)}
@@ -75,7 +74,7 @@ a{color:var(--mustard)}
 /* arte: versão pequena (assets/sm) p/ visão geral; a grande só com .on, quando a câmera se aproxima (main.js) */
 /* arte P&B em duotone: preto vira tinta, branco vira a cor do quadro (multiply) */
 .art{background-image:var(--img);background-size:cover;background-position:center;background-blend-mode:multiply}
-.a-sobre{--img:url(assets/sm/sobre.webp)}.a-sobre.on{--img:url(assets/sobre.webp)}.a-botezini{--img:url(assets/sm/erp.webp)}.a-botezini.on{--img:url(assets/erp.webp)}.a-lojas{--img:url(assets/sm/lojas.webp)}.a-lojas.on{--img:url(assets/lojas.webp)}
+.a-sobre{--img:url(assets/sm/sobre.webp)}.a-sobre.on{--img:url(assets/sobre.webp)}.a-botezini{--img:url(assets/sm/botezini.webp)}.a-botezini.on{--img:url(assets/botezini.webp)}.a-erp{--img:url(assets/sm/erp.webp)}.a-erp.on{--img:url(assets/erp.webp)}.a-lojas{--img:url(assets/sm/lojas.webp)}.a-lojas.on{--img:url(assets/lojas.webp)}
 .a-barbearia{--img:url(assets/sm/barbearia.webp)}.a-barbearia.on{--img:url(assets/barbearia.webp)}.a-stack{--img:url(assets/sm/stack.webp)}.a-stack.on{--img:url(assets/stack.webp)}.a-contato{--img:url(assets/sm/contato.webp)}.a-contato.on{--img:url(assets/contato.webp)}
 .c-violet.art{background-color:#8a6fb0}  /* violeta mais claro: no escuro o desenho some */
 .a-cover{--img:url(assets/cover.webp);background-position:center bottom}
