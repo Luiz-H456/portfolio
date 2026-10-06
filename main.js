@@ -60,18 +60,21 @@ function target() {
   return [k, u < .5 ? i : i + 1, P]
 }
 
-// Capítulo: a página direita vira (folha .main); o verso e a página de baixo mostram os prints do projeto como quadros.
-// Ao rolar além do último quadro, a página volta e a câmera segue para o próximo projeto.
+// Capítulo: a página direita vira (folha .main); o verso e a página de baixo mostram os quadros do projeto.
+// Quadro = print (src), "por dentro" (in: número, problema, decisões, fluxo) ou código/texto (code). Ao rolar além do último, volta e segue.
+const inside = d => `<p class="kick">${t.ui.inside}</p><b class="num">${d.num}</b><p class="numl">${d.numl}</p><p>${d.prob}</p><ul>${d.dec.map(x => `<li>${x}</li>`).join('')}</ul>${d.flow ? `<p class="flow">${d.flow.map(x => `<span>${x}</span>`).join('<i>→</i>')}</p>` : ''}`
+const body = it => it.src ? `<img src="${it.src}" alt="${it.t}" decoding="async"><p class="cn">${it.n}</p>`
+  : it.in ? inside(it.in) : it.code ? `<pre>${it.code}</pre><p class="cn">${it.n}</p>` : `<div class="mods">${it.html}</div><p class="cn">${it.n}</p>`
 function fillChap(s) {
-  const sec = t.sec[s], L = [], R = []
+  const sec = t.sec[s], c = sec.chap, L = [], R = []
   L.push(`<div class="pn chead" data-c="-1" style="grid-area:1/1/3/7"><span class="kick">${sec.k}</span><b class="display">${sec.t}</b>${sec.b.match(/<p class="tools">.*?<\/p>/)?.[0] || ''}</div>`)
-  sec.shots.forEach((sh, j) => (sh.p === 'L' ? L : R).push(
-    `<div class="pn cp${sh.tall ? ' tall' : ''}" data-c="${j}" style="grid-area:${sh.a}"><img src="${sh.src}" alt="${sh.t}" decoding="async"><p class="cn">${sh.n}</p></div>`))
-  R.push(`<div class="pn art on a-${s} c-${CAP[s][0]}" style="grid-area:${sec.chap.art}"></div>`)
+  c.items.forEach((it, j) => (it.p === 'L' ? L : R).push(
+    `<div class="pn ${it.src ? 'cp' : it.in ? 'cin' : 'ccode'}${it.tall ? ' tall' : ''}" data-c="${j}" style="grid-area:${it.a}">${body(it)}</div>`))
+  if (c.art) R.push(`<div class="pn art on a-${s} c-${CAP[s][0]}" style="grid-area:${c.art}"></div>`)
   cL.innerHTML = L.join(''); cR.innerHTML = R.join('')
 }
 function openChap(s) {
-  if (!t.sec[s].shots || chap) return
+  if (!t.sec[s].chap || chap) return
   fillChap(s); chap = { s }; measure(); cur = -1
   scrollTo({ top: (chap.at + 1) * innerHeight, behavior: still ? 'instant' : 'smooth' })
 }
@@ -82,28 +85,28 @@ function closeChap(how) {
   chap = null; measure(); cur = -1
   scrollTo({ top: y, behavior: 'instant' })
 }
-capBtn.onclick = () => chap ? closeChap('back') : t.sec[meta[cur].s].shots ? openChap(meta[cur].s) : scrollTo({ top: 0, behavior: still ? 'instant' : 'smooth' })
+capBtn.onclick = () => chap ? closeChap('back') : t.sec[meta[cur].s].chap ? openChap(meta[cur].s) : scrollTo({ top: 0, behavior: still ? 'instant' : 'smooth' })
 addEventListener('keydown', e => { if (e.key === 'Escape' && chap) closeChap('back') })
 panels.forEach((el, i) => {
   if (el.querySelector('.go')) el.classList.add('has-chap')
-  el.onclick = () => { const s = el.dataset.s; if (!t.sec[s].shots) return; meta[cur]?.s === s ? openChap(s) : scrollTo({ top: (i + 2) * innerHeight, behavior: 'smooth' }) }
+  el.onclick = () => { const s = el.dataset.s; if (!t.sec[s].chap) return; meta[cur]?.s === s ? openChap(s) : scrollTo({ top: (i + 2) * innerHeight, behavior: 'smooth' }) }
 })
 
 // cor da legenda = cor do quadro (fundo, texto)
-const CAP = { intro: ['rust', 'black'], fim: ['rust', 'black'], hero: ['mustard', 'black'], sobre: ['rust', 'black'], erp: ['blue', 'cream'], botezini: ['red', 'cream'],
+const CAP = { intro: ['rust', 'black'], fim: ['rust', 'black'], metodo: ['violet', 'cream'], hero: ['mustard', 'black'], sobre: ['rust', 'black'], erp: ['blue', 'cream'], botezini: ['red', 'cream'],
   lojas: ['mustard', 'black'], barbearia: ['sky', 'black'], stack: ['green', 'cream'], contato: ['cream', 'black'] }
 function caption(n) {
   if (n === cur || !t) return
   cur = n; cap.classList.add('out')
   panels.forEach((el, i) => { i <= n && el.classList.add('on'); el.classList.toggle('here', !chap && el.dataset.s === meta[n].s) })  // arte até 2 quadros à frente; .here = quadro atual
   setTimeout(() => {
-    const m = meta[n], sec = t.sec[m.s], sh = m.shot >= 0 ? sec.shots[m.shot] : null, [cb, cf] = CAP[m.s]
+    const m = meta[n], sec = t.sec[m.s], it = m.shot >= 0 ? sec.chap.items[m.shot] : null, [cb, cf] = CAP[m.s]
     cap.style.setProperty('--cb', `var(--${cb})`); cap.style.setProperty('--cf', `var(--${cf})`)
     cap.querySelector('#cap-k').textContent = sec.k
-    cap.querySelector('#cap-t').innerHTML = sh ? sh.t : sec.t
-    cap.querySelector('#cap-b').innerHTML = sh ? `<p>${sh.n}</p>` : sec.b
+    cap.querySelector('#cap-t').innerHTML = it ? it.t : sec.t
+    cap.querySelector('#cap-b').innerHTML = !it ? sec.b : it.in ? `<p>${it.in.prob}</p><ul>${it.in.dec.map(x => `<li>${x}</li>`).join('')}</ul>` : `<p>${it.n}</p>`
     const top = m.s === 'contato' || m.s === 'fim'
-    capBtn.hidden = !sec.shots && !top; capBtn.textContent = chap ? t.ui.back : sec.shots ? t.ui.open : t.ui.top
+    capBtn.hidden = !sec.chap && !top; capBtn.textContent = chap ? t.ui.back : sec.chap ? t.ui.open : t.ui.top
     cap.classList.remove('out')
   }, still ? 0 : 250)
 }

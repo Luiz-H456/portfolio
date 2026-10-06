@@ -89,6 +89,20 @@ a{color:var(--mustard)}
 .cp img{width:100%;height:100%;object-fit:cover;object-position:top;display:block}
 .cn{position:absolute;left:18px;bottom:18px;max-width:72%;margin:0;background:var(--mustard);color:var(--black);border:4px solid var(--black);padding:10px 14px;font:600 26px/1.2 "Barlow Semi Condensed",sans-serif;box-shadow:5px 5px 0 var(--black)}
 .cp.tall .cn{max-width:none;right:18px}
+.cin{background:var(--cream);color:var(--black);justify-content:flex-start;gap:1.6cqw;padding:4.5cqw;background-image:none;container-type:inline-size}
+.cin .kick{font-size:max(26px,3.6cqw);color:var(--red);margin:0}
+.cin .num{font:400 17cqw/.82 Anton,Impact,sans-serif;color:var(--black);filter:none}
+.cin .numl{font:600 max(26px,4cqw)/1.15 "Barlow Semi Condensed",sans-serif;margin:0 0 .6cqw}
+.cin p,.cin li{font:600 max(22px,3.4cqw)/1.25 "Barlow Semi Condensed",sans-serif;margin:0}
+.cin ul{padding-left:1.2em;display:grid;gap:.5em}
+.flow{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-top:auto!important}
+.flow span{background:var(--mustard);border:4px solid var(--black);padding:.25em .45em;font:400 max(24px,3.4cqw)/1 Anton,Impact,sans-serif;text-transform:uppercase;box-shadow:4px 4px 0 var(--black)}
+.flow i{font:400 max(26px,3.4cqw) Anton,sans-serif;font-style:normal}
+.ccode{background:#111;padding:4cqw;background-image:none;container-type:inline-size}
+.ccode pre{margin:0;color:var(--cream);font:500 max(20px,3cqw)/1.5 ui-monospace,Menlo,Consolas,monospace;white-space:pre-wrap;overflow:hidden}
+.mods{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;align-content:start}
+.mods span{background:var(--cream);color:var(--black);border:4px solid var(--black);padding:.35em .45em;font:400 max(30px,4.6cqw)/1 Anton,Impact,sans-serif;text-transform:uppercase;box-shadow:5px 5px 0 var(--black)}
+.ccode .cn{left:18px;right:18px;bottom:18px;max-width:none}
 .chead{background:var(--black);justify-content:flex-start;gap:14px;padding:34px}
 .chead .kick{font-size:30px}.chead b{font-size:92px;color:var(--cream)}.chead .tools{font:600 28px/1.2 "Barlow Semi Condensed",sans-serif;color:var(--sky);margin:0}
 .has-chap{cursor:pointer;transition:outline-color .2s}

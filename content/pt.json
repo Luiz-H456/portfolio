@@ -11,7 +11,7 @@
 "hero": {
 "k": "Dev full-stack AI-native, estudante de Física",
 "t": "Tiro empresas da planilha e coloco no sistema.",
-"b": "<p>Construí o ERP que roda a Confecções Botezini: orçamentos que levavam 30 minutos saem em 5. De São João del-Rei, MG.</p>"
+"b": "<p>Construí o ERP que roda a Confecções Botezini: orçamentos que levavam 30 minutos saem em 5. De São João del-Rei, MG.</p><ul><li>1 ERP em produção</li><li>619 testes automatizados nas lojas</li><li>5 projetos no ar</li></ul>"
 },
 "sobre": {
 "k": "Sobre",
@@ -21,13 +21,49 @@
 "erp": {
 "k": "ERP Botezini, em produção",
 "t": "Orçamento de 30 min para 5",
-"b": "<p>Sistema de gestão usado pela Confecções Botezini: orçamentos, pedidos, produção, estoque, financeiro e um módulo de inteligência com IA.</p><ul><li>Orçamento: 20–30 min → 2–5 min</li><li>Mais de 60 pedidos feitos pelo sistema</li><li>Estoque e orçamentos padronizados</li></ul><p class=\"tools\">React, TypeScript, Supabase, Gemini, Vercel</p>"
+"b": "<p>Sistema de gestão usado pela Confecções Botezini: orçamentos, pedidos, produção, estoque, financeiro e um módulo de inteligência com IA.</p><ul><li>Orçamento: 20–30 min → 2–5 min</li><li>Mais de 60 pedidos feitos pelo sistema</li><li>Estoque e orçamentos padronizados</li></ul><p class=\"tools\">React, TypeScript, Supabase, Gemini, Vercel</p>",
+"chap": {
+"art": "5/1/9/7",
+"items": [
+{
+"in": {
+"num": "30→5",
+"numl": "minutos por orçamento",
+"prob": "Orçamentos feitos à mão, cada um de um jeito, e estoque sem controle confiável.",
+"dec": [
+"Banco Postgres (Supabase) com dados validados por esquema (Zod)",
+"Dados sincronizados e em cache com TanStack Query",
+"Módulo de IA (Gemini) rodando no servidor, não no navegador",
+"Instalável como app no celular e no computador (PWA)"
+],
+"flow": [
+"Orçamento",
+"Pedido",
+"Produção",
+"Estoque",
+"Financeiro"
+]
+},
+"t": "O que tem por dentro do ERP",
+"p": "L",
+"a": "3/1/9/7"
+},
+{
+"html": "<span>Dashboard</span><span>Orçamentos</span><span>Pedidos</span><span>Produção</span><span>Estoque</span><span>Financeiro</span><span>Cadastros</span><span>Inteligência</span>",
+"t": "8 módulos, uma operação",
+"n": "Do orçamento ao financeiro, a mesma base de dados: o que é vendido já reserva estoque e entra na produção.",
+"p": "R",
+"a": "1/1/5/7"
+}
+]
+}
 },
 "botezini": {
 "k": "botezini.com.br",
 "t": "Site que traz cliente sozinho",
 "b": "<p>Site comercial da confecção, com SEO técnico (dados estruturados, sitemap automático, IndexNow) e páginas de venda para personalização e bordado.</p><p>Resultado: leads qualificados chegando toda semana, de forma passiva.</p><p><a href=\"https://botezini.com.br\" target=\"_blank\" rel=\"noopener\">Abrir botezini.com.br</a></p>",
-"shots": [
+"chap": {
+"items": [
 {
 "src": "assets/shots/botezini-1.webp",
 "t": "Página inicial",
@@ -51,17 +87,38 @@
 "n": "No celular, o WhatsApp fica sempre a um toque.",
 "p": "R",
 "a": "1/1/9/4"
-}
+},
+{
+"in": {
+"num": "4",
+"numl": "páginas de venda, uma para cada tipo de cliente",
+"prob": "Ser encontrado no Google e passar credibilidade para empresas que compram uniforme.",
+"dec": [
+"Dados estruturados para o Google entender produtos e artigos",
+"Data de atualização de cada página tirada do histórico do git",
+"IndexNow: buscadores avisados a cada publicação",
+"Imagens convertidas para WebP"
 ],
-"chap": {
-"art": "1/4/9/7"
+"flow": [
+"Busca",
+"Página de venda",
+"WhatsApp",
+"Orçamento"
+]
+},
+"t": "O que tem por dentro do site",
+"p": "R",
+"a": "1/4/9/7"
+}
+]
 }
 },
 "lojas": {
 "k": "BTZN + Fora da Caixa",
-"t": "Uma plataforma, dois negócios",
+"t": "Uma base, duas lojas, 619 testes",
 "b": "<p>Base de e-commerce própria reaproveitada numa loja de roupas com lançamentos em drops e contagem regressiva (BTZN) e numa loja de presentes com rosas eternas e montador de buquê (Fora da Caixa).</p><ul><li>Painel administrativo próprio</li><li>Testes automatizados (Vitest + Playwright)</li><li>llms.txt para buscadores de IA</li></ul><p class=\"tools\">Astro, React, Upstash Redis, Vercel Blob</p><p><a href=\"https://btzn.com.br\" target=\"_blank\" rel=\"noopener\">Abrir btzn.com.br</a><br><a href=\"https://foradacaixa.btzn.com.br\" target=\"_blank\" rel=\"noopener\">Abrir foradacaixa.btzn.com.br</a></p>",
-"shots": [
+"chap": {
+"items": [
 {
 "src": "assets/shots/btzn-1.webp",
 "t": "BTZN: página inicial com o próximo drop",
@@ -71,10 +128,22 @@
 "a": "3/1/6/7"
 },
 {
-"src": "assets/shots/btzn-2.webp",
-"t": "BTZN: catálogo de camisetas",
-"tall": false,
-"n": "Catálogo com a identidade da marca.",
+"in": {
+"num": "619",
+"numl": "testes automatizados passando nas duas lojas",
+"prob": "Duas marcas com loja própria, sem pagar duas vezes pelo mesmo trabalho.",
+"dec": [
+"Astro com renderização no servidor na Vercel",
+"Painel admin com senha guardada só como hash",
+"Marca, ícones e imagens de compartilhamento gerados por script"
+],
+"flow": [
+"Base comum",
+"Marca",
+"Catálogo"
+]
+},
+"t": "O que tem por dentro das lojas",
 "p": "L",
 "a": "6/1/9/5"
 },
@@ -109,17 +178,24 @@
 "n": "No celular, o buquê e o botão de montar na primeira tela.",
 "p": "R",
 "a": "4/5/9/7"
+},
+{
+"src": "assets/shots/btzn-2.webp",
+"t": "BTZN: catálogo de camisetas",
+"tall": false,
+"n": "Catálogo com a identidade da marca.",
+"p": "R",
+"a": "7/1/9/5"
 }
-],
-"chap": {
-"art": "7/1/9/5"
+]
 }
 },
 "barbearia": {
 "k": "Barbearia Stilo Black",
-"t": "Cliente real, no ar",
+"t": "Do corte ao horário marcado",
 "b": "<p>Site da barbearia em funcionamento, com agendamento pelo app, galeria de cortes e contato por WhatsApp.</p><p><a href=\"https://barbeariastiloblack.vercel.app\" target=\"_blank\" rel=\"noopener\">barbeariastiloblack.vercel.app</a></p><p class=\"tools\">React, TypeScript, Vite</p>",
-"shots": [
+"chap": {
+"items": [
 {
 "src": "assets/shots/barbearia-1.webp",
 "t": "Página inicial",
@@ -143,10 +219,28 @@
 "n": "No celular: WhatsApp, agendamento e cortes em três botões.",
 "p": "R",
 "a": "1/1/9/4"
-}
+},
+{
+"in": {
+"num": "3",
+"numl": "botões até o horário marcado",
+"prob": "Levar quem gostou do corte até o agendamento, com o menor número de cliques.",
+"dec": [
+"React e TypeScript com Vite",
+"Agendamento direto pelo app da barbearia",
+"Serviços com preço e galeria de cortes"
 ],
-"chap": {
-"art": "1/4/9/7"
+"flow": [
+"Busca",
+"Site",
+"Agendamento"
+]
+},
+"t": "O que tem por dentro do site",
+"p": "R",
+"a": "1/4/9/7"
+}
+]
 }
 },
 "stack": {
@@ -163,11 +257,58 @@
 "k": "Fim do volume 1",
 "t": "Obrigado pela leitura",
 "b": "<p>Role mais um pouco para voltar à capa, ou me chame no WhatsApp ou por e-mail.</p>"
+},
+"metodo": {
+"k": "Como eu trabalho",
+"t": "Código pequeno, IA dirigida",
+"b": "<p>Este portfólio é o exemplo: menos de 150 linhas de JavaScript, nenhuma biblioteca, e um método para trabalhar com IA sem perder o controle do código.</p>",
+"chap": {
+"items": [
+{
+"in": {
+"num": "148",
+"numl": "linhas de JavaScript neste site, zero bibliotecas",
+"prob": "Portfólio animado em 3D costuma pesar megabytes e virar código que ninguém mantém.",
+"dec": [
+"Câmera com mola amortecida: o oscilador harmônico da Física",
+"Animação em passos de tempo real: mesma velocidade a 30 ou 120 fps",
+"Imagens em duas resoluções: prévia leve, versão grande só quando a câmera chega",
+"Modo sem movimento para quem ativa \"reduzir movimento\""
+]
+},
+"t": "O que tem por dentro deste site",
+"p": "L",
+"a": "3/1/9/7"
+},
+{
+"code": "for (let i = 0; i &lt; steps; i++) for (const p in k) {\n  vel[p] = (vel[p] || 0) * d + (k[p] - cam[p]) * r\n  cam[p] += vel[p]\n}",
+"t": "A mola da câmera",
+"n": "Quatro linhas: a câmera ganha velocidade em direção ao alvo e perde parte dela a cada quadro. Passa um pouco do ponto e assenta.",
+"p": "R",
+"a": "1/1/4/7"
+},
+{
+"code": "# Índice (caminho | função | depende de)\nCLAUDE.md | regras para IA\nTODO.md | pendências, dívidas, estudo\nindex.html | livro, quadros, legenda\nmain.js | câmera, capítulos, i18n\ncontent/*.json | todos os textos",
+"t": "Um índice para a IA",
+"n": "A IA lê o índice e abre só os arquivos da tarefa: menos contexto, menos custo, menos erro.",
+"p": "R",
+"a": "4/1/9/4"
+},
+{
+"code": "[ ] falta | prints do ERP | você\n[ ] estudo | mola amortecida | você\n[ ] divida | fontes externas | eu",
+"t": "Nada de placeholder escondido",
+"n": "O que falta vira item com dono, e o índice é atualizado no mesmo commit.",
+"p": "R",
+"a": "4/4/9/7"
+}
+]
+}
 }
 },
 "ui": {
 "open": "Abrir capítulo",
 "back": "Voltar ao livro",
-"top": "Voltar ao início"
+"top": "Voltar ao início",
+"inside": "Por dentro"
 }
 }

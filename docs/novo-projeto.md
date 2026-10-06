@@ -1,14 +1,14 @@
 # Adicionar um projeto
 
 ## O que você me entrega
-1. **Fatos:** problema do cliente, o que você fez, stack, um resultado (número, se houver) e o link.
+1. **Fatos:** problema do cliente, o que você fez, decisões técnicas, stack, um número real e o link. Todo capítulo tem um quadro "Por dentro": é ele que vende você como dev, não o print.
 2. **Arte:** gerada com o bloco de estilo de `docs/assets.md`, em preto e branco, sem moldura.
 3. **Prints:** eu tiro rodando o código do repo. Se o projeto tiver dados sensíveis (como o ERP), você manda prints com dados fictícios.
 
 ## O que eu faço (4 lugares, nada mais)
 | Onde | O quê |
 |---|---|
-| `content/pt.json` e `content/en.json` | `sec.<id>`: `k`, `t`, `b` (descrição, tecnologias, link), `shots` (`src`, `t` rótulo, `n` narração, `p` página L/R, `a` grid-area, `tall`) e `chap.art` (área da arte no capítulo) |
+| `content/pt.json` e `content/en.json` | `sec.<id>`: `k`, `t`, `b` (descrição, tecnologias, link), `chap.items` (quadros: print `src`+`n`, "por dentro" `in` com número/problema/decisões/fluxo, `code` ou `html`; cada um com `t`, `p` L/R e `a` grid-area) e `chap.art` |
 | `assets/<id>.webp`, `assets/sm/<id>.webp`, `assets/shots/<id>-N.webp` | arte (2× e prévia) e prints |
 | `index.html` | um `.pn` com `data-s="<id>"` e `class="art a-<id> c-<cor>"` numa página |
 | `style.css` + `main.js` | `grid-area` do quadro, `.a-<id>` com a arte e a cor da legenda em `CAP` |

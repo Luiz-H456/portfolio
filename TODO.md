@@ -27,3 +27,7 @@
 [ ] falta | assets/shots/erp.webp | print do ERP com dados fictícios: não rodo o ERP daqui (usaria as chaves de produção commitadas e dados reais de clientes) | você
 [ ] estudo | fase 1 | animação independente da taxa de quadros (passos de tempo em frame()), lazy-load de imagens | você
 [ ] decidir | favicon-32.png | a nave lembra muito a Swordfish II (Cowboy Bebop); trocar por algo original? | você
+[ ] estudo | capítulos | conseguir explicar em entrevista: o que os 619 testes das lojas cobrem (vitest), RLS/Zod/TanStack Query no ERP, por que Gemini roda no servidor | você
+[ ] estudo | capítulo Como eu trabalho | oscilador harmônico amortecido (mola da câmera) e passos de tempo fixo | você
+[ ] falta | ERP | prints com dados fictícios: entram no capítulo do ERP no lugar da arte | você
+[ ] falta | foto | foto sua (opcional) para o Sobre/capa, eu aplico o duotone | você
