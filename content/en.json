@@ -9,26 +9,26 @@
 "b": "<p>Scroll to open the manga. The camera travels through every panel.</p>"
 },
 "hero": {
-"k": "AI-native full-stack dev, Physics student",
-"t": "I move businesses off spreadsheets and into software.",
-"b": "<p>I built the ERP that runs Confecções Botezini: quotes that took 30 minutes now take 5. From São João del-Rei, Brazil.</p><ul><li>1 ERP in production</li><li>619 automated tests across the stores</li><li>5 projects live</li></ul>"
+"k": "Early-career full-stack developer",
+"t": "I turn real operational problems into software used every day.",
+"b": "<p>I built the ERP for Confecções Botezini, used daily: quotes that took around 20–30 minutes now take 2–5.</p><p class=\"tools\">React and TypeScript, Supabase/Postgres, 619 automated tests across both stores, and AI built into the development process.</p>"
 },
 "sobre": {
 "k": "About",
 "t": "Curious and persistent",
-"b": "<p>I've been coding for 1 year. I study Physics (BSc) at UFSJ and Systems Analysis and Development at Estácio.</p><p>I use AI as an engineering tool: lean context, small code, measured results.</p>"
+"b": "<p>I study Physics at UFSJ and Systems Analysis and Development at Estácio, and I have been coding for about a year.</p><p>I learn by building: real problems in quoting, production, inventory and finance become systems used in operations.</p><p>I use AI to speed up investigation and implementation; my job is to break the problem down, give context, test the result and own it.</p>"
 },
 "erp": {
 "k": "Botezini ERP, in production",
-"t": "Quotes from 30 min to 5",
+"t": "Quotes from 20–30 down to 2–5 minutes",
 "b": "<p>Management system used by Confecções Botezini: quotes, orders, production, inventory, finance and an AI-powered insights module.</p><ul><li>Quotes: 20–30 min → 2–5 min</li><li>60+ orders placed through the system</li><li>Standardized inventory and quotes</li></ul><p class=\"tools\">React, TypeScript, Supabase, Gemini, Vercel</p>",
 "chap": {
 "art": "5/1/9/7",
 "items": [
 {
 "in": {
-"num": "30→5",
-"numl": "minutes per quote",
+"num": "2–5",
+"numl": "minutes per quote (before, 20–30)",
 "prob": "Quotes made by hand, each one different, and inventory nobody could trust.",
 "dec": [
 "Postgres (Supabase) with schema-validated data (Zod)",
@@ -274,6 +274,13 @@
 "Animation in real-time steps: same speed at 30 or 120 fps",
 "Images in two resolutions: light preview, full size only when the camera arrives",
 "Motion-free mode for anyone with \"reduce motion\" on"
+],
+"flow": [
+"Break down",
+"Context",
+"Generate",
+"Test",
+"Review"
 ]
 },
 "t": "Under the hood of this site",
@@ -309,6 +316,7 @@
 "open": "Open chapter",
 "back": "Back to the book",
 "top": "Back to the start",
-"inside": "Under the hood"
+"inside": "Under the hood",
+"cover": "Full-stack developer"
 }
 }

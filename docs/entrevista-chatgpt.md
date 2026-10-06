@@ -204,3 +204,39 @@ D) Lista final de perguntas de SIM/NÃO para o Luiz (no máximo 8), que liberam 
 E) O que ele deve estudar primeiro para defender o que está escrito, em ordem de prioridade
 === FIM ===
 ```
+
+---
+
+## Prompt 4 (cole no ChatGPT, depois da Mensagem 3). Encerra a conversa.
+
+```
+=== PROMPT 4 DO CLAUDE (final) ===
+Obrigado, a revisão foi precisa. Isto é o que foi para o site, e é a versão que vale daqui em diante:
+
+APLICADO NO SITE (PT e EN)
+- Capa: "Desenvolvedor full-stack". "AI-native" saiu de título, capa e descrição do site.
+- Hero: "Transformo problemas reais de operação em software usado no dia a dia."
+  RH: "Construí o ERP da Confecções Botezini, em uso no dia a dia: orçamentos que levavam cerca de 20–30 minutos passaram a sair em 2–5." (métrica declarada pelo Luiz)
+  Tech lead: "React e TypeScript, Supabase/Postgres, 619 testes automatizados nas duas lojas e IA integrada ao processo de desenvolvimento."
+- Sobre: sua versão, SEM a frase da física (entra só se o Luiz responder SIM às perguntas 5 e 6).
+- ERP: título e número em faixa precisa (20–30 → 2–5), nunca "30 para 5".
+- "Como eu trabalho": ganhou o fluxo visível Decompor → Contexto → Gerar → Testar → Revisar, respondendo à sua pergunta "o que você faz quando a IA erra?".
+- A frase dos 95 commits NÃO entrou: sem confirmação de autoria e de disponibilidade, ela não passa no seu próprio teste.
+- LinkedIn: sua headline específica (a das evidências) e o Sobre longo, sem a física por enquanto.
+- Seu plano de estudo entrou no TODO do projeto, na sua ordem: JS/TS → SQL/Postgres → RLS → arquitetura do ERP → testes → git/segurança → só depois Three.js/Next.js.
+
+UM ÚLTIMO PEDIDO, QUE SÓ VOCÊ PODE FAZER
+Você tem memória das conversas com o Luiz; eu não. Por isso:
+1. Guarde na sua memória um resumo deste posicionamento: o que é afirmado, o que é "Luiz disse", o que está em estudo e as 8 perguntas SIM/NÃO pendentes.
+2. Nas próximas vezes que o Luiz conversar com você sobre estudo ou carreira, faça o papel de tech lead entrevistador: pegue um item do portfólio (RLS, estorno, os 619 testes, a mola da câmera, uma RPC) e faça as perguntas que derrubariam a frase. Quando ele responder SIM a uma das 8 perguntas, peça a história completa e diga a ele para trazer ao Claude, que atualiza o site.
+3. Se em algum momento ele tentar inflar o perfil (sênior, especialista, "engenheiro de IA"), lembre-o do combinado: a evidência vem antes do título.
+
+Não precisa responder com outro relatório. Só confirme que guardou e que topa o papel de entrevistador.
+=== FIM ===
+```
+
+## Resultado da conversa
+- **Textos do site:** aplicados em `content/pt.json` e `content/en.json` (hero, sobre, ERP, como eu trabalho, capa).
+- **LinkedIn:** headline e Sobre no topo de `docs/linkedin.md`.
+- **Estudo:** plano priorizado no `TODO.md`.
+- **Pendente:** as 8 perguntas SIM/NÃO (Mensagem 3, item D). Cada SIM libera uma história no site.

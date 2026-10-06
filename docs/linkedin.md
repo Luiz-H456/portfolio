@@ -1,4 +1,23 @@
-# Posts para o LinkedIn
+# Perfil e posts do LinkedIn
+
+## Perfil (revisado com o ChatGPT)
+**Headline (até 220 caracteres):** Desenvolvedor full-stack em início de carreira: ERP em produção, e-commerce com 619 testes e IA integrada ao desenvolvimento. Estudo Física na UFSJ e ADS na Estácio.
+
+**Sobre:**
+> Desenvolvedor full-stack em início de carreira, construindo software para problemas reais.
+>
+> Construí o ERP da Confecções Botezini, usado na operação, e desenvolvi lojas próprias e sites para clientes.
+>
+> Trabalho principalmente com React, TypeScript e Supabase/Postgres. Uso IA como parte do processo de desenvolvimento (investigar, implementar e iterar), com foco em contexto, testes e validação do resultado.
+>
+> Estudo Física na UFSJ e Análise e Desenvolvimento de Sistemas na Estácio.
+>
+> Meu foco é evoluir de forma consistente em engenharia de software, usando IA como ferramenta de produtividade, não como substituta do entendimento técnico.
+
+A frase sobre simulação de estrutura eletrônica entra no Sobre só depois que você responder SIM às perguntas 5 e 6 de `docs/entrevista-chatgpt.md`.
+
+---
+
 
 Regras que usei: só fatos que você confirmou ou que estão no código. Nenhum número inventado. Nada de "estou feliz em anunciar", nem de foguete ou parede de hashtags. Marquei com **[PREENCHER]** os poucos pontos que só você sabe.
 

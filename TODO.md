@@ -31,3 +31,10 @@
 [ ] falta | ERP | prints com dados fictícios: entram no capítulo do ERP no lugar da arte | você
 [ ] falta | foto | foto sua (opcional) para o Sobre/capa, eu aplico o duotone | você
 [ ] seg | botezinipvd | URGENTE: trocar chaves Google/Gemini e OpenAI (formato válido, commitadas em .env/.env.local/.env.vercel, + chaves antigas comentadas no .env) e token Vercel; depois remover os .env do repo | você
+[ ] estudo | prioridade 1 | JS/TS sem IA: tipos vs interfaces, generics, narrowing, async/await, closures, erros, runtime vs compile time | você
+[ ] estudo | prioridade 1 | SQL/Postgres no próprio ERP: joins, agregações, índices, constraints, transações, views, triggers (custo médio), RPC, migrations | você
+[ ] estudo | prioridade 1 | Supabase: RLS, policies, roles, grants, security definer, search_path, o que pode ir no frontend | você
+[ ] estudo | prioridade 2 | desenhar a arquitetura do ERP de memória (pages→services→repositories→Postgres) e explicar onde vive cada regra | você
+[ ] estudo | prioridade 2 | testes: unit/integração/E2E, mocks, quando um teste passa e é ruim; explicar 3 categorias dos 619 | você
+[ ] estudo | prioridade 3 | git: revert, bisect, rebase, commits atômicos, gestão de secrets | você
+[ ] falta | entrevista | responder as 8 perguntas SIM/NÃO (docs/entrevista-chatgpt.md): liberam R$ 664, estorno, física e caso de cliente no site | você

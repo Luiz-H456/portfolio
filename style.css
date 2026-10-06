@@ -119,3 +119,4 @@ a{color:var(--mustard)}
 #chap-b:active{translate:2px 2px;box-shadow:2px 2px 0 #0006}
 /* tela baixa (zoom alto, celular deitado): legenda compacta */
 @media (max-height:520px){.cap{padding:.8rem 1rem;max-height:86svh}.cap div{font-size:.95rem}.cap ul,.cap .tools{display:none}#chap-b{font-size:1.1rem;padding:.5rem .8rem}}
+.cover i{font-style:normal}

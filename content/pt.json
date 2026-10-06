@@ -9,26 +9,26 @@
 "b": "<p>Role para abrir o mangá. A câmera percorre cada quadro.</p>"
 },
 "hero": {
-"k": "Dev full-stack AI-native, estudante de Física",
-"t": "Tiro empresas da planilha e coloco no sistema.",
-"b": "<p>Construí o ERP que roda a Confecções Botezini: orçamentos que levavam 30 minutos saem em 5. De São João del-Rei, MG.</p><ul><li>1 ERP em produção</li><li>619 testes automatizados nas lojas</li><li>5 projetos no ar</li></ul>"
+"k": "Desenvolvedor full-stack em início de carreira",
+"t": "Transformo problemas reais de operação em software usado no dia a dia.",
+"b": "<p>Construí o ERP da Confecções Botezini, em uso no dia a dia: orçamentos que levavam cerca de 20–30 minutos passaram a sair em 2–5.</p><p class=\"tools\">React e TypeScript, Supabase/Postgres, 619 testes automatizados nas duas lojas e IA integrada ao processo de desenvolvimento.</p>"
 },
 "sobre": {
 "k": "Sobre",
 "t": "Curioso e persistente",
-"b": "<p>Programo há 1 ano. Curso Física (bacharelado) na UFSJ e Análise e Desenvolvimento de Sistemas na Estácio.</p><p>Uso IA como ferramenta de engenharia: contexto enxuto, código pequeno, resultado medido.</p>"
+"b": "<p>Estudo Física na UFSJ e Análise e Desenvolvimento de Sistemas na Estácio, e programo há cerca de um ano.</p><p>Aprendo construindo: problemas reais de orçamento, produção, estoque e financeiro viram sistemas usados na operação.</p><p>Uso IA para acelerar investigação e implementação; meu trabalho é decompor o problema, dar contexto, testar o resultado e responder por ele.</p>"
 },
 "erp": {
 "k": "ERP Botezini, em produção",
-"t": "Orçamento de 30 min para 5",
+"t": "Orçamento de 20–30 para 2–5 minutos",
 "b": "<p>Sistema de gestão usado pela Confecções Botezini: orçamentos, pedidos, produção, estoque, financeiro e um módulo de inteligência com IA.</p><ul><li>Orçamento: 20–30 min → 2–5 min</li><li>Mais de 60 pedidos feitos pelo sistema</li><li>Estoque e orçamentos padronizados</li></ul><p class=\"tools\">React, TypeScript, Supabase, Gemini, Vercel</p>",
 "chap": {
 "art": "5/1/9/7",
 "items": [
 {
 "in": {
-"num": "30→5",
-"numl": "minutos por orçamento",
+"num": "2–5",
+"numl": "minutos por orçamento (antes, 20–30)",
 "prob": "Orçamentos feitos à mão, cada um de um jeito, e estoque sem controle confiável.",
 "dec": [
 "Banco Postgres (Supabase) com dados validados por esquema (Zod)",
@@ -274,6 +274,13 @@
 "Animação em passos de tempo real: mesma velocidade a 30 ou 120 fps",
 "Imagens em duas resoluções: prévia leve, versão grande só quando a câmera chega",
 "Modo sem movimento para quem ativa \"reduzir movimento\""
+],
+"flow": [
+"Decompor",
+"Contexto",
+"Gerar",
+"Testar",
+"Revisar"
 ]
 },
 "t": "O que tem por dentro deste site",
@@ -309,6 +316,7 @@
 "open": "Abrir capítulo",
 "back": "Voltar ao livro",
 "top": "Voltar ao início",
-"inside": "Por dentro"
+"inside": "Por dentro",
+"cover": "Desenvolvedor full-stack"
 }
 }
