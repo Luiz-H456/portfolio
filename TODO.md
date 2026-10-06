@@ -38,3 +38,5 @@
 [ ] estudo | prioridade 2 | testes: unit/integração/E2E, mocks, quando um teste passa e é ruim; explicar 3 categorias dos 619 | você
 [ ] estudo | prioridade 3 | git: revert, bisect, rebase, commits atômicos, gestão de secrets | você
 [ ] falta | entrevista | responder as 8 perguntas SIM/NÃO (docs/entrevista-chatgpt.md): liberam R$ 664, estorno, física e caso de cliente no site | você
+[ ] falta | IC | quando der: rodar o prompt da IC (docs/entrevista-chatgpt.md, fim) e trazer o veredito; até lá o site NÃO menciona a IC | você
+[ ] estudo | IC | fazer à mão os 4 exercícios do fim do notebook PIIC_parte1_EBC antes de qualquer apresentação | você
