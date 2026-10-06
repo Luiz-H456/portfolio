@@ -6,3 +6,4 @@
 Stack: HTML/CSS/JS estático + GSAP (ScrollTrigger). Deploy Vercel. Sem build.
 5. Site evolui em fases. Cada técnica nova entra junto com um item `estudo` no TODO.md; o site só a anuncia como domínio depois que o item sair do TODO.
 Conceito: Vitrine (impacto visual p/ RH: shader WebGL puro, tipografia cinética, View Transitions, linguagem de negócio, números) + Raio-X (botão "ver por dentro": código, prompt e custo de cada parte, p/ tech lead).
+Decisões: visual claro e editorial; PT+EN desde o início (textos em content/, nunca no HTML); seções Início+Sobre, Projetos, Habilidades, Contato (rodapé fixo); ERP com prints de dados fictícios.
