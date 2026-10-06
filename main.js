@@ -23,7 +23,7 @@ const mq = matchMedia('(prefers-reduced-motion: reduce)')
 let still = mq.matches; mq.onchange = e => { still = e.matches }
 const clamp = v => Math.min(1, Math.max(0, v)), ease = u => u * u * u * (u * (6 * u - 15) + 10), mix = (a, b, u) => a + (b - a) * u
 let keys = [], meta = [], cam, vel = {}, lastP = 0, idle = 0, chap = null, cf = 0
-const chapPanels = () => [...cL.children, ...cR.children].filter(c => c.dataset.c)
+const chapShots = () => [...cL.children, ...cR.children].filter(c => +c.dataset.c >= 0), chapLen = () => chapShots().length + 1  // +1: visão das 2 páginas
 function measure() {
   const W = innerWidth, H = innerHeight, wide = W >= 900, cw = wide ? cap.offsetWidth + 48 : 0, ch = wide ? 0 : H * .42 + 16  // celular: reserva a altura máxima da legenda (CSS 42svh)
   const ox = -cw / 2, oy = -ch / 2, fw = (W - cw) * (wide ? .85 : .92), fh = (H - ch) * .78
@@ -40,7 +40,8 @@ function measure() {
     keys.push(stop(el, i, 20)); meta.push({ s: el.dataset.s })
     if (chap?.s !== el.dataset.s) return
     chap.at = keys.length - 1
-    chapPanels().forEach((c, j) => { keys.push(stop(c, j, 12)); meta.push({ s: chap.s, shot: +c.dataset.c }) })  // inclinação menor: print legível
+    keys.push({ ...keys[1], s: keys[1].s * 1.05, rx: 30, rz: -3 }); meta.push({ s: chap.s, shot: -1 })  // capítulo aberto inteiro, sem zoom
+    chapShots().forEach((c, j) => { keys.push(stop(c, j, 12)); meta.push({ s: chap.s, shot: +c.dataset.c }) })  // inclinação menor: print legível
   })
   stage.style.height = keys.length * 100 + 'svh'
   cam ??= { ...keys[0] }
@@ -72,7 +73,7 @@ function openChap(s) {
 }
 // how: 'next' segue p/ o próximo projeto, 'back' volta ao quadro do projeto, 'up' fecha onde está (rolou para cima)
 function closeChap(how) {
-  const n = chapPanels().length, at = chap.at
+  const n = chapLen(), at = chap.at
   const y = how === 'next' ? scrollY - n * innerHeight : how === 'back' ? at * innerHeight : scrollY
   chap = null; measure(); cur = -1
   scrollTo({ top: y, behavior: 'instant' })
@@ -80,6 +81,7 @@ function closeChap(how) {
 capBtn.onclick = () => chap ? closeChap('back') : openChap(meta[cur].s)
 addEventListener('keydown', e => { if (e.key === 'Escape' && chap) closeChap('back') })
 panels.forEach((el, i) => {
+  if (el.querySelector('.go')) el.classList.add('has-chap')
   el.onclick = () => { const s = el.dataset.s; if (!t.sec[s].shots) return; meta[cur]?.s === s ? openChap(s) : scrollTo({ top: (i + 2) * innerHeight, behavior: 'smooth' }) }
 })
 
@@ -89,7 +91,7 @@ const CAP = { intro: ['rust', 'black'], hero: ['mustard', 'black'], sobre: ['rus
 function caption(n) {
   if (n === cur || !t) return
   cur = n; cap.classList.add('out')
-  panels.forEach((el, i) => i <= n && el.classList.add('on'))  // carrega a arte dos quadros até 2 à frente da parada atual
+  panels.forEach((el, i) => { i <= n && el.classList.add('on'); el.classList.toggle('here', !chap && el.dataset.s === meta[n].s) })  // arte até 2 quadros à frente; .here = quadro atual
   setTimeout(() => {
     const m = meta[n], sec = t.sec[m.s], sh = m.shot >= 0 ? sec.shots[m.shot] : null, [cb, cf] = CAP[m.s]
     cap.style.setProperty('--cb', `var(--${cb})`); cap.style.setProperty('--cf', `var(--${cf})`)
@@ -105,7 +107,7 @@ function frame(now) {
   const steps = Math.min(4, Math.max(1, Math.round((now - (last || now - 16.7)) / 16.7)))  // quadros perdidos viram passos extras: mesma velocidade a 30 ou 120 fps
   last = now
   if (chap) {  // saiu do capítulo rolando: para baixo segue p/ o próximo projeto, para cima fecha
-    const P = scrollY / innerHeight, end = chap.at + chapPanels().length
+    const P = scrollY / innerHeight, end = chap.at + chapLen()
     if (P > end + .5) closeChap('next'); else if (P < chap.at - .5) closeChap('up')
   }
   const [k, n, P] = target()
@@ -127,8 +129,8 @@ function frame(now) {
     const j = L - 1 - d, f = ease(clamp((cam.o - j * .16) / .52))  // j: ordem de virada (capa = 0)
     el.style.transform = `translateZ(${mix(d + 1, j + 1, f) * 1.5}px) rotateY(${-180 * f}deg)`  // borda presa na lombada: só gira, não sobe
   })
-  cf += ((chap ? 1 : 0) - cf) * (still ? 1 : 1 - .93 ** steps)  // virada do capítulo: ~0,7 s
-  const f = ease(clamp(cf))
+  cf = still ? +!!chap : clamp(cf + (chap ? 1 : -1) * steps * 16.7 / 900)  // virada do capítulo: 0,9 s, acelera e freia por igual
+  const f = ease(cf)
   mainLeaf.style.transform = `translateZ(${mix(.75, 8, f)}px) rotateY(${-180 * f}deg)`  // virada: fica acima da página esquerda principal
   caption(n)
   requestAnimationFrame(frame)
