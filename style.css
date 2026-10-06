@@ -17,16 +17,25 @@ a{color:var(--mustard)}
 .stage{position:relative}
 .scene{position:sticky;top:0;height:100vh;height:100svh;perspective:1600px;overflow:clip}
 /* mangá aberto em px reais (2400×1600); a câmera (JS) escala e move */
-.book{position:absolute;left:50%;top:50%;width:2400px;height:1600px;margin:-800px 0 0 -1200px;display:flex;gap:6px;
-  transform-style:preserve-3d;will-change:transform;
-  box-shadow:0 0 0 14px #7a2a26,0 0 0 18px var(--black),0 60px 120px 20px #000c}
-.page{flex:1;display:grid;grid:repeat(8,1fr)/repeat(6,1fr);gap:18px;padding:40px;background:var(--cream);
-  box-shadow:inset 0 0 0 1px #0002}
-.page:first-child{background:linear-gradient(90deg,var(--cream) 92%,#d8ccb3)}
-.page:last-child{background:linear-gradient(-90deg,var(--cream) 92%,#d8ccb3)}
-/* bordas de páginas empilhadas (espessura do volume) */
-.book::after{content:"";position:absolute;inset:auto -6px -16px;height:16px;transform:translateZ(-1px);
-  background:repeating-linear-gradient(var(--cream) 0 2px,#bfb39a 2px 3px)}
+.scene{transition:opacity .15s}.scene.dip{opacity:0}
+.book{position:absolute;left:50%;top:50%;width:2400px;height:1600px;margin:-800px 0 0 -1200px;transform-style:preserve-3d}
+/* página direita fixa; folhas giram na lombada (x=1200) */
+.right,.leaf{position:absolute;top:0;left:1200px;width:1200px;height:1600px}
+.right{box-shadow:0 0 0 10px #7a2a26,0 50px 100px 10px #000c}
+.leaf{transform-origin:0 50%;transform-style:preserve-3d}
+.face{position:absolute;inset:0;backface-visibility:hidden}
+.back{transform:rotateY(180deg);box-shadow:0 0 0 10px #7a2a26}
+.page{display:grid;grid:repeat(8,1fr)/repeat(6,1fr);gap:18px;padding:40px;background:linear-gradient(-90deg,var(--cream) 92%,#d8ccb3)}
+.back.page{background:linear-gradient(90deg,var(--cream) 92%,#d8ccb3)}
+/* páginas de passagem: grade de quadros esmaecida */
+.deco{background:linear-gradient(90deg,#0000 49.5%,#0002 49.5% 50.5%,#0000 50.5%),linear-gradient(#0000 32%,#0002 32% 33%,#0000 33% 66%,#0002 66% 67%,#0000 67%),
+  radial-gradient(#0002 1.5px,#0000 2.4px) 0 0/10px 10px,var(--cream);border:40px solid var(--cream);outline:2px solid #0001;outline-offset:-60px}
+.back.deco{background-color:#e8dcc2}
+.cover{background:var(--rust);padding:90px 90px 90px 170px;display:flex;flex-direction:column;justify-content:space-between;color:var(--black);
+  box-shadow:inset 30px 0 0 var(--mustard),inset 44px 0 0 var(--black),inset 64px 0 0 var(--red),inset 78px 0 0 var(--black),0 0 0 10px #7a2a26,0 50px 100px 10px #000c}
+.cover b{font-size:250px;color:var(--black)}
+.cover span{font:600 48px/1.1 "Barlow Semi Condensed",sans-serif}
+.inside{transform:rotateY(180deg);background:#7a2a26}
 .pn{position:relative;border:5px solid var(--black);overflow:hidden;padding:28px;display:flex;flex-direction:column;justify-content:space-between;
   background-image:radial-gradient(#0003 1.5px,transparent 2.4px);background-size:10px 10px}
 .pn b{font-size:110px;color:var(--cream);position:relative}
@@ -40,15 +49,15 @@ a{color:var(--mustard)}
 .c-port{background:linear-gradient(var(--violet) 0 35%,#8a3f5c 35% 55%,var(--rust) 55% 72%,var(--mustard) 72%)}
 .c-port i{position:absolute;height:84%;aspect-ratio:1;left:50%;top:8%;translate:-50%;border:16px solid var(--black);border-radius:50%;
   background:linear-gradient(90deg,transparent 47%,var(--black) 47% 53%,transparent 53%)}
-.page:first-child>:nth-child(1){grid-area:1/1/4/7}
-.page:first-child>:nth-child(2){grid-area:4/1/6/4}
-.page:first-child>:nth-child(3){grid-area:4/4/6/7}
-.page:first-child>:nth-child(4){grid-area:6/1/9/7}
-.page:last-child>:nth-child(1){grid-area:1/1/4/4}
-.page:last-child>:nth-child(2){grid-area:1/4/4/7}
-.page:last-child>:nth-child(3){grid-area:4/1/6/7}
-.page:last-child>:nth-child(4){grid-area:6/1/9/4}
-.page:last-child>:nth-child(5){grid-area:6/4/9/7}
+.back.page>:nth-child(1){grid-area:1/1/4/7}
+.back.page>:nth-child(2){grid-area:4/1/6/4}
+.back.page>:nth-child(3){grid-area:4/4/6/7}
+.back.page>:nth-child(4){grid-area:6/1/9/7}
+.right>:nth-child(1){grid-area:1/1/4/4}
+.right>:nth-child(2){grid-area:1/4/4/7}
+.right>:nth-child(3){grid-area:4/1/6/7}
+.right>:nth-child(4){grid-area:6/1/9/4}
+.right>:nth-child(5){grid-area:6/4/9/7}
 
 /* legenda: celular embaixo, desktop à direita */
 .cap{position:fixed;z-index:2;inset:auto 1rem max(1rem,env(safe-area-inset-bottom));background:var(--black);border:2px solid var(--cream);
