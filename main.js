@@ -25,7 +25,7 @@ const clamp = v => Math.min(1, Math.max(0, v)), ease = u => u * u * u * (u * (6 
 let keys = [], meta = [], cam, vel = {}, lastP = 0, idle = 0, chap = null, cf = 0
 const chapShots = () => [...cL.children, ...cR.children].filter(c => +c.dataset.c >= 0), chapLen = () => chapShots().length + 2  // +2: visão das 2 páginas e título
 function measure() {
-  const W = innerWidth, H = innerHeight, wide = W >= 900, cw = wide ? cap.offsetWidth + 48 : 0, ch = wide ? 0 : H * .42 + 16  // celular: reserva a altura máxima da legenda (CSS 42svh)
+  const W = innerWidth, H = innerHeight, wide = W >= 900 || (W > H && W >= 600), cw = wide ? cap.offsetWidth + 48 : 0, ch = wide ? 0 : H * .42 + 16  // celular: reserva a altura máxima da legenda (CSS 42svh)
   const ox = -cw / 2, oy = -ch / 2, fw = (W - cw) * (wide ? .85 : .92), fh = (H - ch) * .78
   // verso de folha aparece espelhado de volta: x local = x no livro; páginas da direita começam em 1200
   const stop = (el, i, rx) => {
