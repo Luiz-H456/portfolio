@@ -21,7 +21,7 @@
 "erp": {
 "k": "Botezini ERP, in production",
 "t": "Quotes from 20–30 down to 2–5 minutes",
-"b": "<p>Management system used by Confecções Botezini: quotes, orders, production, inventory, finance and an AI-powered insights module.</p><ul><li>Quotes: 20–30 min → 2–5 min</li><li>60+ orders placed through the system</li><li>Standardized inventory and quotes</li></ul><p class=\"tools\">React, TypeScript, Supabase, Gemini, Vercel</p>",
+"b": "<p>Management system used by Confecções Botezini: quotes, orders, production, inventory, finance.</p><ul><li>Quotes: 20–30 min → 2–5 min</li><li>60+ orders placed through the system</li><li>Standardized inventory and quotes</li></ul><p class=\"tools\">React, TypeScript, Supabase, Vercel</p>",
 "chap": {
 "art": "5/1/9/7",
 "items": [
@@ -33,7 +33,6 @@
 "dec": [
 "Postgres (Supabase) with schema-validated data (Zod)",
 "Data synced and cached with TanStack Query",
-"AI module (Gemini) running on the server, not in the browser",
 "Installable as an app on phone and desktop (PWA)"
 ],
 "flow": [
@@ -246,7 +245,7 @@
 "stack": {
 "k": "Stack",
 "t": "Everyday tools",
-"b": "<p>React, TypeScript, Astro, Node, Supabase/Postgres, Tailwind, Vercel, Upstash, Zod, Vitest, Playwright, Gemini API and Claude Code.</p>"
+"b": "<p>React, TypeScript, Astro, Node, Supabase/Postgres, Tailwind, Vercel, Upstash, Zod, Vitest, Playwright and Claude Code.</p>"
 },
 "contato": {
 "k": "Contact",

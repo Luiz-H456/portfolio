@@ -21,7 +21,7 @@
 "erp": {
 "k": "ERP Botezini, em produção",
 "t": "Orçamento de 20–30 para 2–5 minutos",
-"b": "<p>Sistema de gestão usado pela Confecções Botezini: orçamentos, pedidos, produção, estoque, financeiro e um módulo de inteligência com IA.</p><ul><li>Orçamento: 20–30 min → 2–5 min</li><li>Mais de 60 pedidos feitos pelo sistema</li><li>Estoque e orçamentos padronizados</li></ul><p class=\"tools\">React, TypeScript, Supabase, Gemini, Vercel</p>",
+"b": "<p>Sistema de gestão usado pela Confecções Botezini: orçamentos, pedidos, produção, estoque, financeiro.</p><ul><li>Orçamento: 20–30 min → 2–5 min</li><li>Mais de 60 pedidos feitos pelo sistema</li><li>Estoque e orçamentos padronizados</li></ul><p class=\"tools\">React, TypeScript, Supabase, Vercel</p>",
 "chap": {
 "art": "5/1/9/7",
 "items": [
@@ -33,7 +33,6 @@
 "dec": [
 "Banco Postgres (Supabase) com dados validados por esquema (Zod)",
 "Dados sincronizados e em cache com TanStack Query",
-"Módulo de IA (Gemini) rodando no servidor, não no navegador",
 "Instalável como app no celular e no computador (PWA)"
 ],
 "flow": [
@@ -246,7 +245,7 @@
 "stack": {
 "k": "Stack",
 "t": "Ferramentas do dia a dia",
-"b": "<p>React, TypeScript, Astro, Node, Supabase/Postgres, Tailwind, Vercel, Upstash, Zod, Vitest, Playwright, Gemini API e Claude Code.</p>"
+"b": "<p>React, TypeScript, Astro, Node, Supabase/Postgres, Tailwind, Vercel, Upstash, Zod, Vitest, Playwright e Claude Code.</p>"
 },
 "contato": {
 "k": "Contato",

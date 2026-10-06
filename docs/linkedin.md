@@ -47,13 +47,13 @@ Imagem: print do ERP com dados fictícios (pendente) ou a arte da fábrica.
 
 > Um orçamento na Confecções Botezini levava de 20 a 30 minutos. Hoje leva de 2 a 5.
 >
-> Construí o ERP que a empresa usa no dia a dia: orçamentos, pedidos, produção, estoque, financeiro e um módulo de inteligência com IA. Mais de 60 pedidos já passaram por ele.
+> Construí o ERP que a empresa usa no dia a dia: orçamentos, pedidos, produção, estoque, financeiro. Mais de 60 pedidos já passaram por ele.
 >
 > O que mais mudou não foi a velocidade, foi a padronização. Antes, cada orçamento saía de um jeito. Agora todos seguem a mesma regra, e o estoque bate.
 >
 > O que aprendi: sistema interno não precisa impressionar ninguém. Precisa ser usado todo dia por quem não é da área. Se a pessoa da produção não entende a tela, a tela está errada.
 >
-> Stack: React, TypeScript, Supabase (Postgres), Gemini e Vercel.
+> Stack: React, TypeScript, Supabase (Postgres) e Vercel.
 
 ---
 
