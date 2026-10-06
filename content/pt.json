@@ -1,8 +1,6 @@
 {
 "todo": {
-"erp": "print do ERP pendente",
-"botezini": "print Botezini pendente",
-"btzn": "print BTZN pendente"
+"erp": "print do ERP pendente"
 },
 "sec": {
 "intro": {
@@ -33,12 +31,12 @@
 "lojas": {
 "k": "BTZN + Fora da Caixa",
 "t": "Uma plataforma, dois negócios",
-"b": "<p>Base de e-commerce própria reaproveitada numa loja de drops (BTZN) e numa floricultura com montador de buquê (Fora da Caixa).</p><ul><li>Painel administrativo próprio</li><li>Testes automatizados (Vitest + Playwright)</li><li>llms.txt para buscadores de IA</li></ul><p class=\"tools\">Astro, React, Upstash Redis, Vercel Blob</p>"
+"b": "<p>Base de e-commerce própria reaproveitada numa loja de roupas com lançamentos em drops e contagem regressiva (BTZN) e numa loja de presentes com rosas eternas e montador de buquê (Fora da Caixa).</p><ul><li>Painel administrativo próprio</li><li>Testes automatizados (Vitest + Playwright)</li><li>llms.txt para buscadores de IA</li></ul><p class=\"tools\">Astro, React, Upstash Redis, Vercel Blob</p>"
 },
 "barbearia": {
 "k": "Barbearia Stilo Black",
 "t": "Cliente real, no ar",
-"b": "<p>Site da barbearia, em funcionamento.</p><p><a href=\"https://barbeariastiloblack.vercel.app\" target=\"_blank\" rel=\"noopener\">barbeariastiloblack.vercel.app</a></p><p class=\"tools\">React, TypeScript, Vite</p>"
+"b": "<p>Site da barbearia em funcionamento, com agendamento pelo app, galeria de cortes e contato por WhatsApp.</p><p><a href=\"https://barbeariastiloblack.vercel.app\" target=\"_blank\" rel=\"noopener\">barbeariastiloblack.vercel.app</a></p><p class=\"tools\">React, TypeScript, Vite</p>"
 },
 "stack": {
 "k": "Stack",

@@ -1,8 +1,6 @@
 {
 "todo": {
-"erp": "ERP screenshot pending",
-"botezini": "Botezini screenshot pending",
-"btzn": "BTZN screenshot pending"
+"erp": "ERP screenshot pending"
 },
 "sec": {
 "intro": {
@@ -33,12 +31,12 @@
 "lojas": {
 "k": "BTZN + Fora da Caixa",
 "t": "One platform, two businesses",
-"b": "<p>An in-house e-commerce base reused for a drop-based store (BTZN) and a flower shop with a bouquet builder (Fora da Caixa).</p><ul><li>Custom admin panel</li><li>Automated tests (Vitest + Playwright)</li><li>llms.txt for AI search engines</li></ul><p class=\"tools\">Astro, React, Upstash Redis, Vercel Blob</p>"
+"b": "<p>An in-house e-commerce base reused for a clothing store with countdown drops (BTZN) and a gift shop with everlasting roses and a bouquet builder (Fora da Caixa).</p><ul><li>Custom admin panel</li><li>Automated tests (Vitest + Playwright)</li><li>llms.txt for AI search engines</li></ul><p class=\"tools\">Astro, React, Upstash Redis, Vercel Blob</p>"
 },
 "barbearia": {
 "k": "Stilo Black Barbershop",
 "t": "Real client, live",
-"b": "<p>The barbershop's website, live and in use.</p><p><a href=\"https://barbeariastiloblack.vercel.app\" target=\"_blank\" rel=\"noopener\">barbeariastiloblack.vercel.app</a></p><p class=\"tools\">React, TypeScript, Vite</p>"
+"b": "<p>The barbershop's live website, with app booking, a haircut gallery and WhatsApp contact.</p><p><a href=\"https://barbeariastiloblack.vercel.app\" target=\"_blank\" rel=\"noopener\">barbeariastiloblack.vercel.app</a></p><p class=\"tools\">React, TypeScript, Vite</p>"
 },
 "stack": {
 "k": "Stack",

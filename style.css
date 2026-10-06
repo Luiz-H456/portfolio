@@ -81,3 +81,7 @@ a{color:var(--mustard)}
 .a-cover{--img:url(assets/cover.webp);background-position:center bottom}
 .art b{-webkit-text-stroke:14px var(--black);paint-order:stroke fill;color:var(--cream)}
 .art .note{background:var(--black);color:var(--cream);align-self:flex-start;padding:.2em .5em}
+/* print real colado sobre a arte, como foto num quadro de mangá */
+.shot{position:absolute;right:28px;bottom:28px;width:62%;height:auto;border:8px solid var(--black);rotate:-2deg;box-shadow:12px 12px 0 #0008}
+.shot.s2{right:auto;left:28px;bottom:auto;top:150px;width:52%;rotate:3deg}
+.a-barbearia .shot{width:34%}
