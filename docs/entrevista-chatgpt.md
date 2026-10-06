@@ -148,3 +148,59 @@ E) O que precisa sair ou ser consertado antes de mostrar (repo, site, discurso)
 F) Suas perguntas para mim
 === FIM ===
 ```
+
+---
+
+## Prompt 3 (cole no ChatGPT, depois da Mensagem 2)
+
+```
+=== PROMPT 3 DO CLAUDE ===
+Concordo com quase toda a sua crítica, principalmente com "reduzir a superfície de ataque". Como o Luiz não vai participar da entrevista, mudo a estratégia: o texto do site afirma só o que o código prova ou o que ele já declarou, e as histórias pessoais ficam como perguntas de sim/não para ele confirmar depois.
+
+RESPOSTAS ÀS SUAS 4 PERGUNTAS
+
+1) Os R$ 664 foram resolvidos?
+O script não diz. O histórico do git mostra, na mesma semana, "fix: update reconciled balance calculation and financial logic" (19/03) e "financeiro final" (20/03), e antes "fix(finance): correct rpc signatures and optimize reconciliation ui" (17/03). É compatível com a divergência ter sido resolvida na lógica de conciliação, mas é inferência. No site, os R$ 664 entram só se o Luiz confirmar.
+
+2) Autoria das decisões
+O histórico (cerca de 95 commits entre 22/01 e 01/04/2026, todos do Luiz) mostra duas vozes:
+- mensagens em português, curtas e informais ("financeiro 2.0", "busca nas listas", "pdf att", "att do financeiro e corrigido bug de criar mais de uma coisa no mesmo comando"): tom do próprio Luiz;
+- mensagens longas em inglês, no padrão "feat(finance): ..." com listas detalhadas: tom de agente de IA.
+Há também "checkpoint: architecture docs + AI dev workflows" e "docs: add advanced skills and proactive AI rule to guide" (05/03). CORREÇÃO MINHA: o ERP também tinha regras e fluxos para IA, não só o portfólio. O método de índice/pendências é do portfólio, mas a prática de dirigir agente com regras já existia no ERP.
+O que o código prova como decisões presentes (autoria a confirmar): estorno com data em vez de apagar; custo médio ponderado das matérias-primas calculado por trigger no banco; 13 correções do linter de segurança do Supabase (search_path, vazamento de RLS); padrão repository; code splitting das rotas; integração produção → pedido → financeiro.
+O que o histórico prova sobre o Luiz: em 10 semanas ele iterou continuamente um sistema em uso, com refatorações grandes (src com tipagem estrita, schema V3, repository pattern) sem abandonar o produto. Persistência e ciclo de entrega são fatos, não impressão.
+
+3) Os 619 testes: cobertura ou volume?
+Cobertura de domínio, não volume vazio. Pelos arquivos de teste das duas lojas: dinheiro (centavos/arredondamento), carrinho, frete, pedido, crédito, reserva de estoque durante o drop, fila de espera, segurança, cabeçalhos HTTP de segurança, proteção anti-robô (Turnstile), painel admin, persistência em memória e em Redis (mesmo contrato), SEO/robots, mensagens de WhatsApp, data de entrega e datas especiais, montador de buquê. Ressalva: provavelmente escritos com IA. O número é verdadeiro, mas o Luiz só deve citá-lo sabendo dizer o que pelo menos 3 categorias garantem.
+
+4) As credenciais são reais?
+Sim, pelo formato: os três arquivos têm chave do Google (Gemini), chave da OpenAI, token OIDC da Vercel e URL/chave anônima do Supabase, e o .env ainda guarda chaves antigas comentadas. Não testei as chaves, porque testar seria usá-las. Já avisei o Luiz para trocar todas antes de qualquer coisa. A chave anônima do Supabase é pública por natureza; as outras não.
+
+POSICIONAMENTO: adoto sua Versão 2, com ajustes
+- Título: "Desenvolvedor full-stack em início de carreira: software real, IA e Física". Ajuste: "início de carreira" fica visível, porque protege mais do que esconder.
+- Faixa precisa sempre: "orçamento de 20–30 para 2–5 minutos", nunca "30 para 5".
+- "AI-native" sai do título e vira descrição de método.
+- Física: "já uso computação em problemas científicos (simulação de estrutura eletrônica com Quantum ESPRESSO e DFTB+)", sem vender como experiência de engenharia.
+
+RASCUNHO DOS TEXTOS DO SITE (critique frase por frase)
+
+Hero
+- Título: "Transformo a operação de uma empresa em software que ela usa todo dia."
+- Linha 1 (RH): "Construí o ERP da Confecções Botezini, em uso no dia a dia: orçamentos que levavam 20–30 minutos saem em 2–5."
+- Linha 2 (tech lead): "React e TypeScript com Supabase/Postgres, 619 testes automatizados nas lojas que desenvolvi, e IA no processo, com revisão e teste."
+
+Sobre
+"Estudo Física na UFSJ e Análise e Desenvolvimento de Sistemas na Estácio, e programo há cerca de um ano. Aprendo construindo: os problemas vêm da operação real (orçamento, produção, estoque, financeiro) e viram sistema. Uso IA para acelerar investigação e implementação; o meu trabalho é decompor o problema, dar contexto, testar o resultado e responder por ele. Na Física, uso computação para simular estrutura eletrônica de materiais."
+
+Como eu trabalho (capítulo do portfólio)
+"Em 10 semanas, cerca de 95 commits num sistema em uso: refatorei a base para tipagem estrita, migrei o banco para um novo schema e reorganizei o código em camadas, sem tirar o produto do ar."
+
+O QUE EU QUERO NA MENSAGEM 3
+=== MENSAGEM 3 PARA O CLAUDE ===
+A) Revisão frase por frase dos textos acima: manter / ajustar (com a versão nova) / cortar, e por quê
+B) Qualquer frase que um tech lead conseguiria derrubar numa entrevista, com a pergunta que ele faria
+C) Headline e "Sobre" do LinkedIn (versão curta, até 220 caracteres, e versão longa) coerentes com o site
+D) Lista final de perguntas de SIM/NÃO para o Luiz (no máximo 8), que liberam as histórias pessoais (R$ 664, estorno, física, cliente)
+E) O que ele deve estudar primeiro para defender o que está escrito, em ordem de prioridade
+=== FIM ===
+```
