@@ -10,3 +10,4 @@ content/projetos.md | fatos levantados de cada case (fonte, não é publicado) |
 docs/assets.md | prompts de imagens/vídeos a gerar, tamanhos e nomes de arquivo | -
 assets/ | artes P&B em duotone (.art + --img; assets/sm = prévias p/ visão geral, grandes com .on): cover, sobre, erp (fábrica, usada no quadro Botezini), lojas, barbearia, stack, contato; floor.webp = chão colorido (.book::before) | -
 assets/shots/ | prints reais dos sites (1440×900 → 960px), colados nos quadros como .shot | -
+docs/linkedin.md | rascunhos de posts do LinkedIn (projetos, formação, portfólio) | -
