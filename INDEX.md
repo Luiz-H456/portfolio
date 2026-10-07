@@ -11,6 +11,7 @@ docs/assets.md | prompts de imagens/vídeos a gerar, tamanhos e nomes de arquivo
 assets/ | artes P&B em duotone (.art + --img; assets/sm = prévias p/ visão geral, grandes com .on): cover, sobre, erp (escritório na nave), botezini (fábrica), lojas, barbearia, stack, contato; assets/deco/p0-4 = páginas de passagem desfocadas (300×400); floor.webp = chão colorido (.book::before) | -
 assets/shots/ | prints reais (<projeto>-1/2 desktop 1200×750, -3 celular 360×780); listados em content sec.<s>.shots | -
 docs/linkedin.md | rascunhos de posts do LinkedIn (projetos, formação, portfólio) | -
+docs/curriculo.html, docs/curriculo.pdf | currículo de 1 página (HTML é a fonte; PDF gerado pelo Chromium/Playwright) | content/pt.json
 favicon-32.png, apple-touch-icon.png | ícones (nave preta sobre ferrugem) | -
 docs/novo-projeto.md | passo a passo p/ adicionar projeto e plano de capítulos (virar página) | -
 docs/entrevista-chatgpt.md | roteiro Claude×ChatGPT p/ posicionamento: fluxo de 7 mensagens e Prompt 1 | -
