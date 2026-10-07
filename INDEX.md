@@ -18,4 +18,5 @@ docs/entrevista-chatgpt.md | roteiro Claude×ChatGPT p/ posicionamento: fluxo de
 assets/fonts/ | Anton e Barlow Semi Condensed (woff2 latin, OFL) hospedadas no site, com preload | -
 assets/ic.svg | estrutura de bandas complexa (gerada das fórmulas do notebook da IC), usada no quadro e no capítulo Física | -
 tools/prerender.mjs | rode `node tools/prerender.mjs` após mudar content/pt.json: grava o texto em index.html (<!--seo-->, bloco .sr para quem não roda JS e leitores de tela) e em llms.txt | content/pt.json
-llms.txt, robots.txt | resumo para buscadores de IA (gerado) e permissão de rastreio | tools/prerender.mjs
+llms.txt, robots.txt, sitemap.xml | resumo p/ IA e rastreio (gerados; sitemap só no build da Vercel) | tools/prerender.mjs
+vercel.json, assets/og.png | build da Vercel roda tools/prerender.mjs; og.png = imagem de compartilhamento 1200×630 | -

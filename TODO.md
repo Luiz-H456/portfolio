@@ -15,7 +15,6 @@
 [ ] falta | content/pt.json | validar hero: a Botezini usava planilha antes do ERP? "30→5 min" usa o pior caso de cada faixa | você
 [ ] divida | main.js | shader de fumaça removido no protótipo do mangá (está no commit 2e5c810); reaproveitar como nebulosa | eu
 [ ] estudo | fase 1 | CSS 3D (perspective, preserve-3d), animação guiada por scroll, FLIP (main.js measure/target/frame), interpolação, easing e mola amortecida (oscilador harmônico) | você
-[ ] divida | style.css header | nome fixo no topo fica por cima do mangá em algumas paradas | eu
 [ ] falta | assets/cover.webp | em uso a versão 765px; refazer (prompt novo, sem canhão frontal) e fazer upscale 2× | você
 [ ] decidir | vídeos | os 2 gerados (nave/moto e carro na estrada, 8 s 1080p) não são os loops pedidos; o carro tem o Pão de Açúcar (RJ), não MG | você
 [ ] falta | docs/assets.md | qual gerador você usa (Midjourney, Flux, Nano Banana...)? Ajusto os prompts ao modelo | você
@@ -45,7 +44,6 @@
 [ ] estudo | Formação | saber explicar cada exemplo "na prática" (integral numérica da câmera, matrizes da perspectiva, produto escalar em IA) | você
 [ ] falta | capítulo Formação | confirmar a legenda da grade (figurinha = concluída? bolinha verde = cursando?) para marcar o status de cada disciplina | você
 [ ] estudo | Formação | saber explicar cada exemplo "na prática" (EDO da mola, matrizes da perspectiva, produto escalar em IA) | você
-[ ] falta | SEO | com domínio/URL final: <link rel=canonical>, og:url, og:image absoluta (1200×630), sitemap.xml e linha Sitemap no robots.txt; sem URL absoluta o preview no WhatsApp/LinkedIn sai sem imagem | você (URL) + eu
+[ ] falta | SEO | confirmar na Vercel: o build roda tools/prerender.mjs e grava canonical, og:url/og:image e sitemap com o domínio de produção (variável VERCEL_PROJECT_PRODUCTION_URL); conferir o preview colando o link no LinkedIn | você
 [ ] falta | currículo | versão em inglês (docs/curriculo.pdf é só PT; o link em EN avisa) e cursos/certificados, que ainda não estão no PDF | você
 [ ] divida | SEO | uma URL só para PT e EN: o Google indexa só o PT. Separar em /en exigiria hreflang e prerender por idioma | eu
-[ ] divida | SEO | rodar tools/prerender.mjs a cada mudança em content/pt.json (sem build, não há automação) | eu
