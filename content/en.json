@@ -390,7 +390,7 @@
 "contato": {
 "k": "Contact",
 "t": "Let's talk?",
-"b": "<ul><li><a href=\"https://wa.me/5532985112336?text=Hi%20Luiz%2C%20I%20saw%20your%20portfolio\" target=\"_blank\" rel=\"noopener\">WhatsApp</a></li><li><a href=\"mailto:luuiizhcc@gmail.com\">luuiizhcc@gmail.com</a></li><li><a href=\"https://www.linkedin.com/in/luiz-henrique-71a387234/\" target=\"_blank\" rel=\"noopener\">LinkedIn</a></li><li><a href=\"https://github.com/Luiz-H456\" target=\"_blank\" rel=\"noopener\">GitHub</a></li></ul>"
+"b": "<ul><li><a href=\"https://wa.me/5532985112336?text=Hi%20Luiz%2C%20I%20saw%20your%20portfolio\" target=\"_blank\" rel=\"noopener\">WhatsApp</a></li><li><a href=\"docs/curriculo.pdf\" download=\"Luiz-Henrique-Carvalho-Curriculo.pdf\">Résumé (PDF, in Portuguese)</a></li><li><a href=\"mailto:luuiizhcc@gmail.com\">luuiizhcc@gmail.com</a></li><li><a href=\"https://www.linkedin.com/in/luiz-henrique-71a387234/\" target=\"_blank\" rel=\"noopener\">LinkedIn</a></li><li><a href=\"https://github.com/Luiz-H456\" target=\"_blank\" rel=\"noopener\">GitHub</a></li></ul>"
 },
 "fim": {
 "k": "End of volume 1",

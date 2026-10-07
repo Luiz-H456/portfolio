@@ -1,0 +1,60 @@
+# Luiz Henrique Carvalho
+
+> Desenvolvedor full-stack em início de carreira. Construí o ERP da Confecções Botezini, em uso no dia a dia: orçamentos que levavam cerca de 20–30 minutos passaram a sair em 2–5.
+
+## Sobre
+
+Estudo Física na UFSJ e Análise e Desenvolvimento de Sistemas na Estácio, e programo há cerca de um ano.
+Aprendo construindo: problemas reais de orçamento, produção, estoque e financeiro viram sistemas usados na operação.
+Uso IA para acelerar investigação e implementação; meu trabalho é decompor o problema, dar contexto, testar o resultado e responder por ele.
+
+## Como eu trabalho
+
+Este portfólio é o exemplo: menos de 150 linhas de JavaScript, nenhuma biblioteca, e um método para trabalhar com IA sem perder o controle do código.
+
+## ERP Botezini: produto, arquitetura e IA
+
+Três ângulos no capítulo: o produto (quem usa e o fluxo), o design de software (camadas, banco e regras de negócio) e a engenharia com IA (como as tarefas são especificadas para o agente).
+Sistema de gestão usado pela Confecções Botezini: orçamentos, pedidos, produção, estoque, financeiro.
+Orçamento: 20–30 min → 2–5 min
+Mais de 60 pedidos feitos pelo sistema
+Estoque e orçamentos padronizados
+React, TypeScript, Supabase, Vercel
+
+## Iniciação científica, UFSJ
+
+Iniciação científica no Laboratório de Estrutura Eletrônica da UFSJ (PIIC, 2026–2027), orientada pelo Prof. Horácio Wagner Leite Alves. Em andamento: a Parte 1, o modelo em uma dimensão, está concluída e validada.
+Python, NumPy, SciPy, Matplotlib, DFTB+
+
+## botezini.com.br
+
+Site comercial da confecção, com SEO técnico (dados estruturados, sitemap automático, IndexNow) e páginas de venda para personalização e bordado.
+Resultado: leads qualificados chegando toda semana, de forma passiva.
+[Abrir botezini.com.br](https://botezini.com.br)
+
+## BTZN + Fora da Caixa
+
+Base de e-commerce própria reaproveitada numa loja de roupas com lançamentos em drops e contagem regressiva (BTZN) e numa loja de presentes com rosas eternas e montador de buquê (Fora da Caixa).
+Painel administrativo próprio
+Testes automatizados (Vitest + Playwright)
+llms.txt para buscadores de IA
+Astro, React, Upstash Redis, Vercel Blob
+[Abrir btzn.com.br](https://btzn.com.br)[Abrir foradacaixa.btzn.com.br](https://foradacaixa.btzn.com.br)
+
+## Barbearia Stilo Black
+
+Site da barbearia em funcionamento, com agendamento pelo app, galeria de cortes e contato por WhatsApp.
+[barbeariastiloblack.vercel.app](https://barbeariastiloblack.vercel.app)
+React, TypeScript, Vite
+
+## Formação e ferramentas
+
+Física na UFSJ e Análise e Desenvolvimento de Sistemas na Estácio, as duas em andamento. As ferramentas abaixo estão separadas pelo que de fato já uso em produção e pelo que ainda estou estudando.
+
+## Contato
+
+[WhatsApp](https://wa.me/5532985112336?text=Oi%20Luiz%2C%20vi%20seu%20portf%C3%B3lio)
+[Currículo (PDF)](docs/curriculo.pdf)
+[luuiizhcc@gmail.com](mailto:luuiizhcc@gmail.com)
+[LinkedIn](https://www.linkedin.com/in/luiz-henrique-71a387234/)
+[GitHub](https://github.com/Luiz-H456)

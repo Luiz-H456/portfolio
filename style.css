@@ -73,7 +73,7 @@ a{color:var(--mustard)}
   padding:1.1rem 1.2rem 1rem;max-height:42svh;overflow:auto;transition:opacity .35s ease,translate .45s cubic-bezier(.2,.8,.2,1),rotate .45s cubic-bezier(.2,.8,.2,1),background-color .45s ease,color .45s ease}
 .cap.out{opacity:0;translate:0 18px;rotate:-4deg}
 .cap .kick{color:inherit;opacity:.8;font-weight:600}
-.cap h2{font-size:clamp(1.6rem,min(7vw,8svh),4.2rem);line-height:.92;margin:.25rem 0 .6rem}
+.cap .display{font-size:clamp(1.6rem,min(7vw,8svh),4.2rem);line-height:.92;margin:.25rem 0 .6rem}
 .cap div{color:inherit;font-size:clamp(1rem,1.15vw,1.12rem);max-width:60ch}
 .cap div p+p,.cap ul{margin-top:.5rem}.cap ul{padding-left:1.1rem}
 .cap a{color:inherit;font-weight:600;text-decoration-thickness:2px;text-underline-offset:3px}
@@ -158,3 +158,5 @@ a{color:var(--mustard)}
 .use{display:flex;flex-direction:column;gap:12px;height:100%;justify-content:center}
 .use b{font:400 max(38px,5.4cqw)/.95 Anton,Impact,sans-serif;text-transform:uppercase;color:var(--mustard);filter:none}
 .use p{margin:0;color:var(--cream);font:600 max(22px,3cqw)/1.3 "Barlow Semi Condensed",sans-serif}
+
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}

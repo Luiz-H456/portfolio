@@ -45,3 +45,7 @@
 [ ] estudo | Formação | saber explicar cada exemplo "na prática" (integral numérica da câmera, matrizes da perspectiva, produto escalar em IA) | você
 [ ] falta | capítulo Formação | confirmar a legenda da grade (figurinha = concluída? bolinha verde = cursando?) para marcar o status de cada disciplina | você
 [ ] estudo | Formação | saber explicar cada exemplo "na prática" (EDO da mola, matrizes da perspectiva, produto escalar em IA) | você
+[ ] falta | SEO | com domínio/URL final: <link rel=canonical>, og:url, og:image absoluta (1200×630), sitemap.xml e linha Sitemap no robots.txt; sem URL absoluta o preview no WhatsApp/LinkedIn sai sem imagem | você (URL) + eu
+[ ] falta | currículo | versão em inglês (docs/curriculo.pdf é só PT; o link em EN avisa) e cursos/certificados, que ainda não estão no PDF | você
+[ ] divida | SEO | uma URL só para PT e EN: o Google indexa só o PT. Separar em /en exigiria hreflang e prerender por idioma | eu
+[ ] divida | SEO | rodar tools/prerender.mjs a cada mudança em content/pt.json (sem build, não há automação) | eu
