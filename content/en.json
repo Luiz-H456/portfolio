@@ -441,7 +441,7 @@
 "a": "4/1/9/4"
 },
 {
-"code": "[ ] falta | prints do ERP | você\n[ ] estudo | mola amortecida | você\n[ ] divida | fontes externas | eu",
+"code": "[ ] falta | prints do ERP | você\n[ ] estudo | mola amortecida | você\n[ ] divida | EN indexável (/en) | eu",
 "t": "No hidden placeholders",
 "n": "Anything missing becomes an item with an owner, and the index is updated in the same commit.",
 "p": "R",

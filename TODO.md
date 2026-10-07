@@ -24,8 +24,8 @@
 [ ] estudo | fase 1 | animação independente da taxa de quadros (passos de tempo em frame()), lazy-load de imagens | você
 [ ] decidir | favicon-32.png | a nave lembra muito a Swordfish II (Cowboy Bebop); trocar por algo original? | você
 [ ] estudo | capítulos | conseguir explicar em entrevista: o que os 619 testes das lojas cobrem (vitest), RLS/Zod/TanStack Query no ERP, por que Gemini roda no servidor | você
-[ ] estudo | capítulo Como eu trabalho | oscilador harmônico amortecido (mola da câmera) e passos de tempo fixo | você
-[ ] falta | ERP | prints com dados fictícios: entram no capítulo do ERP no lugar da arte | você
+[ ] estudo | capítulo Como eu trabalho | oscilador harmônico amortecido (mola da câmera) e passos de tempo fixo: conta e 4 exercícios em docs/estudo-mola.md | você
+[ ] falta | ERP | prints com dados fictícios: roteiro em docs/prints-erp.md; entram no capítulo do ERP no lugar da arte e o aviso "print pendente" some | você
 [ ] falta | foto | foto sua (opcional) para o Sobre/capa, eu aplico o duotone | você
 [ ] seg | botezinipvd | URGENTE: trocar chaves Google/Gemini e OpenAI (formato válido, commitadas em .env/.env.local/.env.vercel, + chaves antigas comentadas no .env) e token Vercel; depois remover os .env do repo | você
 [ ] estudo | prioridade 1 | JS/TS sem IA: tipos vs interfaces, generics, narrowing, async/await, closures, erros, runtime vs compile time | você
