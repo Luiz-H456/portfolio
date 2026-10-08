@@ -1,5 +1,9 @@
 // i18n: textos em content/<lang>.json; data-i = chave com pontos; legenda usa t.sec[<data-s>]
 let t, cur = -1
+// altura estável: 100svh não muda quando a barra do navegador do celular some/aparece (innerHeight muda e fazia a tela tremer)
+const probe = Object.assign(document.createElement('div'), { style: 'position:fixed;width:0;height:100svh;visibility:hidden;pointer-events:none' })
+document.body.append(probe)
+const vh = () => probe.offsetHeight
 const lang0 = location.pathname.startsWith('/en') ? 'en' : (() => { try { return localStorage.getItem('lang') } catch { } })() || (navigator.language.startsWith('pt') ? 'pt' : 'en')
 async function setLang(l) {
   t = await (await fetch(`content/${l}.json`)).json()
@@ -28,7 +32,7 @@ const chapShots = () => [...book.querySelectorAll('#cL [data-c],#cR [data-c],#cx
 const chapLen = () => chapShots().length + 2  // +2: visão das 2 páginas e título
 let xl = []  // folhas extras do capítulo: { el, f }
 function measure() {
-  const W = innerWidth, H = innerHeight, wide = W >= 900 || (W > H && W >= 600), cw = wide ? cap.offsetWidth + 48 : 0, ch = wide ? 0 : H * .42 + 16  // celular: reserva a altura máxima da legenda (CSS 42svh)
+  const W = innerWidth, H = vh(), wide = W >= 900 || (W > H && W >= 600), cw = wide ? cap.offsetWidth + 48 : 0, ch = wide ? 0 : H * .42 + 16  // celular: reserva a altura máxima da legenda (CSS 42svh)
   const ox = -cw / 2, oy = -ch / 2, fw = (W - cw) * (wide ? .85 : .92), fh = (H - ch) * .78
   // verso de folha aparece espelhado de volta: x local = x no livro; páginas da direita começam em 1200
   const stop = (el, i, rx) => {
@@ -54,7 +58,7 @@ function measure() {
   cam ??= { ...keys[0] }
 }
 function target() {
-  const P = Math.min(keys.length - 1, Math.max(0, scrollY / innerHeight))  // scrollY fica negativo no "elástico" do Mac/iPhone
+  const P = Math.min(keys.length - 1, Math.max(0, scrollY / vh()))  // scrollY fica negativo no "elástico" do Mac/iPhone
   if (still) { const i = Math.round(P); return [{ ...keys[i], rx: 0, rz: 0, o: 1 }, i, P] }
   const i = Math.floor(P), a = keys[i], b = keys[i + 1] || a
   const u = ease(clamp((P - i - .2) / .8)), arc = Math.sin(Math.PI * u)
@@ -85,23 +89,23 @@ function fillChap(s) {
 function openChap(s) {
   if (!t.sec[s].chap || chap) return
   fillChap(s); chap = { s }; measure(); cur = -1
-  scrollTo({ top: (chap.at + 1) * innerHeight, behavior: still ? 'instant' : 'smooth' })
+  scrollTo({ top: (chap.at + 1) * vh(), behavior: still ? 'instant' : 'smooth' })
 }
 // how: 'next' segue p/ o próximo projeto, 'back' volta ao quadro do projeto, 'up' fecha onde está (rolou para cima)
 function closeChap(how) {
   const n = chapLen(), at = chap.at
-  const y = how === 'next' ? scrollY - n * innerHeight : how === 'back' ? at * innerHeight : scrollY
+  const y = how === 'next' ? scrollY - n * vh() : how === 'back' ? at * vh() : scrollY
   chap = null; measure(); cur = -1
   scrollTo({ top: y, behavior: 'instant' })
 }
 capBtn.onclick = () => chap ? closeChap('back') : t.sec[meta[cur].s].chap ? openChap(meta[cur].s) : scrollTo({ top: 0, behavior: still ? 'instant' : 'smooth' })
 // teclado: ↓/PageDown/espaço avançam uma parada, ↑/PageUp voltam, Home volta à capa, Esc fecha o capítulo
 let kt = null  // destino pendente: toques rápidos somam em vez de repetir a mesma parada
-const go = i => { kt = Math.max(0, Math.min(keys.length - 1, i)); scrollTo({ top: kt * innerHeight, behavior: still ? 'instant' : 'smooth' }) }
+const go = i => { kt = Math.max(0, Math.min(keys.length - 1, i)); scrollTo({ top: kt * vh(), behavior: still ? 'instant' : 'smooth' }) }
 addEventListener('keydown', e => {
   if (e.key === 'Escape' && chap) return closeChap('back')
   if (e.target.closest?.('button,a,input')) return
-  const P = kt ?? Math.round(scrollY / innerHeight), d = { ArrowDown: 1, PageDown: 1, ' ': 1, ArrowUp: -1, PageUp: -1 }[e.key]
+  const P = kt ?? Math.round(scrollY / vh()), d = { ArrowDown: 1, PageDown: 1, ' ': 1, ArrowUp: -1, PageUp: -1 }[e.key]
   if (d) { e.preventDefault(); go(P + d) } else if (e.key === 'Home') { e.preventDefault(); go(0) }
 })
 // aviso do início: some ao rolar; clicar nele (ou na capa) abre o livro
@@ -116,7 +120,7 @@ function buildToc() {
 }
 panels.forEach((el, i) => {
   if (el.querySelector('.go')) el.classList.add('has-chap')
-  el.onclick = () => { const s = el.dataset.s; if (!t.sec[s].chap) return go(i + 2); meta[cur]?.s === s ? openChap(s) : scrollTo({ top: (i + 2) * innerHeight, behavior: 'smooth' }) }
+  el.onclick = () => { const s = el.dataset.s; if (!t.sec[s].chap) return go(i + 2); meta[cur]?.s === s ? openChap(s) : scrollTo({ top: (i + 2) * vh(), behavior: 'smooth' }) }
 })
 
 // cor da legenda = cor do quadro (fundo, texto)
@@ -143,11 +147,11 @@ function frame(now) {
   const steps = Math.min(4, Math.max(1, Math.round((now - (last || now - 16.7)) / 16.7)))  // quadros perdidos viram passos extras: mesma velocidade a 30 ou 120 fps
   last = now
   if (chap) {  // saiu do capítulo rolando: para baixo a página vira já, mas o scroll só é reajustado parado (rolagem suave do navegador ainda mira a posição antiga)
-    const P = scrollY / innerHeight, end = chap.at + chapLen()
+    const P = scrollY / vh(), end = chap.at + chapLen()
     if (P < chap.at - .5) closeChap('up')
     else { chap.leaving = P > end + .3; if (chap.leaving && idle > 15) closeChap('next') }
   }
-  if (!chap && idle > 20 && scrollY / innerHeight >= keys.length - 1.02) scrollTo({ top: 0, behavior: 'instant' })  // chegou na capa e parou: recomeça
+  if (!chap && idle > 20 && scrollY / vh() >= keys.length - 1.02) scrollTo({ top: 0, behavior: 'instant' })  // chegou na capa e parou: recomeça
   const [k, n, P] = target()
   if (still && n !== shown) { scene.classList.add('dip'); setTimeout(() => scene.classList.remove('dip'), 150) }
   shown = n
@@ -181,5 +185,6 @@ function frame(now) {
   caption(n)
   requestAnimationFrame(frame)
 }
-addEventListener('resize', measure)
+let w0 = innerWidth
+addEventListener('resize', () => { if (matchMedia('(pointer:coarse)').matches && innerWidth === w0) return; w0 = innerWidth; measure() })  // celular: só a barra do navegador mudou, nada a refazer
 setLang(lang0).then(() => { measure(); buildToc(); requestAnimationFrame(frame) })
