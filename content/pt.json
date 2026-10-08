@@ -1,12 +1,9 @@
 {
-"todo": {
-"erp": "print do ERP pendente"
-},
 "sec": {
 "intro": {
 "k": "Vol. 1",
 "t": "Um portfólio em quadrinhos",
-"b": "<p>Role para abrir o mangá. A câmera percorre cada quadro.</p>"
+"b": "<p>A câmera percorre cada quadro. Nos que têm “Abrir capítulo”, clique para ver por dentro.</p>"
 },
 "hero": {
 "k": "Desenvolvedor full-stack em início de carreira",
@@ -441,7 +438,7 @@
 "a": "4/1/9/4"
 },
 {
-"code": "[ ] falta | prints do ERP | você\n[ ] estudo | mola amortecida | você\n[ ] divida | EN indexável (/en) | eu",
+"code": "[ ] falta | prints do ERP | você\n[ ] estudo | mola amortecida | você",
 "t": "Nada de placeholder escondido",
 "n": "O que falta vira item com dono, e o índice é atualizado no mesmo commit.",
 "p": "R",
@@ -496,7 +493,7 @@
 }
 }
 },
-"ui": {
+"ui": { "hint": "Role para baixo para abrir o livro ↓", "title": "Luiz Henrique Carvalho — Desenvolvedor full-stack", "desc": "Desenvolvedor full-stack em início de carreira e estudante de Física. ERP em uso por uma confecção, lojas com 619 testes automatizados e sites para negócios reais.", 
 "open": "Abrir capítulo",
 "back": "Voltar ao livro",
 "top": "Voltar ao início",

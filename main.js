@@ -1,6 +1,6 @@
 // i18n: textos em content/<lang>.json; data-i = chave com pontos; legenda usa t.sec[<data-s>]
 let t, cur = -1
-const lang0 = (() => { try { return localStorage.getItem('lang') } catch { } })() || (navigator.language.startsWith('pt') ? 'pt' : 'en')
+const lang0 = location.pathname.startsWith('/en') ? 'en' : (() => { try { return localStorage.getItem('lang') } catch { } })() || (navigator.language.startsWith('pt') ? 'pt' : 'en')
 async function setLang(l) {
   t = await (await fetch(`content/${l}.json`)).json()
   document.querySelectorAll('[data-i]').forEach(el => { el.innerHTML = el.dataset.i.split('.').reduce((o, k) => o[k], t) })
@@ -104,6 +104,10 @@ addEventListener('keydown', e => {
   const P = kt ?? Math.round(scrollY / innerHeight), d = { ArrowDown: 1, PageDown: 1, ' ': 1, ArrowUp: -1, PageUp: -1 }[e.key]
   if (d) { e.preventDefault(); go(P + d) } else if (e.key === 'Home') { e.preventDefault(); go(0) }
 })
+// aviso do início: some ao rolar; clicar nele (ou na capa) abre o livro
+const hint = document.getElementById('hint')
+hint.onclick = book.querySelector('.cover').onclick = () => go(1)
+addEventListener('scroll', () => hint.classList.toggle('off', scrollY > 20), { passive: true })
 // índice no topo: pula direto para um quadro (fecha o capítulo aberto antes)
 const toc = document.getElementById('toc')
 function buildToc() {
@@ -112,7 +116,7 @@ function buildToc() {
 }
 panels.forEach((el, i) => {
   if (el.querySelector('.go')) el.classList.add('has-chap')
-  el.onclick = () => { const s = el.dataset.s; if (!t.sec[s].chap) return; meta[cur]?.s === s ? openChap(s) : scrollTo({ top: (i + 2) * innerHeight, behavior: 'smooth' }) }
+  el.onclick = () => { const s = el.dataset.s; if (!t.sec[s].chap) return go(i + 2); meta[cur]?.s === s ? openChap(s) : scrollTo({ top: (i + 2) * innerHeight, behavior: 'smooth' }) }
 })
 
 // cor da legenda = cor do quadro (fundo, texto)

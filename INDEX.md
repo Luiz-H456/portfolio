@@ -1,7 +1,7 @@
 # Índice (caminho | função | depende de)
 CLAUDE.md | regras para IA | -
 TODO.md | pendências, dívidas, decisões, estudo | -
-index.html | .stage > .scene > .book: #cR (última pág. direita do capítulo, embaixo), #cx (folhas extras do capítulo), .leaf.main (frente = pág. direita principal, verso #cL = esquerda do capítulo), .leaf = folhas da abertura (a última traz a pág. esquerda no verso; capa = última) + .cap (legenda, botão #chap-b) | style.css, main.js
+index.html, en/index.html (gerado) | #hint = aviso de rolagem (cápsula .pill, como o menu); .stage > .scene > .book: #cR (última pág. direita do capítulo, embaixo), #cx (folhas extras do capítulo), .leaf.main (frente = pág. direita principal, verso #cL = esquerda do capítulo), .leaf = folhas da abertura (a última traz a pág. esquerda no verso; capa = última) + .cap (legenda, botão #chap-b) | style.css, main.js
 style.css | paleta Bebop (:root), grão, mangá aberto 2400×1600px, grade dos quadros, legenda responsiva | -
 main.js | i18n; câmera (measure/target/frame, mola em passos de tempo real); keys+meta por parada; capítulo com várias duplas (páginas L/R, L2/R2...; folhas extras em #cx, viradas por xl conforme meta.sp; body()/inside() montam print, por dentro, código ou html; fillChap/openChap/closeChap: paradas: 2 páginas inteiras, título, um print por parada; vira .leaf.main em 0,9 s; fecha ao rolar além do fim); .here/.has-chap + selo .go nos quadros de projeto; fim: 3 paradas (afasta, fecha, capa) e volta ao topo; teclado (go/kt) e índice #toc (buildToc); CAP = cor da legenda | content/*.json
 content/pt.json, content/en.json | textos: ui.*, todo.*, sec.<data-s> (k/t/b; chap.items [{p L/R, a grid-area, t rótulo} + src/n print | in {num,numl,prob,dec,flow} 'por dentro' | code/n | html/n]; chap.art) | -
@@ -13,11 +13,11 @@ assets/shots/ | prints reais (<projeto>-1/2 desktop 1200×750, -3 celular 360×7
 docs/linkedin.md | rascunhos de posts do LinkedIn (projetos, formação, portfólio) | -
 docs/estudo-mola.md, docs/prints-erp.md | roteiro de estudo da mola da câmera (conta + exercícios) e como gerar prints do ERP com dados fictícios | main.js (frame)
 docs/curriculo.html, docs/curriculo.pdf | currículo de 1 página (HTML é a fonte; PDF gerado pelo Chromium/Playwright) | content/pt.json
-favicon-32.png, apple-touch-icon.png | ícones (nave preta sobre ferrugem) | -
+favicon-32.png, apple-touch-icon.png | ícones (monograma LH preto sobre ferrugem, original) | -
 docs/novo-projeto.md | passo a passo p/ adicionar projeto e plano de capítulos (virar página) | -
 docs/entrevista-chatgpt.md | roteiro Claude×ChatGPT p/ posicionamento: fluxo de 7 mensagens e Prompt 1 | -
 assets/fonts/ | Anton e Barlow Semi Condensed (woff2 latin, OFL) hospedadas no site, com preload | -
 assets/ic.svg | estrutura de bandas complexa (gerada das fórmulas do notebook da IC), usada no quadro e no capítulo Física | -
-tools/prerender.mjs | rode `node tools/prerender.mjs` após mudar content/pt.json: grava o texto em index.html (<!--seo-->, bloco .sr para quem não roda JS e leitores de tela) e em llms.txt | content/pt.json
+tools/prerender.mjs | rode `node tools/prerender.mjs` após mudar content/*.json (a Vercel roda no build): grava texto, título e descrição em index.html (PT) e en/index.html (EN) (<!--seo-->, bloco .sr para quem não roda JS e leitores de tela) e em llms.txt | content/pt.json
 llms.txt, robots.txt, sitemap.xml | resumo p/ IA e rastreio (gerados; sitemap só no build da Vercel) | tools/prerender.mjs
 vercel.json, assets/og.png | build da Vercel roda tools/prerender.mjs; og.png = imagem de compartilhamento 1200×630 | -

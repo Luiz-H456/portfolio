@@ -1,6 +1,5 @@
 # TODO (tipo | onde | o quê | quem) — item resolvido é apagado
 [ ] falta | GitHub | criar repo Luiz-H456/portfolio (integração do Claude sem permissão de criar) | você
-[ ] decidir | conceito | provedor do chat (Claude ou Gemini) e teto de gasto mensal | você+eu
 [ ] falta | site | nome de exibição, foto/avatar, links (GitHub, LinkedIn, contato), | você
 [ ] falta | content/projetos.md | por case: problema do cliente, resultado (número se houver), seu papel | você
 [ ] falta | content/projetos.md | ERP: prints de ambiente com dados fictícios | você
@@ -13,16 +12,12 @@
 [ ] falta | content/projetos.md | ERP: quantos dias economizados (só com dado real; ex.: orçamentos/mês × ~20 min) | você
 [ ] decidir | domínio | comprar .dev ou .com.br (até lá: *.vercel.app) | você
 [ ] falta | content/pt.json | validar hero: a Botezini usava planilha antes do ERP? "30→5 min" usa o pior caso de cada faixa | você
-[ ] divida | main.js | shader de fumaça removido no protótipo do mangá (está no commit 2e5c810); reaproveitar como nebulosa | eu
 [ ] estudo | fase 1 | CSS 3D (perspective, preserve-3d), animação guiada por scroll, FLIP (main.js measure/target/frame), interpolação, easing e mola amortecida (oscilador harmônico) | você
 [ ] falta | assets/cover.webp | em uso a versão 765px; refazer (prompt novo, sem canhão frontal) e fazer upscale 2× | você
-[ ] decidir | vídeos | os 2 gerados (nave/moto e carro na estrada, 8 s 1080p) não são os loops pedidos; o carro tem o Pão de Açúcar (RJ), não MG | você
 [ ] falta | docs/assets.md | qual gerador você usa (Midjourney, Flux, Nano Banana...)? Ajusto os prompts ao modelo | você
-[ ] divida | assets/ | upscale feito por Lanczos 2× + nitidez (sem IA, não cria detalhe); se quiser mais nitidez, upscale com IA (Magnific/Krea) | você
 [ ] falta | assets/contato.webp | opcional: refazer quadrado e sem moldura (recortei para 4:3) | você
 [ ] falta | assets/shots/erp.webp | print do ERP com dados fictícios: não rodo o ERP daqui (usaria as chaves de produção commitadas e dados reais de clientes) | você
 [ ] estudo | fase 1 | animação independente da taxa de quadros (passos de tempo em frame()), lazy-load de imagens | você
-[ ] decidir | favicon-32.png | a nave lembra muito a Swordfish II (Cowboy Bebop); trocar por algo original? | você
 [ ] estudo | capítulos | conseguir explicar em entrevista: o que os 619 testes das lojas cobrem (vitest), RLS/Zod/TanStack Query no ERP, por que Gemini roda no servidor | você
 [ ] estudo | capítulo Como eu trabalho | oscilador harmônico amortecido (mola da câmera) e passos de tempo fixo: conta e 4 exercícios em docs/estudo-mola.md | você
 [ ] falta | ERP | prints com dados fictícios: roteiro em docs/prints-erp.md; entram no capítulo do ERP no lugar da arte e o aviso "print pendente" some | você
@@ -46,4 +41,3 @@
 [ ] estudo | Formação | saber explicar cada exemplo "na prática" (EDO da mola, matrizes da perspectiva, produto escalar em IA) | você
 [ ] falta | SEO | confirmar na Vercel: o build roda tools/prerender.mjs e grava canonical, og:url/og:image e sitemap com o domínio de produção (variável VERCEL_PROJECT_PRODUCTION_URL); conferir o preview colando o link no LinkedIn | você
 [ ] falta | currículo | versão em inglês (docs/curriculo.pdf é só PT; o link em EN avisa) e cursos/certificados, que ainda não estão no PDF | você
-[ ] divida | SEO | uma URL só para PT e EN: o Google indexa só o PT. Separar em /en exigiria hreflang e prerender por idioma | eu

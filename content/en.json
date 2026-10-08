@@ -1,12 +1,9 @@
 {
-"todo": {
-"erp": "ERP screenshot pending"
-},
 "sec": {
 "intro": {
 "k": "Vol. 1",
 "t": "A portfolio in comics",
-"b": "<p>Scroll to open the manga. The camera travels through every panel.</p>"
+"b": "<p>The camera travels through every panel. On the ones marked “Open chapter”, click to see inside.</p>"
 },
 "hero": {
 "k": "Early-career full-stack developer",
@@ -441,7 +438,7 @@
 "a": "4/1/9/4"
 },
 {
-"code": "[ ] falta | prints do ERP | você\n[ ] estudo | mola amortecida | você\n[ ] divida | EN indexável (/en) | eu",
+"code": "[ ] falta | prints do ERP | você\n[ ] estudo | mola amortecida | você",
 "t": "No hidden placeholders",
 "n": "Anything missing becomes an item with an owner, and the index is updated in the same commit.",
 "p": "R",
@@ -496,7 +493,7 @@
 }
 }
 },
-"ui": {
+"ui": { "hint": "Scroll down to open the book ↓", "title": "Luiz Henrique Carvalho — Full-stack developer", "desc": "Early-career full-stack developer and Physics student. An ERP in daily use at a clothing manufacturer, stores with 619 automated tests, and sites for real businesses.", 
 "open": "Open chapter",
 "back": "Back to the book",
 "top": "Back to the start",
