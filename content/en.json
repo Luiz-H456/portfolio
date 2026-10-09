@@ -397,12 +397,12 @@
 "metodo": {
 "k": "How I work",
 "t": "Small code, directed AI",
-"b": "<p>This portfolio is the example: under 150 lines of JavaScript, no libraries, and a method for working with AI without losing control of the code.</p>",
+"b": "<p>This portfolio is the example: under 200 lines of JavaScript, no libraries, and a method for working with AI without losing control of the code.</p>",
 "chap": {
 "items": [
 {
 "in": {
-"num": "148",
+"num": "190",
 "numl": "lines of JavaScript on this site, zero libraries",
 "prob": "Animated 3D portfolios usually weigh megabytes and become code nobody maintains.",
 "dec": [

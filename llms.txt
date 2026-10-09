@@ -10,7 +10,7 @@ Uso IA para acelerar investigação e implementação; meu trabalho é decompor 
 
 ## Como eu trabalho
 
-Este portfólio é o exemplo: menos de 150 linhas de JavaScript, nenhuma biblioteca, e um método para trabalhar com IA sem perder o controle do código.
+Este portfólio é o exemplo: menos de 200 linhas de JavaScript, nenhuma biblioteca, e um método para trabalhar com IA sem perder o controle do código.
 
 ## ERP Botezini: produto, arquitetura e IA
 

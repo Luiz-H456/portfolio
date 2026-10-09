@@ -3,7 +3,7 @@
 2. Criou/moveu/mudou o papel de um arquivo → atualize INDEX.md no mesmo commit.
 3. Nada de placeholder silencioso: o que faltar vira linha em TODO.md e é avisado ao usuário.
 4. Código mínimo: sem abstração antecipada, sem comentário que repete o código, sem dependência que não pague o custo.
-Stack: HTML/CSS/JS estático + GSAP (ScrollTrigger). Deploy Vercel. Sem build.
+Stack: HTML/CSS/JS estático, sem bibliotecas (JS puro + CSS 3D). Deploy Vercel; o único passo de build é node tools/prerender.mjs (sem dependências).
 5. Site evolui em fases. Cada técnica nova entra junto com um item `estudo` no TODO.md; o site só a anuncia como domínio depois que o item sair do TODO.
 Conceito: Vitrine (impacto visual p/ RH: shader WebGL puro, tipografia cinética, View Transitions, linguagem de negócio, números) + Raio-X (botão "ver por dentro": código, prompt e custo de cada parte, p/ tech lead).
 Decisões: (visual claro/editorial DESCARTADO, ver Estilo); PT+EN desde o início (textos em content/, nunca no HTML); seções Início+Sobre, Projetos, Habilidades, Contato (rodapé fixo); ERP com prints de dados fictícios.

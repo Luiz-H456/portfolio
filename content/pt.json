@@ -397,12 +397,12 @@
 "metodo": {
 "k": "Como eu trabalho",
 "t": "Código pequeno, IA dirigida",
-"b": "<p>Este portfólio é o exemplo: menos de 150 linhas de JavaScript, nenhuma biblioteca, e um método para trabalhar com IA sem perder o controle do código.</p>",
+"b": "<p>Este portfólio é o exemplo: menos de 200 linhas de JavaScript, nenhuma biblioteca, e um método para trabalhar com IA sem perder o controle do código.</p>",
 "chap": {
 "items": [
 {
 "in": {
-"num": "148",
+"num": "190",
 "numl": "linhas de JavaScript neste site, zero bibliotecas",
 "prob": "Portfólio animado em 3D costuma pesar megabytes e virar código que ninguém mantém.",
 "dec": [

@@ -100,7 +100,7 @@ Imagem: GIF ou vídeo curto do livro abrindo (grave a tela quando estiver na Ver
 > Fiz meu portfólio em formato de mangá: o livro abre no chão, a câmera percorre cada quadro, e cada quadro é um projeto.
 >
 > O que tem por trás, para quem é da área:
-> - zero bibliotecas: CSS 3D e menos de 100 linhas de JavaScript;
+> - zero bibliotecas: CSS 3D e menos de 200 linhas de JavaScript;
 > - a câmera chega em cada quadro com uma mola amortecida (oscilador harmônico, coisa da Física);
 > - quem ativa "reduzir movimento" no sistema vê uma versão sem 3D;
 > - as artes carregam em versão leve e só baixam em alta quando a câmera se aproxima.

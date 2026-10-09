@@ -46,7 +46,7 @@ O QUE O CLAUDE JÁ VERIFICOU (fatos, pode usar)
 - Site botezini.com.br: SEO técnico (dados estruturados, data de atualização tirada do git, IndexNow) e páginas de venda por tipo de cliente. Segundo o Luiz, traz leads qualificados toda semana de forma passiva.
 - BTZN (loja de roupas com lançamentos em "drops" e contagem regressiva) e Fora da Caixa (rosas eternas e montador de buquê): mesma base de e-commerce reaproveitada. Astro, React, Upstash Redis, Vercel. 619 testes automatizados passando nas duas lojas (288 + 331, rodados pelo Claude).
 - Barbearia Stilo Black: site de cliente real no ar, com agendamento pelo app.
-- O próprio portfólio: um mangá 3D interativo feito com menos de 150 linhas de JavaScript e zero bibliotecas; a câmera usa uma mola amortecida (física do oscilador harmônico); bilíngue PT/EN; feito com IA usando um método próprio de economia de contexto (índice de arquivos, lista de pendências, regras para a IA).
+- O próprio portfólio: um mangá 3D interativo feito com menos de 200 linhas de JavaScript e zero bibliotecas; a câmera usa uma mola amortecida (física do oscilador harmônico); bilíngue PT/EN; feito com IA usando um método próprio de economia de contexto (índice de arquivos, lista de pendências, regras para a IA).
 
 O OBJETIVO
 O Luiz quer entrar no mercado como dev full-stack "AI-native": alguém que entrega rápido com IA sem perder o controle técnico. O portfólio hoje mostra os projetos, mas ainda não mostra o PROFISSIONAL: diferenciais, produtividade, entendimento técnico, habilidades sociais, o que ele tem de fora da caixa. O público é duplo: RH (decide em segundos, não lê código) e tech lead (procura substância).
@@ -126,7 +126,7 @@ Revela dependência de IA ou falta de maturidade:
 MINHA PROPOSTA DE POSICIONAMENTO (critique)
 Título: "Dev full-stack em início de carreira que entrega software usado por negócios reais, com IA como multiplicador, e estudante de Física."
 Frase para RH: "Construí o sistema que roda os orçamentos de uma confecção: de 30 para 5 minutos."
-Segunda frase para tech lead: "Modelagem financeira com estorno auditável, 619 testes nas lojas, e um portfólio 3D em 148 linhas sem biblioteca."
+Segunda frase para tech lead: "Modelagem financeira com estorno auditável, 619 testes nas lojas, e um portfólio 3D em 190 linhas sem biblioteca."
 Diferencial: ponte entre a operação e o código (fala a língua da produção e do financeiro), mais física computacional, que quase nenhum júnior tem.
 Assumido abertamente: "uso IA para escrever código; meu trabalho é decompor o problema, revisar, testar e responder pelo resultado."
 
